@@ -15,21 +15,21 @@ export default class Navigators extends React.Component {
 
   render() {
     return (
-      <div className='row'>
+      <div className='row' id='navigators'>
         <div className='col-12'>
           <ul>
             <li>
-              <NavButton >
+              <NavButton buttonId='back-nav'>
                 Back
               </NavButton>
             </li>
             <li>
-              <NavButton >
+              <NavButton buttonId='start-nav'>
                 Return to Start
               </NavButton>
             </li>
             <li>
-              <NavButton action={this.toTitlePage.bind(this)}>
+              <NavButton action={this.toTitlePage.bind(this)} buttonId='titlepage-nav'>
                 Calculate Again
               </NavButton>
             </li>

@@ -23845,7 +23845,7 @@ class DisplayPage extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Componen
   render() {
     return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
       'div',
-      { className: 'row' },
+      { className: 'row', id: 'display-page' },
       __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
         'div',
         { className: 'col-3' },
@@ -23889,7 +23889,7 @@ class Navigators extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component
   render() {
     return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
       'div',
-      { className: 'row' },
+      { className: 'row', id: 'navigators' },
       __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
         'div',
         { className: 'col-12' },
@@ -23901,7 +23901,7 @@ class Navigators extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component
             null,
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
               __WEBPACK_IMPORTED_MODULE_1__Navigators_NavButton__["a" /* default */],
-              null,
+              { buttonId: 'back-nav' },
               'Back'
             )
           ),
@@ -23910,7 +23910,7 @@ class Navigators extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component
             null,
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
               __WEBPACK_IMPORTED_MODULE_1__Navigators_NavButton__["a" /* default */],
-              null,
+              { buttonId: 'start-nav' },
               'Return to Start'
             )
           ),
@@ -23919,7 +23919,7 @@ class Navigators extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component
             null,
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
               __WEBPACK_IMPORTED_MODULE_1__Navigators_NavButton__["a" /* default */],
-              { action: this.toTitlePage.bind(this) },
+              { action: this.toTitlePage.bind(this), buttonId: 'titlepage-nav' },
               'Calculate Again'
             )
           )
@@ -23951,7 +23951,7 @@ class NavButton extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component 
    render() {
       return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
          'button',
-         { onClick: this.props.action },
+         { onClick: this.props.action, className: 'nav-button', id: this.props.buttonId },
          this.props.children
       );
    }
@@ -23960,7 +23960,7 @@ class NavButton extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component 
 
 
 NavButton.propTypes = {
-   //action: PropTypes.isRequired
+   buttonId: __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.string.isRequired
 };
 
 /***/ }),
@@ -24871,7 +24871,7 @@ class Legend extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
    render() {
       return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
          'div',
-         { className: 'row' },
+         { className: 'row', id: 'legend' },
          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             'div',
             { className: 'col-12' },

@@ -11,7 +11,7 @@ export default class DisplayPage extends React.Component {
 
    render() {
       return (
-          <div className='row'>
+          <div className='row' id='display-page'>
             <div className='col-3'>
               <Navigators />
               <Legend />

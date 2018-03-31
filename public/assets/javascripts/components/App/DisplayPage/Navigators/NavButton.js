@@ -8,7 +8,7 @@ export default class NavButton extends React.Component {
 
    render() {
       return (
-         <button onClick={this.props.action}>
+         <button onClick={this.props.action} className='nav-button' id={this.props.buttonId}>
             {this.props.children}
          </button>
       );
@@ -16,5 +16,5 @@ export default class NavButton extends React.Component {
 }
 
 NavButton.propTypes = {
-  //action: PropTypes.isRequired
+  buttonId: PropTypes.string.isRequired
 }
