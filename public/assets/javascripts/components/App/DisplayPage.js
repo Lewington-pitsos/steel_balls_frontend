@@ -1,5 +1,7 @@
 import React from 'react'
 
+import Navigators from './DisplayPage/Navigators'
+
 export default class DisplayPage extends React.Component {
   constructor() {
     super()
@@ -10,6 +12,7 @@ export default class DisplayPage extends React.Component {
       return (
          <h1>
             DisplayPage
+            <Navigators />
          </h1>
       );
    }

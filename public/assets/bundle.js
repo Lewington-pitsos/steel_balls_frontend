@@ -23762,7 +23762,7 @@ module.exports = camelize;
 class App extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
    constructor() {
       super();
-      this.state = { titlePage: true };
+      this.state = { titlePage: false };
    }
 
    render() {
@@ -23786,6 +23786,9 @@ class App extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__DisplayPage_Navigators__ = __webpack_require__(44);
+
+
 
 
 class DisplayPage extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
@@ -23797,7 +23800,8 @@ class DisplayPage extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Componen
       return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
          'h1',
          null,
-         'DisplayPage'
+         'DisplayPage',
+         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__DisplayPage_Navigators__["a" /* default */], null)
       );
    }
 }
@@ -23827,6 +23831,85 @@ class TitlePage extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component 
    }
 }
 /* harmony export (immutable) */ __webpack_exports__["a"] = TitlePage;
+
+
+/***/ }),
+/* 44 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Navigators_NavButton__ = __webpack_require__(45);
+
+
+
+
+class Navigators extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
+  constructor() {
+    super();
+  }
+
+  render() {
+    return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+      'ul',
+      null,
+      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        'li',
+        null,
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          __WEBPACK_IMPORTED_MODULE_1__Navigators_NavButton__["a" /* default */],
+          null,
+          'Back'
+        )
+      ),
+      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        'li',
+        null,
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          __WEBPACK_IMPORTED_MODULE_1__Navigators_NavButton__["a" /* default */],
+          null,
+          'Return to Start'
+        )
+      ),
+      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        'li',
+        null,
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          __WEBPACK_IMPORTED_MODULE_1__Navigators_NavButton__["a" /* default */],
+          null,
+          'Calculate Again'
+        )
+      )
+    );
+  }
+}
+/* harmony export (immutable) */ __webpack_exports__["a"] = Navigators;
+
+
+/***/ }),
+/* 45 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+
+
+class NavButton extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
+   constructor() {
+      super();
+   }
+
+   render() {
+      return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+         'button',
+         null,
+         this.props.children
+      );
+   }
+}
+/* harmony export (immutable) */ __webpack_exports__["a"] = NavButton;
 
 
 /***/ })

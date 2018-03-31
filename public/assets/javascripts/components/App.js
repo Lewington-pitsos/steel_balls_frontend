@@ -6,7 +6,7 @@ import DisplayPage from './App/DisplayPage'
 export default class App extends React.Component {
   constructor() {
     super()
-    this.state = { titlePage: true}
+    this.state = { titlePage: false}
   }
 
    render() {
