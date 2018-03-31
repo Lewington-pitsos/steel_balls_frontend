@@ -11,11 +11,15 @@ export default class DisplayPage extends React.Component {
 
    render() {
       return (
-         <div>
-            DisplayPage
-            <Navigators />
-            <Legend />
-         </div>
+          <div className='row'>
+            <div className='col-3'>
+              <Navigators />
+              <Legend />
+            </div>
+            <div className='col-9'>
+              DisplayPage
+            </div>
+          </div>
       );
    }
 }

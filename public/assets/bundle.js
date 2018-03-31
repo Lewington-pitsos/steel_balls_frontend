@@ -23764,12 +23764,12 @@ module.exports = camelize;
 class App extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
    constructor() {
       super();
-      this.titlePage = __WEBPACK_IMPORTED_MODULE_3__stores_PageStore__["a" /* default */].getPage();
+      this.state = __WEBPACK_IMPORTED_MODULE_3__stores_PageStore__["a" /* default */].getPage();
    }
 
    render() {
 
-      const page = this.titlePage ? __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__App_TitlePage__["a" /* default */], null) : __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__App_DisplayPage__["a" /* default */], null);
+      const page = this.state.titlePage ? __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__App_TitlePage__["a" /* default */], null) : __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__App_DisplayPage__["a" /* default */], null);
 
       return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
          'div',
@@ -23796,19 +23796,27 @@ class App extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
 
 
 class DisplayPage extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
-   constructor() {
-      super();
-   }
+  constructor() {
+    super();
+  }
 
-   render() {
-      return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-         'div',
-         null,
-         'DisplayPage',
-         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__DisplayPage_Navigators__["a" /* default */], null),
-         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__DisplayPage_Legend__["a" /* default */], null)
-      );
-   }
+  render() {
+    return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+      'div',
+      { className: 'row' },
+      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        'div',
+        { className: 'col-3' },
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__DisplayPage_Navigators__["a" /* default */], null),
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__DisplayPage_Legend__["a" /* default */], null)
+      ),
+      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        'div',
+        { className: 'col-9' },
+        'DisplayPage'
+      )
+    );
+  }
 }
 /* harmony export (immutable) */ __webpack_exports__["a"] = DisplayPage;
 
@@ -23855,35 +23863,45 @@ class Navigators extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component
     super();
   }
 
+  toTitlePage() {}
+
   render() {
     return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-      'ul',
-      null,
+      'div',
+      { className: 'row' },
       __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-        'li',
-        null,
+        'div',
+        { className: 'col-12' },
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-          __WEBPACK_IMPORTED_MODULE_1__Navigators_NavButton__["a" /* default */],
+          'ul',
           null,
-          'Back'
-        )
-      ),
-      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-        'li',
-        null,
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-          __WEBPACK_IMPORTED_MODULE_1__Navigators_NavButton__["a" /* default */],
-          null,
-          'Return to Start'
-        )
-      ),
-      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-        'li',
-        null,
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-          __WEBPACK_IMPORTED_MODULE_1__Navigators_NavButton__["a" /* default */],
-          null,
-          'Calculate Again'
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'li',
+            null,
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              __WEBPACK_IMPORTED_MODULE_1__Navigators_NavButton__["a" /* default */],
+              null,
+              'Back'
+            )
+          ),
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'li',
+            null,
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              __WEBPACK_IMPORTED_MODULE_1__Navigators_NavButton__["a" /* default */],
+              null,
+              'Return to Start'
+            )
+          ),
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'li',
+            null,
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              __WEBPACK_IMPORTED_MODULE_1__Navigators_NavButton__["a" /* default */],
+              null,
+              'Calculate Again'
+            )
+          )
         )
       )
     );
@@ -23927,21 +23945,25 @@ class NavButton extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component 
 
 
 class Legend extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
-  constructor() {
-    super();
-  }
+   constructor() {
+      super();
+   }
 
-  render() {
-    return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-      'div',
-      null,
-      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-        'h3',
-        null,
-        'Legend'
-      )
-    );
-  }
+   render() {
+      return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+         'div',
+         { className: 'row' },
+         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'div',
+            { className: 'col-12' },
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+               'h3',
+               null,
+               'Legend'
+            )
+         )
+      );
+   }
 }
 /* harmony export (immutable) */ __webpack_exports__["a"] = Legend;
 

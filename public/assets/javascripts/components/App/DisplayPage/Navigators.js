@@ -7,26 +7,34 @@ export default class Navigators extends React.Component {
     super()
   }
 
+  toTitlePage() {
 
-   render() {
-      return (
-         <ul>
-          <li>
-            <NavButton >
-              Back
-            </NavButton>
-          </li>
-          <li>
-            <NavButton >
-              Return to Start
-            </NavButton>
-          </li>
-          <li>
-            <NavButton >
-              Calculate Again
-            </NavButton>
-          </li>
-         </ul>
-      );
-   }
+  }
+
+
+  render() {
+    return (
+      <div className='row'>
+        <div className='col-12'>
+          <ul>
+            <li>
+              <NavButton >
+                Back
+              </NavButton>
+            </li>
+            <li>
+              <NavButton >
+                Return to Start
+              </NavButton>
+            </li>
+            <li>
+              <NavButton >
+                Calculate Again
+              </NavButton>
+            </li>
+           </ul>
+         </div>
+       </div>
+     );
+  }
 }

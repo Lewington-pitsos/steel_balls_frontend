@@ -7,12 +7,12 @@ import pageStore from '../stores/PageStore'
 export default class App extends React.Component {
   constructor() {
     super()
-    this.titlePage = pageStore.getPage()
+    this.state = pageStore.getPage()
   }
 
    render() {
 
-     const page = this.titlePage ? <TitlePage /> : <DisplayPage />
+     const page = this.state.titlePage ? <TitlePage /> : <DisplayPage />
 
       return (
          <div className="animated bounce">

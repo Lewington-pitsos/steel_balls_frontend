@@ -8,8 +8,10 @@ export default class Legend extends React.Component {
 
    render() {
       return (
-         <div>
-           <h3>Legend</h3>
+         <div className='row'>
+           <div className='col-12'>
+             <h3>Legend</h3>
+            </div>
          </div>
       );
    }
