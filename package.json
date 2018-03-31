@@ -19,7 +19,6 @@
   },
   "homepage": "https://github.com/Lewington-pitsos/flowers#readme",
   "dependencies": {
-    "ssri": "^5.2.2",
     "autoprefixer": "^7.2.5",
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
@@ -27,6 +26,7 @@
     "babel-preset-es2015": "^6.24.1",
     "bootstrap": "^4.0.0-alpha.6",
     "express": "^4.16.2",
+    "flux": "^3.1.3",
     "jquery": "^3.3.1",
     "postcss": "^6.0.17",
     "postcss-loader": "^2.1.0",
@@ -34,6 +34,7 @@
     "prop-types": "^15.6.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
+    "ssri": "^5.2.2",
     "tether": "^1.4.3",
     "webpack": "^3.10.0"
   },

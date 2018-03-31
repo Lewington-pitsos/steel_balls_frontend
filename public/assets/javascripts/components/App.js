@@ -2,16 +2,17 @@ import React from 'react'
 
 import TitlePage from './App/TitlePage'
 import DisplayPage from './App/DisplayPage'
+import pageStore from '../stores/PageStore'
 
 export default class App extends React.Component {
   constructor() {
     super()
-    this.state = { titlePage: false}
+    this.titlePage = pageStore.getPage()
   }
 
    render() {
 
-     const page = this.state.titlePage ? <TitlePage /> : <DisplayPage />
+     const page = this.titlePage ? <TitlePage /> : <DisplayPage />
 
       return (
          <div className="animated bounce">
