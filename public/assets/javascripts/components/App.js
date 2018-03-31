@@ -21,7 +21,7 @@ export default class App extends React.Component {
    const page = this.state.titlePage ? <TitlePage /> : <DisplayPage />
 
     return (
-       <div className="animated bounce">
+       <div className="animated bounce" id='app'>
           {page}
        </div>
     );

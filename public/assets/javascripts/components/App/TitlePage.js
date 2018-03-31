@@ -8,7 +8,7 @@ export default class TitlePage extends React.Component {
 
    render() {
       return (
-         <div>
+         <div id='title-page'>
             TitlePage
          </div>
       );
