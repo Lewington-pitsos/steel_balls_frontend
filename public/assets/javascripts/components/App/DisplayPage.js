@@ -1,6 +1,7 @@
 import React from 'react'
 
 import Navigators from './DisplayPage/Navigators'
+import Legend from './DisplayPage/Legend'
 
 export default class DisplayPage extends React.Component {
   constructor() {
@@ -10,10 +11,11 @@ export default class DisplayPage extends React.Component {
 
    render() {
       return (
-         <h1>
+         <div>
             DisplayPage
             <Navigators />
-         </h1>
+            <Legend />
+         </div>
       );
    }
 }

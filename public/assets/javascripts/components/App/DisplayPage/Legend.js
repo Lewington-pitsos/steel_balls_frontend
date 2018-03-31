@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default class TitlePage extends React.Component {
+export default class Legend extends React.Component {
   constructor() {
     super()
   }
@@ -9,7 +9,7 @@ export default class TitlePage extends React.Component {
    render() {
       return (
          <div>
-            TitlePage
+           <h3>Legend</h3>
          </div>
       );
    }

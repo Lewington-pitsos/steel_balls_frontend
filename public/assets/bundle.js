@@ -23770,7 +23770,7 @@ class App extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
       const page = this.state.titlePage ? __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__App_TitlePage__["a" /* default */], null) : __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__App_DisplayPage__["a" /* default */], null);
 
       return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-         'h1',
+         'div',
          { className: 'animated bounce' },
          page
       );
@@ -23787,6 +23787,8 @@ class App extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__DisplayPage_Navigators__ = __webpack_require__(44);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__DisplayPage_Legend__ = __webpack_require__(46);
+
 
 
 
@@ -23798,10 +23800,11 @@ class DisplayPage extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Componen
 
    render() {
       return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-         'h1',
+         'div',
          null,
          'DisplayPage',
-         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__DisplayPage_Navigators__["a" /* default */], null)
+         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__DisplayPage_Navigators__["a" /* default */], null),
+         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__DisplayPage_Legend__["a" /* default */], null)
       );
    }
 }
@@ -23824,7 +23827,7 @@ class TitlePage extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component 
 
    render() {
       return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-         'h1',
+         'div',
          null,
          'TitlePage'
       );
@@ -23910,6 +23913,35 @@ class NavButton extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component 
    }
 }
 /* harmony export (immutable) */ __webpack_exports__["a"] = NavButton;
+
+
+/***/ }),
+/* 46 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+
+
+class Legend extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
+  constructor() {
+    super();
+  }
+
+  render() {
+    return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+      'div',
+      null,
+      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        'h3',
+        null,
+        'Legend'
+      )
+    );
+  }
+}
+/* harmony export (immutable) */ __webpack_exports__["a"] = Legend;
 
 
 /***/ })
