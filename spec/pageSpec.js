@@ -4,6 +4,11 @@ import App from '../public/assets/javascripts/components/App.js'
 import { shallow, mount } from 'enzyme'
 
 describe('App Component provides basic functionality:', function() {
+
+  let titlePageSl = '#title-page'
+  let displayPageSl = '#display-page'
+  let titlePageButtonSl = '#titlepage-nav'
+
   it('Renders without crashing', function() {
     const div = document.createElement('div')
     ReactDOM.render(<App />, div)
@@ -13,7 +18,7 @@ describe('App Component provides basic functionality:', function() {
 
   it('Starts on title page', function() {
     const wrapper = mount(<App />)
-    expect(wrapper.find('#title-page').exists()).toBe(true)
+    expect(wrapper.find(titlePageSl).exists()).toBe(true)
     expect(wrapper.instance().state.titlePage).toBe(true)
     wrapper.unmount()
   })
@@ -21,8 +26,12 @@ describe('App Component provides basic functionality:', function() {
   it('can navigate between pages', function() {
     const wrapper = mount(<App />)
     wrapper.setState({ titlePage: false})
-    expect(wrapper.find('#titlepage-nav').exists()).toBe(true)
-    wrapper.find('#titlepage-nav').simulate('click')
+    expect(wrapper.find(displayPageSl).exists()).toBe(true)
+    expect(wrapper.find(titlePageButtonSl).exists()).toBe(true)
+    wrapper.find(titlePageButtonSl).simulate('click')
+    expect(wrapper.find(titlePageButtonSl).exists()).toBe(false)
+    expect(wrapper.find(displayPageSl).exists()).toBe(false)
+    expect(wrapper.find(titlePageSl).exists()).toBe(true)
   })
 })
 
