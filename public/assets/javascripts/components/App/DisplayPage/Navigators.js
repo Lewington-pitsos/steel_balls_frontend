@@ -1,6 +1,7 @@
 import React from 'react'
 
 import NavButton from './Navigators/NavButton'
+import pageActions from '../../../actions/pageActions'
 
 export default class Navigators extends React.Component {
   constructor() {
@@ -8,7 +9,7 @@ export default class Navigators extends React.Component {
   }
 
   toTitlePage() {
-
+    pageActions.toTitlePage()
   }
 
 
@@ -28,7 +29,7 @@ export default class Navigators extends React.Component {
               </NavButton>
             </li>
             <li>
-              <NavButton >
+              <NavButton action={this.toTitlePage.bind(this)}>
                 Calculate Again
               </NavButton>
             </li>

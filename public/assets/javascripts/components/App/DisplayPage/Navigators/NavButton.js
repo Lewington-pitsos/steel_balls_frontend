@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types';
 
 export default class NavButton extends React.Component {
   constructor() {
@@ -7,9 +8,13 @@ export default class NavButton extends React.Component {
 
    render() {
       return (
-         <button>
+         <button onClick={this.props.action}>
             {this.props.children}
          </button>
       );
    }
+}
+
+NavButton.propTypes = {
+  //action: PropTypes.isRequired
 }

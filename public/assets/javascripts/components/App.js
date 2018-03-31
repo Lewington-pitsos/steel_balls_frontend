@@ -10,14 +10,20 @@ export default class App extends React.Component {
     this.state = pageStore.getPage()
   }
 
-   render() {
+  componentWillMount() { // triggered just before a render occurs apparently
+    pageStore.on('pageChange', () => {
+      this.setState( pageStore.getPage() )
+    })
+  }
 
-     const page = this.state.titlePage ? <TitlePage /> : <DisplayPage />
+  render() {
 
-      return (
-         <div className="animated bounce">
-            {page}
-         </div>
-      );
-   }
+   const page = this.state.titlePage ? <TitlePage /> : <DisplayPage />
+
+    return (
+       <div className="animated bounce">
+          {page}
+       </div>
+    );
+  }
 }

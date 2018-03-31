@@ -9,7 +9,7 @@ export default {
 
   toDisplayePage(ball_number) {
     dispatcher.dispatch({
-      type: 'TO_DISPLAY_PAGE'
+      type: 'TO_DISPLAY_PAGE',
       ball_number: ball_number
     })
   }

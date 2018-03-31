@@ -31,12 +31,12 @@ class PageStore extends EventEmitter {
 
   toTitlePage() {
     this.titlePage = true
-    thias.emit('pageChange')
+    this.emit('pageChange')
   }
 
   toDisplayPage(ball_number) {
     this.titlePage = false
-    thias.emit('pageChange')
+    this.emit('pageChange')
   }
 
 }
