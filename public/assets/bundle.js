@@ -24610,7 +24610,7 @@ module.exports = function () {
     });
   },
 
-  toDisplayePage(ball_number) {
+  toDisplayPage(ball_number) {
     __WEBPACK_IMPORTED_MODULE_0__dispatcher__["a" /* default */].dispatch({
       type: 'TO_DISPLAY_PAGE',
       ball_number: ball_number
@@ -24943,7 +24943,7 @@ class PageStore extends __WEBPACK_IMPORTED_MODULE_0_events__["EventEmitter"] {
           break;
         }case "TO_DISPLAY_PAGE":
         {
-          this.removeBucket(action.ball_number);
+          this.toDisplayPage(action.ball_number);
           break;
         }
     }
@@ -25243,6 +25243,9 @@ function isUndefined(arg) {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__actions_pageActions__ = __webpack_require__(49);
+
+
 
 
 class TitleForm extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
@@ -25253,12 +25256,12 @@ class TitleForm extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component 
 
   startCalculating(event) {
     event.preventDefault();
-    console.log('llr');
+    __WEBPACK_IMPORTED_MODULE_1__actions_pageActions__["a" /* default */].toDisplayPage(this.state.ballNumber);
   }
 
   updateBallNumber(event) {
-    console.log('lol');
     this.setState({ ballNumber: event.target.value });
+    console.log(event.target.value);
   }
 
   render() {
@@ -25267,19 +25270,19 @@ class TitleForm extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component 
       { onSubmit: this.startCalculating.bind(this) },
       __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
         'div',
-        { 'class': 'form-group' },
+        { className: 'form-group' },
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
           'label',
-          { 'for': 'exampleInputEmail1' },
+          { htmlFor: 'exampleInputEmail1' },
           'Please select a number of balls to solve for'
         ),
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('br', null),
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
           'select',
-          { 'class': 'ball-number', onChange: this.updateBallNumber.bind(this) },
+          { className: 'ball-number', onChange: this.updateBallNumber.bind(this), defaultValue: '3' },
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             'option',
-            { value: '3', selected: true },
+            { value: '3' },
             '3'
           ),
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
@@ -25321,12 +25324,12 @@ class TitleForm extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component 
       ),
       __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
         'button',
-        { type: 'submit', 'class': 'btn btn-primary' },
+        { type: 'submit', className: 'btn btn-primary' },
         'Submit'
       ),
       __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
         'small',
-        { 'class': 'form-text text-muted' },
+        { className: 'form-text text-muted' },
         'Now... why on earth did I disable 1 and 2?'
       )
     );

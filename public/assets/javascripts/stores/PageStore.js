@@ -23,7 +23,7 @@ class PageStore extends EventEmitter {
         this.toTitlePage()
         break
       } case "TO_DISPLAY_PAGE": {
-        this.removeBucket(action.ball_number)
+        this.toDisplayPage(action.ball_number)
         break
       }
     }
