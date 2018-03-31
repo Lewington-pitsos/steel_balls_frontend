@@ -25,15 +25,15 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.49497475"
-     inkscape:cx="705.20237"
-     inkscape:cy="715.13974"
+     inkscape:zoom="0.9899495"
+     inkscape:cx="1060.5318"
+     inkscape:cy="655.54514"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
-     inkscape:window-width="1223"
+     inkscape:window-width="1280"
      inkscape:window-height="1003"
-     inkscape:window-x="57"
+     inkscape:window-x="1280"
      inkscape:window-y="21"
      inkscape:window-maximized="1" />
   <metadata
@@ -44,7 +44,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -52,238 +52,277 @@
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1">
-    <rect
-       style="fill:#1a1a1a;fill-opacity:1;stroke:#333333;stroke-width:0.32343134;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       id="rect4136"
-       width="220.74672"
-       height="41.778954"
-       x="1216.2516"
-       y="40.945347" />
-    <rect
-       style="fill:#1a1a1a;fill-opacity:1;stroke:#333333;stroke-width:0.32563365;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       id="rect4136-7"
-       width="223.77498"
-       height="41.776752"
-       x="1214.7374"
-       y="102.81187" />
-    <text
-       xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:12.5px;line-height:50%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       x="1310.8503"
-       y="64.505066"
-       id="text4180"
-       sodipodi:linespacing="50%"><tspan
-         sodipodi:role="line"
-         id="tspan4182"
-         x="1310.8503"
-         y="64.505066"
-         style="fill:#ffffff">Back</tspan></text>
-    <text
-       xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:12.5px;line-height:50%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       x="1279.8628"
-       y="127.73653"
-       id="text4180-3"
-       sodipodi:linespacing="50%"><tspan
-         sodipodi:role="line"
-         id="tspan4182-5"
-         x="1279.8628"
-         y="127.73653"
-         style="fill:#ffffff">Return to Start</tspan></text>
     <g
-       transform="translate(689.37408,486.63393)"
+       id="g4252"
+       transform="translate(9.1552734e-5,0)">
+      <rect
+         y="40.945347"
+         x="1217.1144"
+         height="41.778954"
+         width="220.74672"
+         id="rect4136"
+         style="fill:#1a1a1a;fill-opacity:1;stroke:#333333;stroke-width:0.32343134;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <text
+         sodipodi:linespacing="50%"
+         id="text4180"
+         y="64.505066"
+         x="1311.7133"
+         style="font-style:normal;font-weight:normal;font-size:12.5px;line-height:50%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         xml:space="preserve"><tspan
+           style="fill:#ffffff"
+           y="64.505066"
+           x="1311.7133"
+           id="tspan4182"
+           sodipodi:role="line">Back</tspan></text>
+    </g>
+    <g
+       id="g4247"
+       transform="translate(0,2.0631104)">
+      <rect
+         y="102.81187"
+         x="1215.6003"
+         height="41.776752"
+         width="223.77498"
+         id="rect4136-7"
+         style="fill:#1a1a1a;fill-opacity:1;stroke:#333333;stroke-width:0.32563365;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <text
+         sodipodi:linespacing="50%"
+         id="text4180-3"
+         y="127.73653"
+         x="1280.7257"
+         style="font-style:normal;font-weight:normal;font-size:12.5px;line-height:50%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         xml:space="preserve"><tspan
+           style="fill:#ffffff"
+           y="127.73653"
+           x="1280.7257"
+           id="tspan4182-5"
+           sodipodi:role="line">Return to Start</tspan></text>
+    </g>
+    <g
+       transform="translate(697.30801,486.63393)"
        id="g6595">
-      <path
-         inkscape:connector-curvature="0"
-         id="path5270-7-49-9-6-3-89-7"
-         d="m 540.15464,-61.059932 196.51486,0"
-         style="fill:#333333;fill-rule:evenodd;stroke:#333333;stroke-width:0.2289993;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
-      <path
-         inkscape:connector-curvature="0"
-         id="path5270-7-49-9-6-3-89-7-9"
-         d="m 535.73151,-309.27421 203.08085,0"
-         style="fill:#333333;fill-rule:evenodd;stroke:#333333;stroke-width:0.23279355;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
       <g
-         transform="translate(0.17334229,-321.99356)"
-         id="g6555">
-        <circle
-           style="fill:#e6e6e6;fill-opacity:1;stroke:none;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1"
-           id="path4690-3-6-3-6-1-4-722-9-2-0-4"
-           cx="551.50891"
-           cy="41.959438"
-           r="15.992945" />
-        <text
-           xml:space="preserve"
-           style="font-style:normal;font-weight:normal;font-size:7.5px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#666666;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-           x="584.19916"
-           y="45.729313"
-           id="text6235-5"
-           sodipodi:linespacing="125%"><tspan
-             sodipodi:role="line"
-             x="584.19916"
+         id="g4199"
+         transform="translate(-7.0710678,61.114229)">
+        <path
+           style="fill:#333333;fill-rule:evenodd;stroke:#333333;stroke-width:0.2289993;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+           d="m 540.15464,-61.059932 196.51486,0"
+           id="path5270-7-49-9-6-3-89-7"
+           inkscape:connector-curvature="0" />
+        <path
+           style="fill:#333333;fill-rule:evenodd;stroke:#333333;stroke-width:0.23279355;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+           d="m 535.73151,-309.27421 203.08085,0"
+           id="path5270-7-49-9-6-3-89-7-9"
+           inkscape:connector-curvature="0" />
+        <g
+           id="g6555"
+           transform="translate(0.17334229,-321.99356)">
+          <circle
+             r="15.992945"
+             cy="41.959438"
+             cx="551.50891"
+             id="path4690-3-6-3-6-1-4-722-9-2-0-4"
+             style="fill:#e6e6e6;fill-opacity:1;stroke:none;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1" />
+          <text
+             sodipodi:linespacing="125%"
+             id="text6235-5"
              y="45.729313"
-             id="tspan6243-46">we have no information at </tspan><tspan
-             sodipodi:role="line"
              x="584.19916"
-             y="55.104313"
-             id="tspan6297">all about this ball. it could</tspan><tspan
-             sodipodi:role="line"
-             x="584.19916"
-             y="64.479309"
-             id="tspan6299">be anything. </tspan><tspan
-             sodipodi:role="line"
-             x="584.19916"
-             y="73.854309"
-             id="tspan6239-92" /></text>
-        <text
-           xml:space="preserve"
-           style="font-style:normal;font-weight:normal;font-size:12.5px;line-height:50%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-           x="584.52283"
-           y="35.603237"
-           id="text6361"
-           sodipodi:linespacing="50%"><tspan
-             sodipodi:role="line"
-             id="tspan6363"
-             x="584.52283"
+             style="font-style:normal;font-weight:normal;font-size:7.5px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#666666;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+             xml:space="preserve"><tspan
+               id="tspan6243-46"
+               y="45.729313"
+               x="584.19916"
+               sodipodi:role="line">we have no information at </tspan><tspan
+               id="tspan6297"
+               y="55.104313"
+               x="584.19916"
+               sodipodi:role="line">all about this ball. it could</tspan><tspan
+               id="tspan6299"
+               y="64.479309"
+               x="584.19916"
+               sodipodi:role="line">be anything. </tspan><tspan
+               id="tspan6239-92"
+               y="73.854309"
+               x="584.19916"
+               sodipodi:role="line" /></text>
+          <text
+             sodipodi:linespacing="50%"
+             id="text6361"
              y="35.603237"
-             style="font-size:8.75px">Unknown:</tspan></text>
-      </g>
-      <g
-         transform="translate(2.3162223,-320.15689)"
-         id="g6576">
-        <circle
-           style="fill:#4d4d4d;fill-opacity:1;stroke:none;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1"
-           id="path4690-3-6-3-6-1-4-6-7-6-9-7"
-           cx="549.36603"
-           cy="161.03746"
-           r="15.992945" />
-        <text
-           xml:space="preserve"
-           style="font-style:normal;font-weight:normal;font-size:7.5px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#666666;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-           x="582.89825"
-           y="165.02919"
-           id="text6235-2-4"
-           sodipodi:linespacing="125%"><tspan
-             sodipodi:role="line"
-             x="582.89825"
+             x="584.52283"
+             style="font-style:normal;font-weight:normal;font-size:12.5px;line-height:50%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+             xml:space="preserve"><tspan
+               style="font-size:8.75px"
+               y="35.603237"
+               x="584.52283"
+               id="tspan6363"
+               sodipodi:role="line">Unknown:</tspan></text>
+        </g>
+        <g
+           id="g6576"
+           transform="translate(2.3162223,-320.15689)">
+          <circle
+             r="15.992945"
+             cy="161.03746"
+             cx="549.36603"
+             id="path4690-3-6-3-6-1-4-6-7-6-9-7"
+             style="fill:#4d4d4d;fill-opacity:1;stroke:none;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1" />
+          <text
+             sodipodi:linespacing="125%"
+             id="text6235-2-4"
              y="165.02919"
-             id="tspan6243-4-8">This ball definitly isn't lighter </tspan><tspan
-             sodipodi:role="line"
              x="582.89825"
-             y="174.40419"
-             id="tspan6303-1">than normal, but it could be</tspan><tspan
-             sodipodi:role="line"
-             x="582.89825"
-             y="183.77919"
-             id="tspan6305-2">heavier...</tspan><tspan
-             sodipodi:role="line"
-             x="582.89825"
-             y="193.15419"
-             id="tspan6239-0-8" /></text>
-        <text
-           xml:space="preserve"
-           style="font-style:normal;font-weight:normal;font-size:12.5px;line-height:50%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-           x="582.28168"
-           y="155.40819"
-           id="text6361-8"
-           sodipodi:linespacing="50%"><tspan
-             sodipodi:role="line"
-             id="tspan6363-0"
-             x="582.28168"
+             style="font-style:normal;font-weight:normal;font-size:7.5px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#666666;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+             xml:space="preserve"><tspan
+               id="tspan6243-4-8"
+               y="165.02919"
+               x="582.89825"
+               sodipodi:role="line">This ball definitly isn't lighter </tspan><tspan
+               id="tspan6303-1"
+               y="174.40419"
+               x="582.89825"
+               sodipodi:role="line">than normal, but it could be</tspan><tspan
+               id="tspan6305-2"
+               y="183.77919"
+               x="582.89825"
+               sodipodi:role="line">heavier...</tspan><tspan
+               id="tspan6239-0-8"
+               y="193.15419"
+               x="582.89825"
+               sodipodi:role="line" /></text>
+          <text
+             sodipodi:linespacing="50%"
+             id="text6361-8"
              y="155.40819"
-             style="font-size:8.75px">Possibly Heavier:</tspan></text>
-      </g>
-      <g
-         transform="translate(3.0304623,-321.99356)"
-         id="g6586">
-        <circle
-           style="fill:#afe9af;fill-opacity:1;stroke:none;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1"
-           id="path4690-3-6-3-6-1-4-6-8-8-6-3"
-           cx="548.65179"
-           cy="224.86221"
-           r="15.992945" />
-        <text
-           xml:space="preserve"
-           style="font-style:normal;font-weight:normal;font-size:7.5px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#666666;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-           x="578.81665"
-           y="234.55159"
-           id="text6235"
-           sodipodi:linespacing="125%"><tspan
-             sodipodi:role="line"
-             id="tspan6237"
+             x="582.28168"
+             style="font-style:normal;font-weight:normal;font-size:12.5px;line-height:50%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+             xml:space="preserve"><tspan
+               style="font-size:8.75px"
+               y="155.40819"
+               x="582.28168"
+               id="tspan6363-0"
+               sodipodi:role="line">Possibly Heavier:</tspan></text>
+        </g>
+        <g
+           id="g6586"
+           transform="translate(3.0304623,-321.99356)">
+          <circle
+             r="15.992945"
+             cy="224.86221"
+             cx="548.65179"
+             id="path4690-3-6-3-6-1-4-6-8-8-6-3"
+             style="fill:#afe9af;fill-opacity:1;stroke:none;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1" />
+          <text
+             sodipodi:linespacing="125%"
+             id="text6235"
+             y="234.55159"
              x="578.81665"
-             y="234.55159">we can be sure that this ball</tspan><tspan
-             sodipodi:role="line"
-             x="578.81665"
-             y="243.92659"
-             id="tspan6243">is not the oddball </tspan><tspan
-             sodipodi:role="line"
-             x="578.81665"
-             y="253.30159"
-             id="tspan6239" /></text>
-        <text
-           xml:space="preserve"
-           style="font-style:normal;font-weight:normal;font-size:12.5px;line-height:50%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-           x="581.56744"
-           y="223.92044"
-           id="text6361-2"
-           sodipodi:linespacing="50%"><tspan
-             sodipodi:role="line"
-             id="tspan6363-1"
-             x="581.56744"
+             style="font-style:normal;font-weight:normal;font-size:7.5px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#666666;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+             xml:space="preserve"><tspan
+               y="234.55159"
+               x="578.81665"
+               id="tspan6237"
+               sodipodi:role="line">we can be sure that this ball</tspan><tspan
+               id="tspan6243"
+               y="243.92659"
+               x="578.81665"
+               sodipodi:role="line">is not the oddball </tspan><tspan
+               id="tspan6239"
+               y="253.30159"
+               x="578.81665"
+               sodipodi:role="line" /></text>
+          <text
+             sodipodi:linespacing="50%"
+             id="text6361-2"
              y="223.92044"
-             style="font-size:8.75px">Normal:</tspan></text>
-      </g>
-      <g
-         transform="translate(0.17334229,-317.6025)"
-         id="g6565">
-        <circle
-           style="fill:#f2f2f2;fill-opacity:1;stroke:none;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1"
-           id="path4690-3-6-3-6-1-4-6-8-8-6"
-           cx="551.50891"
-           cy="97.2127"
-           r="15.992945" />
-        <text
-           xml:space="preserve"
-           style="font-style:normal;font-weight:normal;font-size:7.5px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#666666;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-           x="585.04114"
-           y="101.99273"
-           id="text6235-2"
-           sodipodi:linespacing="125%"><tspan
-             sodipodi:role="line"
-             x="585.04114"
+             x="581.56744"
+             style="font-style:normal;font-weight:normal;font-size:12.5px;line-height:50%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+             xml:space="preserve"><tspan
+               style="font-size:8.75px"
+               y="223.92044"
+               x="581.56744"
+               id="tspan6363-1"
+               sodipodi:role="line">Normal:</tspan></text>
+        </g>
+        <g
+           id="g6565"
+           transform="translate(0.17334229,-317.6025)">
+          <circle
+             r="15.992945"
+             cy="97.2127"
+             cx="551.50891"
+             id="path4690-3-6-3-6-1-4-6-8-8-6"
+             style="fill:#f2f2f2;fill-opacity:1;stroke:none;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1" />
+          <text
+             sodipodi:linespacing="125%"
+             id="text6235-2"
              y="101.99273"
-             id="tspan6243-4">This ball definitly isn't heavier </tspan><tspan
-             sodipodi:role="line"
              x="585.04114"
-             y="111.36773"
-             id="tspan6303">than normal, but it could be</tspan><tspan
-             sodipodi:role="line"
-             x="585.04114"
-             y="120.74273"
-             id="tspan6305">lighter...</tspan><tspan
-             sodipodi:role="line"
-             x="585.04114"
-             y="130.11774"
-             id="tspan6239-0" /></text>
-        <text
-           xml:space="preserve"
-           style="font-style:normal;font-weight:normal;font-size:12.5px;line-height:50%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-           x="584.42456"
-           y="90.856499"
-           id="text6361-8-0"
-           sodipodi:linespacing="50%"><tspan
-             sodipodi:role="line"
-             id="tspan6363-0-5"
-             x="584.42456"
+             style="font-style:normal;font-weight:normal;font-size:7.5px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#666666;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+             xml:space="preserve"><tspan
+               id="tspan6243-4"
+               y="101.99273"
+               x="585.04114"
+               sodipodi:role="line">This ball definitly isn't heavier </tspan><tspan
+               id="tspan6303"
+               y="111.36773"
+               x="585.04114"
+               sodipodi:role="line">than normal, but it could be</tspan><tspan
+               id="tspan6305"
+               y="120.74273"
+               x="585.04114"
+               sodipodi:role="line">lighter...</tspan><tspan
+               id="tspan6239-0"
+               y="130.11774"
+               x="585.04114"
+               sodipodi:role="line" /></text>
+          <text
+             sodipodi:linespacing="50%"
+             id="text6361-8-0"
              y="90.856499"
-             style="font-size:8.75px">Possibly Lighter</tspan><tspan
-             sodipodi:role="line"
              x="584.42456"
-             y="95.231499"
-             style="font-size:8.75px"
-             id="tspan6417">:</tspan></text>
+             style="font-style:normal;font-weight:normal;font-size:12.5px;line-height:50%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+             xml:space="preserve"><tspan
+               style="font-size:8.75px"
+               y="90.856499"
+               x="584.42456"
+               id="tspan6363-0-5"
+               sodipodi:role="line">Possibly Lighter</tspan><tspan
+               id="tspan6417"
+               style="font-size:8.75px"
+               y="95.231499"
+               x="584.42456"
+               sodipodi:role="line">:</tspan></text>
+        </g>
       </g>
+    </g>
+    <g
+       id="g4241">
+      <rect
+         y="168.80356"
+         x="1215.6003"
+         height="41.776752"
+         width="223.77498"
+         id="rect4136-7-3"
+         style="fill:#1a1a1a;fill-opacity:1;stroke:#333333;stroke-width:0.32563365;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <text
+         sodipodi:linespacing="50%"
+         id="text4180-3-6"
+         y="194.23329"
+         x="1255.509"
+         style="font-style:normal;font-weight:normal;font-size:12.5px;line-height:50%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         xml:space="preserve"><tspan
+           style="fill:#ffffff"
+           y="194.23329"
+           x="1255.509"
+           id="tspan4182-5-7"
+           sodipodi:role="line">Calculate for New balls</tspan><tspan
+           id="tspan4239"
+           style="fill:#ffffff"
+           y="200.48329"
+           x="1255.509"
+           sodipodi:role="line" /></text>
     </g>
   </g>
 </svg>
