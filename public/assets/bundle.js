@@ -17136,7 +17136,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/*! tether 1.4
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_dom__ = __webpack_require__(31);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_dom___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react_dom__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_Title_js__ = __webpack_require__(40);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_App_js__ = __webpack_require__(41);
 
 
 
@@ -17145,7 +17145,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/*! tether 1.4
 const main = document.getElementById('main');
 
 __WEBPACK_IMPORTED_MODULE_1_react_dom___default.a.render(__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-  __WEBPACK_IMPORTED_MODULE_2__components_Title_js__["a" /* default */],
+  __WEBPACK_IMPORTED_MODULE_2__components_App_js__["a" /* default */],
   null,
   'Fuck you'
 ), main // i.e. main is the element that everything is being inserted into
@@ -23745,7 +23745,42 @@ function camelize(string) {
 module.exports = camelize;
 
 /***/ }),
-/* 40 */
+/* 40 */,
+/* 41 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__App_TitlePage__ = __webpack_require__(43);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__App_DisplayPage__ = __webpack_require__(42);
+
+
+
+
+
+class App extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
+   constructor() {
+      super();
+      this.state = { titlePage: true };
+   }
+
+   render() {
+
+      const page = this.state.titlePage ? __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__App_TitlePage__["a" /* default */], null) : __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__App_DisplayPage__["a" /* default */], null);
+
+      return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+         'h1',
+         { className: 'animated bounce' },
+         page
+      );
+   }
+}
+/* harmony export (immutable) */ __webpack_exports__["a"] = App;
+
+
+/***/ }),
+/* 42 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -23753,16 +23788,45 @@ module.exports = camelize;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 
 
-class App extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
+class DisplayPage extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
+   constructor() {
+      super();
+   }
+
    render() {
       return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-         "h1",
-         { className: "animated bounce" },
-         this.props.children
+         'h1',
+         null,
+         'DisplayPage'
       );
    }
 }
-/* harmony export (immutable) */ __webpack_exports__["a"] = App;
+/* harmony export (immutable) */ __webpack_exports__["a"] = DisplayPage;
+
+
+/***/ }),
+/* 43 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+
+
+class TitlePage extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
+   constructor() {
+      super();
+   }
+
+   render() {
+      return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+         'h1',
+         null,
+         'TitlePage'
+      );
+   }
+}
+/* harmony export (immutable) */ __webpack_exports__["a"] = TitlePage;
 
 
 /***/ })
