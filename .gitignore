@@ -2,3 +2,4 @@
 # pad files are for experimenting
 pad.js*
 node_modules/
+public/assets/bundle.js
