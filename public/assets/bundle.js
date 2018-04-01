@@ -26784,7 +26784,11 @@ module.exports = {"unknown":"3","possibly_lighter":"0","possibly_heavier":"0","n
 
 class Carousel extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
   singleNode(info, key) {
-    return this.props.stateNode ? __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__Carousel_State__["a" /* default */], { info: info, key: key }) : __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__Carousel_Selection__["a" /* default */], { info: info, key: key });
+    return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+      __WEBPACK_IMPORTED_MODULE_4__Carousel_CarouselNode__["a" /* default */],
+      { selectable: !this.props.first, key: key, index: key },
+      this.props.stateNode ? __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__Carousel_State__["a" /* default */], { info: info }) : __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__Carousel_Selection__["a" /* default */], { info: info, key: key })
+    );
   }
 
   allNodes() {
@@ -26817,11 +26821,7 @@ class Carousel extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
           'div',
           { className: 'col-' + width },
-          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-            __WEBPACK_IMPORTED_MODULE_4__Carousel_CarouselNode__["a" /* default */],
-            null,
-            this.allNodes()
-          )
+          this.allNodes()
         ),
         this.possibleArrow()
       )
@@ -27007,6 +27007,7 @@ __WEBPACK_IMPORTED_MODULE_1__dispatcher__["a" /* default */].register(pageStore.
   },
 
   goTo(index) {
+    console.log(index);
     __WEBPACK_IMPORTED_MODULE_0__dispatcher__["a" /* default */].dispatch({
       type: 'GO_TO',
       nodeIndex: index
@@ -27058,19 +27059,32 @@ class Bucket extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__CarouselNode_Category__ = __webpack_require__(86);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__actions_treeActions__ = __webpack_require__(78);
+
 
 
 
 
 class CarouselNode extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
 
-   render() {
-      return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-         'div',
-         { className: 'node' },
-         this.props.children
-      );
-   }
+  possibleCallback() {
+    return this.props.selectable ? this.navigateHere.bind(this) : null;
+  }
+
+  navigateHere() {
+    __WEBPACK_IMPORTED_MODULE_2__actions_treeActions__["a" /* default */].goTo(this.props.index);
+  }
+
+  render() {
+
+    const classes =  true ? 'selectable' : null;
+
+    return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+      'div',
+      { className: classes, onClick: this.possibleCallback() },
+      this.props.children
+    );
+  }
 }
 /* harmony export (immutable) */ __webpack_exports__["a"] = CarouselNode;
 

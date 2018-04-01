@@ -7,7 +7,11 @@ import CarouselNode from './Carousel/CarouselNode'
 
 export default class Carousel extends React.Component {
   singleNode(info, key) {
-    return this.props.stateNode ? <State info={info} key={key} /> : <Selection info={info} key={key} />
+    return (
+      <CarouselNode selectable={!this.props.first} key={key} index={key}>
+        {this.props.stateNode ? <State info={info} /> : <Selection info={info} key={key} />}
+      </CarouselNode>
+    )
   }
 
   allNodes() {
@@ -31,9 +35,7 @@ export default class Carousel extends React.Component {
         <div className='row justify-content-center'>
           {this.possibleArrow()}
           <div className={ 'col-' + width }>
-            <CarouselNode>
-              {this.allNodes()}
-            </CarouselNode>
+            {this.allNodes()}
           </div>
           {this.possibleArrow()}
         </div>
