@@ -23,7 +23,7 @@ describe('App Component provides basic functionality:', function() {
     setTimeout(function() {
       expect(wrapper.find(titlePageSl).exists()).toBe(true)
       expect(wrapper.instance().state.titlePage).toBe(true)
-    }, 100)
+    }, 200)
     wrapper.unmount()
     done()
   })

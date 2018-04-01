@@ -39,8 +39,13 @@ class TreeStore extends EventEmitter {
     return {
       node: [this.node],
       children: this.children,
-      atStart: !this.breadcrumbs.length > 0
+      atStart: !this.breadcrumbs.length > 0,
+      atState: this.atState()
     }
+  }
+
+  atState() {
+    return this.breadcrumbs.length % 2 == 0
   }
 
   // ======= Dispatcher interaction =========
