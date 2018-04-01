@@ -16,9 +16,11 @@
 #display-page
   z-index: 1
 
-
-$l-grey: #eee
-$m-grey: #ccc
+$l-blue: #ccf2ff
+$l-green: #9fdf9f
+$l-grey: #ddd
+$m-grey: #aaa
+$d-grey: #555
 $darkest: #000
 
 // ====================== Carousel ======================
@@ -32,8 +34,18 @@ $darkest: #000
 .ball
   width: 50px
   height: 50px
+  margin: 0.5rem
   border-radius: 50%
   background: $m-grey
+  &.unknown
+    background: $m-grey
+  &.possibly_lighter
+    background: $l-grey
+  &.possibly_heavier
+    background: $d-grey
+  &.normal
+    background: $l-green
+
 
 
 .node
@@ -43,7 +55,7 @@ $darkest: #000
   border-bottom: 1px solid $m-grey
   &.selectable
     &:hover
-      background: $l-grey
+      background: $l-blue
       cursor: pointer
 
 .bucket
