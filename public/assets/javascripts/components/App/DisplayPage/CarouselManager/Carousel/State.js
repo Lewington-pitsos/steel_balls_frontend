@@ -13,9 +13,6 @@ export default class State extends React.Component {
 
 
   render() {
-
-   console.log(Number(this.props.info.unknown))
-
     return (
        <div className='state'>
          {this.category('unknown')}

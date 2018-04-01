@@ -15,7 +15,6 @@ export default class TitleForm extends React.Component {
 
   updateBallNumber(event) {
     this.setState({ ballNumber: event.target.value })
-    console.log(event.target.value);
   }
 
   render() {

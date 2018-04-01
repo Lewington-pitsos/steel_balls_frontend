@@ -26039,7 +26039,6 @@ class TitleForm extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component 
 
   updateBallNumber(event) {
     this.setState({ ballNumber: event.target.value });
-    console.log(event.target.value);
   }
 
   render() {
@@ -26798,8 +26797,6 @@ class Carousel extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
   }
 
   selectableNode() {
-    console.log(this.props.first);
-    console.log(this.props.lastSelection);
     return !(this.props.first || this.props.lastSelection);
   }
 
@@ -26890,9 +26887,6 @@ class State extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
   }
 
   render() {
-
-    console.log(Number(this.props.info.unknown));
-
     return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
       'div',
       { className: 'state' },
@@ -27019,7 +27013,6 @@ __WEBPACK_IMPORTED_MODULE_1__dispatcher__["a" /* default */].register(pageStore.
   },
 
   goTo(index) {
-    console.log(index);
     __WEBPACK_IMPORTED_MODULE_0__dispatcher__["a" /* default */].dispatch({
       type: 'GO_TO',
       nodeIndex: index
