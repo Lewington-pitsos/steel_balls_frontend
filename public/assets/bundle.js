@@ -24263,14 +24263,6 @@ class DisplayPage extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Componen
     super();
   }
 
-  componentDidMount() {
-    console.log('mounted display page');
-  }
-
-  componentWillUnmount() {
-    console.log('unmounted dispklay opage');
-  }
-
   render() {
     return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
       'div',

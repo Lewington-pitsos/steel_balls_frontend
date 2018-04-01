@@ -8,6 +8,7 @@ describe('App Component provides basic functionality:', function() {
   let titlePageSl = '#title-page'
   let displayPageSl = '#display-page'
   let titlePageButtonSl = '#titlepage-nav'
+  let pageAnimationWait = 1100
 
   it('Renders without crashing', function() {
     const div = document.createElement('div')
@@ -18,8 +19,10 @@ describe('App Component provides basic functionality:', function() {
 
   it('Starts on title page', function() {
     const wrapper = mount(<App />)
-    expect(wrapper.find(titlePageSl).exists()).toBe(true)
-    expect(wrapper.instance().state.titlePage).toBe(true)
+    setTimeout(function() {
+      expect(wrapper.find(titlePageSl).exists()).toBe(true)
+      expect(wrapper.instance().state.titlePage).toBe(true)
+    }, 100)
     wrapper.unmount()
   })
 
@@ -27,13 +30,18 @@ describe('App Component provides basic functionality:', function() {
     const wrapper = mount(<App />)
     expect(wrapper.find(titlePageSl).exists()).toBe(true)
     wrapper.find('form').find('button').simulate('submit')
-    expect(wrapper.find(titlePageSl).exists()).toBe(false)
-    expect(wrapper.find(displayPageSl).exists()).toBe(true)
-    expect(wrapper.find(titlePageButtonSl).exists()).toBe(true)
-    wrapper.find(titlePageButtonSl).simulate('click')
-    expect(wrapper.find(titlePageButtonSl).exists()).toBe(false)
-    expect(wrapper.find(displayPageSl).exists()).toBe(false)
-    expect(wrapper.find(titlePageSl).exists()).toBe(true)
+    setTimeout(function() {
+      expect(wrapper.find(titlePageSl).exists()).toBe(false)
+      expect(wrapper.find(displayPageSl).exists()).toBe(true)
+      expect(wrapper.find(titlePageButtonSl).exists()).toBe(true)
+      wrapper.find(titlePageButtonSl).simulate('click')
+      setTimeout(function () {
+        expect(wrapper.find(titlePageButtonSl).exists()).toBe(false)
+        expect(wrapper.find(displayPageSl).exists()).toBe(false)
+        expect(wrapper.find(titlePageSl).exists()).toBe(true)
+      }, pageAnimationWait)
+    }, pageAnimationWait)
+    wrapper.unmount()
   })
 })
 

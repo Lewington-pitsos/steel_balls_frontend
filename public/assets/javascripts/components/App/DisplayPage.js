@@ -8,14 +8,6 @@ export default class DisplayPage extends React.Component {
     super()
   }
 
-  componentDidMount() {
-    console.log('mounted display page');
-  }
-
-  componentWillUnmount()  {
-    console.log('unmounted dispklay opage');
-  }
-
   render() {
     return (
         <div className='page' id='display-page'>
