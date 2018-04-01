@@ -30,11 +30,13 @@ describe('App Component provides basic functionality:', function() {
     const wrapper = mount(<App />)
     expect(wrapper.find(titlePageSl).exists()).toBe(true)
     wrapper.find('form').find('button').simulate('submit')
+    expect(wrapper.find(titlePageSl).exists()).toBe(true)
     setTimeout(function() {
       expect(wrapper.find(titlePageSl).exists()).toBe(false)
       expect(wrapper.find(displayPageSl).exists()).toBe(true)
       expect(wrapper.find(titlePageButtonSl).exists()).toBe(true)
       wrapper.find(titlePageButtonSl).simulate('click')
+      expect(wrapper.find(displayPageSl).exists()).toBe(true)
       setTimeout(function () {
         expect(wrapper.find(titlePageButtonSl).exists()).toBe(false)
         expect(wrapper.find(displayPageSl).exists()).toBe(false)
