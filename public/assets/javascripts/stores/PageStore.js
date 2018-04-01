@@ -6,7 +6,7 @@ class PageStore extends EventEmitter {
   constructor() {
     // recede tracks whether the flash is coming or going
     super()
-    this.titlePage = true
+    this.titlePage = false
   }
 
   // ======= Component updating =========

@@ -26,7 +26,7 @@ $darkest: #000
 // ====================== Carousel ======================
 
 .carousel
-  margin-bottom: 6rem
+  margin-bottom: 2rem
   h2
     margin: 2rem 0
 
@@ -46,20 +46,42 @@ $darkest: #000
   &.normal
     background: $l-green
 
+@mixin hoverable
+    background: $l-blue
+    cursor: pointer
 
+.node-holder
+  overflow: hidden
+  span
+    height: 800px
+    display: block
+    width: 300%
+    margin-left: -100%
+    position: relative
 
 .node
+  position: absolute
+  left: 34%
+  right: 34%
+  top: 0
   padding: 3rem 0.5rem
   margin: 2rem 0
   border-top: 1px solid $m-grey
   border-bottom: 1px solid $m-grey
   &.selectable
     &:hover
-      background: $l-blue
-      cursor: pointer
+      @include hoverable
 
 .bucket
   border-bottom: 2px solid $darkest
   border-left: 2px solid $darkest
   border-right: 2px solid $darkest
   padding: 1rem
+
+.arrow-holder
+  &:hover
+    @include hoverable
+
+.arrow
+  border-top: 2px solid $darkest
+  border-right: 2px solid $darkest

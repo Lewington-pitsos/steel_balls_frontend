@@ -13,8 +13,6 @@
       margin-top: 0
       transition: margin-top 1000ms ease-in
 
-
-
 .example-leave
   &.example-leave-active
     #top-half
@@ -23,3 +21,19 @@
     #bottom-half
       margin-top: 110vh
       transition: margin-top 1000ms ease-in
+
+.node
+  &.node-enter
+    left: 0%
+    right: 68%
+    &.node-enter-active
+      left: 34%
+      right: 34%
+      transition: left 1000ms ease-in, right 1000ms ease-in
+  &.node-leave
+    left: 34%
+    right: 34%
+    &.node-leave-active
+      right: 0%
+      left: 68%
+      transition: left 1000ms ease-in, right 1000ms ease-in

@@ -25,8 +25,8 @@ export default class CarouselManager extends React.Component {
           <div className='col-12'>
             <CSSTransitionGroup
               transitionName={'carousel'}
-              transitionEnterTimeout={1000}
-              transitionLeaveTimeout={1000}>
+              transitionEnterTimeout={1}
+              transitionLeaveTimeout={1}>
               <Carousel nodes={this.state.node} stateNode={this.state.atState} first={true} key={this.state.key + 1}/>
               <Carousel nodes={this.state.children} stateNode={!this.state.atState} first={false} key={this.state.key + 2} lastSelection={this.state.lastSelection}/>
             </CSSTransitionGroup>
