@@ -37,7 +37,7 @@ class TreeStore extends EventEmitter {
 
   getInfo() {
     return {
-      node: this.node,
+      node: [this.node],
       children: this.children,
       atStart: !this.breadcrumbs.length > 0
     }

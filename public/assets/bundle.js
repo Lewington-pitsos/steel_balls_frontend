@@ -26858,6 +26858,8 @@ module.exports = {"unknown":"3","possibly_lighter":"0","possibly_heavier":"0","n
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__stores_TreeStore__ = __webpack_require__(278);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__CarouselManager_Carousel__ = __webpack_require__(279);
+
 
 
 
@@ -26865,7 +26867,8 @@ module.exports = {"unknown":"3","possibly_lighter":"0","possibly_heavier":"0","n
 class CarouselManager extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
   constructor() {
     super();
-    this.setState(__WEBPACK_IMPORTED_MODULE_1__stores_TreeStore__["a" /* default */].getInfo());
+
+    this.state = __WEBPACK_IMPORTED_MODULE_1__stores_TreeStore__["a" /* default */].getInfo();
   }
 
   componentWillMount() {
@@ -26884,12 +26887,12 @@ class CarouselManager extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Comp
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
           'div',
           { className: 'col-12' },
-          'Carousel'
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__CarouselManager_Carousel__["a" /* default */], { nodes: this.state.node, stateNode: true })
         ),
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
           'div',
           { className: 'col-12' },
-          'Carousel'
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__CarouselManager_Carousel__["a" /* default */], { nodes: this.state.node, stateNode: false })
         )
       )
     );
@@ -26945,7 +26948,7 @@ class TreeStore extends __WEBPACK_IMPORTED_MODULE_0_events__["EventEmitter"] {
 
   getInfo() {
     return {
-      node: this.node,
+      node: [this.node],
       children: this.children,
       atStart: !this.breadcrumbs.length > 0
     };
@@ -26983,6 +26986,156 @@ const treeStore = new TreeStore();
 
 __WEBPACK_IMPORTED_MODULE_1__dispatcher__["a" /* default */].register(treeStore.handleActions.bind(treeStore));
 /* harmony default export */ __webpack_exports__["a"] = (treeStore);
+
+/***/ }),
+/* 279 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Carousel_Arrow__ = __webpack_require__(280);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Carousel_State__ = __webpack_require__(281);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Carousel_Selection__ = __webpack_require__(282);
+
+
+
+
+
+
+class Carousel extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
+  constructor() {
+    super();
+  }
+
+  singleNode(info, key) {
+    return this.props.stateNode ? __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__Carousel_State__["a" /* default */], { info: info, key: key }) : __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__Carousel_Selection__["a" /* default */], { info: info, key: key });
+  }
+
+  generateNodes() {
+    console.log(this.props);
+    return this.props.nodes.map(node_info => this.singleNode(node_info, 3));
+  }
+
+  render() {
+    return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+      'div',
+      { className: 'carousel' },
+      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        'div',
+        { className: 'row' },
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__Carousel_Arrow__["a" /* default */], null),
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          'div',
+          { className: 'col-8' },
+          this.generateNodes()
+        ),
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__Carousel_Arrow__["a" /* default */], null)
+      )
+    );
+  }
+}
+/* harmony export (immutable) */ __webpack_exports__["a"] = Carousel;
+
+
+/***/ }),
+/* 280 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+
+
+class Arrow extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
+   constructor() {
+      super();
+   }
+
+   render() {
+      return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+         'div',
+         { className: 'row', id: 'legend' },
+         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'div',
+            { className: 'col-12' },
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+               'h3',
+               null,
+               'Legend'
+            )
+         )
+      );
+   }
+}
+/* harmony export (immutable) */ __webpack_exports__["a"] = Arrow;
+
+
+/***/ }),
+/* 281 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+
+
+class State extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
+   constructor() {
+      super();
+   }
+
+   render() {
+      return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+         'div',
+         { className: 'row' },
+         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'div',
+            { className: 'col-12' },
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+               'h3',
+               null,
+               'State'
+            )
+         )
+      );
+   }
+}
+/* harmony export (immutable) */ __webpack_exports__["a"] = State;
+
+
+/***/ }),
+/* 282 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+
+
+class Selection extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
+   constructor() {
+      super();
+   }
+
+   render() {
+      return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+         'div',
+         { className: 'row' },
+         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'div',
+            { className: 'col-12' },
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+               'h3',
+               null,
+               'Selection'
+            )
+         )
+      );
+   }
+}
+/* harmony export (immutable) */ __webpack_exports__["a"] = Selection;
+
 
 /***/ })
 /******/ ]);

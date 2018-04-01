@@ -28,9 +28,9 @@ describe('TreeStore builds a tree and tracks visible nodes:', function() {
 
   it('updates components with expected values', function() {
     expect(treeStore.getInfo().atStart).toBe(true)
-    expect(treeStore.getInfo().node).toEqual(treeObejct)
+    expect(treeStore.getInfo().node[0]).toEqual(treeObejct)
     treeStore.node = treeObejct['selections'][0]
-    expect(treeStore.getInfo().node).toEqual(treeObejct['selections'][0])
+    expect(treeStore.getInfo().node[0]).toEqual(treeObejct['selections'][0])
 
     expect(treeStore.getInfo().children).toEqual(treeObejct['selections'])
     treeStore.children = treeObejct['selections'][0]['states']
