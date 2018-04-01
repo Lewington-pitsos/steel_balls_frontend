@@ -1,13 +1,22 @@
 import {EventEmitter} from 'events';
 
 import dispatcher from '../dispatcher'
+import TreeBuilder from './TreeStore/TreeBuilder'
 
 class TreeStore extends EventEmitter {
   constructor() {
     // recede tracks whether the flash is coming or going
     super()
-    this.titlePage = true
+    this.tree = null
+    this.builder = new TreeBuilder
+    this.buildTree()
   }
+
+  buildTree() {
+    this.builder.buildTree()
+    this.tree = this.builder.tree
+  }
+
 
   // ======= Component updating =========
 
