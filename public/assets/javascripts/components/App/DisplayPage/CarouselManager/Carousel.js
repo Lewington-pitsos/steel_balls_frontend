@@ -10,7 +10,7 @@ export default class Carousel extends React.Component {
   constructor() {
     super()
 
-    this.state = { index: 0 }
+    this.state = { index: 0, classes: 'carousel' }
   }
 
   singleNode(info, key) {
@@ -38,11 +38,17 @@ export default class Carousel extends React.Component {
   }
 
   nextNode() {
-    this.setState({ index: this.state.index + 1 })
+    this.setState({
+      index: this.state.index + 1,
+      classes: 'carousel'
+    })
   }
 
   prevNode() {
-    this.setState({ index: this.state.index - 1 })
+    this.setState({
+      index: this.state.index - 1,
+      classes: 'carousel reverse-order'
+    })
   }
 
   render() {
@@ -51,7 +57,7 @@ export default class Carousel extends React.Component {
 
     const width = this.props.first ? '11' : '8'
     return (
-      <div className='carousel'>
+      <div className={this.state.classes}>
         <h2>{this.title()}</h2>
         <div className='row justify-content-center'>
           {this.possibleArrow(false, this.prevNode.bind(this))}

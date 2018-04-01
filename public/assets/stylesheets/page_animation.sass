@@ -22,6 +22,25 @@
       margin-top: 110vh
       transition: margin-top 1000ms ease-in
 
+
+.reverse-order
+  .node
+    &.node-enter
+      left: 68%
+      right: 0%
+      &.node-enter-active
+        left: 34%
+        right: 34%
+        transition: left 1000ms ease-in, right 1000ms ease-in
+    &.node-leave
+      left: 34%
+      right: 34%
+      &.node-leave-active
+        right: 68%
+        left: 0%
+        transition: left 1000ms ease-in, right 1000ms ease-in
+
+
 .node
   &.node-enter
     left: 0%
