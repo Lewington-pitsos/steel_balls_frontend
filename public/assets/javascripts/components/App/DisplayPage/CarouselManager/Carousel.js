@@ -51,6 +51,18 @@ export default class Carousel extends React.Component {
     })
   }
 
+  leftArrow() {
+    if (this.state.index > 0 ) {
+      return this.possibleArrow(false, this.prevNode.bind(this))
+    }
+  }
+
+  rightArrow() {
+    if (this.props.nodes.length - 1 > this.state.index) {
+      return this.possibleArrow(true, this.nextNode.bind(this))
+    }
+  }
+
   render() {
 
     const nodes = this.allNodes()[this.state.index || 0]
@@ -60,7 +72,9 @@ export default class Carousel extends React.Component {
       <div className={this.state.classes}>
         <h2>{this.title()}</h2>
         <div className='row justify-content-center'>
-          {this.possibleArrow(false, this.prevNode.bind(this))}
+          <div className='col-2'>
+            {this.leftArrow()}
+          </div>
           <div className={ 'node-holder col-' + width }>
             <CSSTransitionGroup
               transitionName={'node'}
@@ -69,7 +83,9 @@ export default class Carousel extends React.Component {
             {nodes}
             </CSSTransitionGroup>
           </div>
-          {this.possibleArrow(true, this.nextNode.bind(this))}
+          <div className='col-2'>
+            {this.rightArrow()}
+          </div>
         </div>
       </div>
     );
