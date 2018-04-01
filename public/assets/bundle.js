@@ -26680,15 +26680,11 @@ class TreeStore extends __WEBPACK_IMPORTED_MODULE_0_events__["EventEmitter"] {
   }
 
   finalSelection() {
-    console.log(!this.atState());
-    console.log(this.children.every(this.noGrandchildren));
-    console.log(!this.atState() && this.children.every(this.noGrandchildren));
-    console.log('finished');
     return !this.atState() && this.children.every(this.noGrandchildren);
   }
 
   noGrandchildren(child) {
-    return child.selections !== undefined;
+    return child.selections == undefined;
   }
 
   // ======= Dispatcher interaction =========
