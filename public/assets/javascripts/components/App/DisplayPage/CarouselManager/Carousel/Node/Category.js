@@ -10,7 +10,7 @@ export default class Category extends React.Component {
   balls() {
     const balls = []
     for (var i = 0; i < this.props.balls; i++) {
-      balls.push(<Ball category={this.props.category} />)
+      balls.push(<Ball category={this.props.category} key={i}/>)
     }
     return balls
   }
