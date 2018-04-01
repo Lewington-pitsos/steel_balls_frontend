@@ -3,6 +3,7 @@ import React from 'react'
 import Arrow from './Carousel/Arrow'
 import State from './Carousel/State'
 import Selection from './Carousel/Selection'
+import Node from './Carousel/Node'
 
 export default class Carousel extends React.Component {
   constructor() {
@@ -27,7 +28,9 @@ export default class Carousel extends React.Component {
         <div className='row'>
           {this.possibleArrow()}
           <div className='col-8'>
-            {this.generateNodes()}
+            <Node>
+              {this.generateNodes()}
+            </Node>
           </div>
           {this.possibleArrow()}
         </div>
