@@ -26588,7 +26588,6 @@ class CarouselManager extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Comp
 
   componentWillMount() {
     __WEBPACK_IMPORTED_MODULE_1__stores_TreeStore__["a" /* default */].on('change', () => {
-      console.log('updating CarouselManager');
       this.setState(__WEBPACK_IMPORTED_MODULE_1__stores_TreeStore__["a" /* default */].getInfo());
     });
   }
@@ -26671,12 +26670,25 @@ class TreeStore extends __WEBPACK_IMPORTED_MODULE_0_events__["EventEmitter"] {
       children: this.children,
       atStart: !this.breadcrumbs.length > 0,
       atState: this.atState(),
-      key: this.breadcrumbs.length
+      key: this.breadcrumbs.length,
+      lastSelection: this.finalSelection()
     };
   }
 
   atState() {
     return this.breadcrumbs.length % 2 == 0;
+  }
+
+  finalSelection() {
+    console.log(!this.atState());
+    console.log(this.children.every(this.noGrandchildren));
+    console.log(!this.atState() && this.children.every(this.noGrandchildren));
+    console.log('finished');
+    return !this.atState() && this.children.every(this.noGrandchildren);
+  }
+
+  noGrandchildren(child) {
+    return child.selections !== undefined;
   }
 
   // ======= Dispatcher interaction =========
@@ -26703,18 +26715,15 @@ class TreeStore extends __WEBPACK_IMPORTED_MODULE_0_events__["EventEmitter"] {
   resetNavigation() {
     this.node = this.tree;
     this.breadcrumbs = [];
-    console.log('reset');
   }
 
   goToNode(index) {
     this.breadcrumbs.push(this.node);
     this.node = this.children[index];
-    console.log('forward' + index + this.children);
   }
 
   backOneNode() {
     this.node = this.breadcrumbs.pop();
-    console.log('back');
   }
 
   setNavigation(callback, argument) {
@@ -26787,9 +26796,13 @@ class Carousel extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
   singleNode(info, key) {
     return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
       __WEBPACK_IMPORTED_MODULE_4__Carousel_CarouselNode__["a" /* default */],
-      { selectable: !this.props.first, key: key, index: key },
+      { selectable: this.selectableNode(), key: key, index: key },
       this.props.stateNode ? __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__Carousel_State__["a" /* default */], { info: info }) : __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__Carousel_Selection__["a" /* default */], { info: info, key: key })
     );
+  }
+
+  selectableNode() {
+    return !this.props.first;
   }
 
   allNodes() {

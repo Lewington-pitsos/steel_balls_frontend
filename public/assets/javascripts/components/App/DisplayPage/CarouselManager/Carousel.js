@@ -8,10 +8,14 @@ import CarouselNode from './Carousel/CarouselNode'
 export default class Carousel extends React.Component {
   singleNode(info, key) {
     return (
-      <CarouselNode selectable={!this.props.first} key={key} index={key}>
+      <CarouselNode selectable={this.selectableNode()} key={key} index={key}>
         {this.props.stateNode ? <State info={info} /> : <Selection info={info} key={key} />}
       </CarouselNode>
     )
+  }
+
+  selectableNode() {
+    return !this.props.first
   }
 
   allNodes() {

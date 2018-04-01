@@ -2,13 +2,19 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { shallow, mount } from 'enzyme'
 import App from '../../public/assets/javascripts/components/App.js'
+import pageStore from '../../public/assets/javascripts/stores/PageStore'
 
 describe('App Component provides basic functionality:', function() {
 
   let titlePageSl = '#title-page'
   let displayPageSl = '#display-page'
   let titlePageButtonSl = '#titlepage-nav'
-  let pageAnimationWait = 1100
+  let pageAnimationWait = 1300
+
+
+  beforeEach(function() {
+    pageStore.toTitlePage()
+  })
 
   it('Renders without crashing', function(done) {
     const div = document.createElement('div')
@@ -18,17 +24,16 @@ describe('App Component provides basic functionality:', function() {
     done()
   })
 
-  it('Starts on title page', function(done) {
+  it('Starts on title page', function() {
     const wrapper = mount(<App />)
+    expect(wrapper.find(titlePageSl).exists()).toBe(true)
+    expect(wrapper.instance().state.titlePage).toBe(true)
     setTimeout(function() {
-      expect(wrapper.find(titlePageSl).exists()).toBe(true)
-      expect(wrapper.instance().state.titlePage).toBe(true)
-    }, 200)
-    wrapper.unmount()
-    done()
+      wrapper.unmount()
+    }, 400)
   })
 
-  it('can navigate between pages', function(done) {
+  it('can navigate between pages', function() {
     const wrapper = mount(<App />)
     expect(wrapper.find(titlePageSl).exists()).toBe(true)
     wrapper.find('form').find('button').simulate('submit')
@@ -45,8 +50,10 @@ describe('App Component provides basic functionality:', function() {
         expect(wrapper.find(titlePageSl).exists()).toBe(true)
       }, pageAnimationWait)
     }, pageAnimationWait)
-    wrapper.unmount()
-    done()
+  })
+
+  afterEach(function() {
+    pageStore.toTitlePage()
   })
 })
 

@@ -38,6 +38,7 @@ describe('TreeStore builds a tree and tracks visible nodes:', function() {
     treeStore.children = treeObejct['selections'][0]['states']
     expect(treeStore.getInfo().children).toEqual(treeObejct['selections'][0]['states'])
 
+    treeStore.setNavigation(treeStore.resetNavigation)
     expect(treeStore.getInfo().atStart).toBe(true)
     expect(treeStore.getInfo().atState).toBe(true)
     expect(treeStore.getInfo().key).toEqual(0)
@@ -45,6 +46,7 @@ describe('TreeStore builds a tree and tracks visible nodes:', function() {
     expect(treeStore.getInfo().key).toEqual(1)
     expect(treeStore.getInfo().atState).toBe(false)
     expect(treeStore.getInfo().atStart).toBe(false)
+    expect(treeStore.getInfo().lastSelection).toBe(false)
   })
 
   it('can navigate downwards and reset', function() {
@@ -75,6 +77,23 @@ describe('TreeStore builds a tree and tracks visible nodes:', function() {
     treeStore.setNavigation(treeStore.backOneNode)
     expect(treeStore.breadcrumbs.length).toEqual(0)
     expect(treeStore.node).toEqual(treeObejct)
+  })
+
+  it('correctly identifies the end of the tree', function() {
+    treeStore.setNavigation(treeStore.goToNode, 0)
+    expect(treeStore.finalSelection()).toBe(false)
+    treeStore.setNavigation(treeStore.goToNode, 0)
+    expect(treeStore.finalSelection()).toBe(false)
+    treeStore.setNavigation(treeStore.goToNode, 0)
+    expect(treeStore.finalSelection()).toBe(true)
+  })
+
+  it('correctly wiorks our if its at a state', function() {
+    expect(treeStore.atState()).toBe(true)
+    treeStore.setNavigation(treeStore.goToNode, 0)
+    expect(treeStore.atState()).toBe(false)
+    treeStore.setNavigation(treeStore.goToNode, 0)
+    expect(treeStore.atState()).toBe(true)
   })
 
   afterEach(function() {

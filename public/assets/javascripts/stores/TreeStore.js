@@ -41,12 +41,25 @@ class TreeStore extends EventEmitter {
       children: this.children,
       atStart: !this.breadcrumbs.length > 0,
       atState: this.atState(),
-      key: this.breadcrumbs.length
+      key: this.breadcrumbs.length,
+      lastSelection: this.finalSelection()
     }
   }
 
   atState() {
     return this.breadcrumbs.length % 2 == 0
+  }
+
+  finalSelection() {
+    console.log(!this.atState());
+    console.log(this.children.every(this.noGrandchildren));
+    console.log((!this.atState()) && this.children.every(this.noGrandchildren));
+    console.log('finished');
+    return (!this.atState()) && this.children.every(this.noGrandchildren)
+  }
+
+  noGrandchildren(child) {
+    return child.selections !== undefined
   }
 
   // ======= Dispatcher interaction =========
@@ -70,18 +83,15 @@ class TreeStore extends EventEmitter {
   resetNavigation() {
     this.node = this.tree
     this.breadcrumbs = []
-    console.log('reset')
   }
 
   goToNode(index) {
     this.breadcrumbs.push(this.node)
     this.node = this.children[index]
-    console.log('forward' + index + this.children)
   }
 
   backOneNode() {
     this.node = this.breadcrumbs.pop()
-    console.log('back')
   }
 
   setNavigation(callback, argument) {
