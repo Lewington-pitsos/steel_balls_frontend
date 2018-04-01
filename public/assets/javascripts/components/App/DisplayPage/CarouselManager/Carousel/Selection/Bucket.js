@@ -1,6 +1,6 @@
 import React from 'react'
 
-import Category from '../Node/Category'
+import Category from '../CarouselNode/Category'
 
 export default class Bucket extends React.Component {
   category(property, status) {

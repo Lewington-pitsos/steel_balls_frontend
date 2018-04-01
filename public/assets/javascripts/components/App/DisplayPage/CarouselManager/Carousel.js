@@ -3,7 +3,7 @@ import React from 'react'
 import Arrow from './Carousel/Arrow'
 import State from './Carousel/State'
 import Selection from './Carousel/Selection'
-import Node from './Carousel/Node'
+import CarouselNode from './Carousel/CarouselNode'
 
 export default class Carousel extends React.Component {
   singleNode(info, key) {
@@ -31,9 +31,9 @@ export default class Carousel extends React.Component {
         <div className='row justify-content-center'>
           {this.possibleArrow()}
           <div className={ 'col-' + width }>
-            <Node>
+            <CarouselNode>
               {this.allNodes()}
-            </Node>
+            </CarouselNode>
           </div>
           {this.possibleArrow()}
         </div>

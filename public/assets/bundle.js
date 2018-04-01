@@ -26774,7 +26774,7 @@ module.exports = {"unknown":"3","possibly_lighter":"0","possibly_heavier":"0","n
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Carousel_Arrow__ = __webpack_require__(74);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Carousel_State__ = __webpack_require__(75);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Carousel_Selection__ = __webpack_require__(76);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__Carousel_Node__ = __webpack_require__(81);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__Carousel_CarouselNode__ = __webpack_require__(85);
 
 
 
@@ -26818,7 +26818,7 @@ class Carousel extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
           'div',
           { className: 'col-' + width },
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-            __WEBPACK_IMPORTED_MODULE_4__Carousel_Node__["a" /* default */],
+            __WEBPACK_IMPORTED_MODULE_4__Carousel_CarouselNode__["a" /* default */],
             null,
             this.allNodes()
           )
@@ -26863,7 +26863,7 @@ class Arrow extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Node_Category__ = __webpack_require__(79);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__CarouselNode_Category__ = __webpack_require__(86);
 
 
 
@@ -26874,7 +26874,7 @@ class State extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
   }
 
   category(property) {
-    return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__Node_Category__["a" /* default */], { category: property, balls: Number(this.props.info[property]) });
+    return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__CarouselNode_Category__["a" /* default */], { category: property, balls: Number(this.props.info[property]) });
   }
 
   render() {
@@ -27015,13 +27015,74 @@ __WEBPACK_IMPORTED_MODULE_1__dispatcher__["a" /* default */].register(pageStore.
 });
 
 /***/ }),
-/* 79 */
+/* 79 */,
+/* 80 */,
+/* 81 */,
+/* 82 */,
+/* 83 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Ball__ = __webpack_require__(82);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__CarouselNode_Category__ = __webpack_require__(86);
+
+
+
+
+class Bucket extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
+  category(property, status) {
+    return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__CarouselNode_Category__["a" /* default */], { category: status, balls: Number(this.props.info[property][status]) });
+  }
+
+  render() {
+    return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+      'div',
+      { className: 'bucket' },
+      this.category(this.props.side, 'unknown'),
+      this.category(this.props.side, 'possibly_lighter'),
+      this.category(this.props.side, 'possibly_heavier'),
+      this.category(this.props.side, 'normal')
+    );
+  }
+}
+/* harmony export (immutable) */ __webpack_exports__["a"] = Bucket;
+
+
+/***/ }),
+/* 84 */,
+/* 85 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__CarouselNode_Category__ = __webpack_require__(86);
+
+
+
+
+class CarouselNode extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
+
+   render() {
+      return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+         'div',
+         { className: 'node' },
+         this.props.children
+      );
+   }
+}
+/* harmony export (immutable) */ __webpack_exports__["a"] = CarouselNode;
+
+
+/***/ }),
+/* 86 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Ball__ = __webpack_require__(87);
 
 
 
@@ -27051,33 +27112,7 @@ class Category extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
 
 
 /***/ }),
-/* 80 */,
-/* 81 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Node_Category__ = __webpack_require__(79);
-
-
-
-
-class Node extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
-
-   render() {
-      return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-         'div',
-         { className: 'node' },
-         this.props.children
-      );
-   }
-}
-/* harmony export (immutable) */ __webpack_exports__["a"] = Node;
-
-
-/***/ }),
-/* 82 */
+/* 87 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -27094,37 +27129,6 @@ class Ball extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
   }
 }
 /* harmony export (immutable) */ __webpack_exports__["a"] = Ball;
-
-
-/***/ }),
-/* 83 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Node_Category__ = __webpack_require__(79);
-
-
-
-
-class Bucket extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
-  category(property, status) {
-    return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__Node_Category__["a" /* default */], { category: status, balls: Number(this.props.info[property][status]) });
-  }
-
-  render() {
-    return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-      'div',
-      { className: 'bucket' },
-      this.category(this.props.side, 'unknown'),
-      this.category(this.props.side, 'possibly_lighter'),
-      this.category(this.props.side, 'possibly_heavier'),
-      this.category(this.props.side, 'normal')
-    );
-  }
-}
-/* harmony export (immutable) */ __webpack_exports__["a"] = Bucket;
 
 
 /***/ })

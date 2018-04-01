@@ -1,8 +1,8 @@
 import React from 'react'
 
-import Category from './Node/Category'
+import Category from './CarouselNode/Category'
 
-export default class Node extends React.Component {
+export default class CarouselNode extends React.Component {
 
    render() {
       return (
