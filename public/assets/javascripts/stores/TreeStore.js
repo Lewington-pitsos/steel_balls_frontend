@@ -29,8 +29,8 @@ class TreeStore extends EventEmitter {
   getChildren() {
     if (this.node['selections']) {
       return this.node['selections']
-    } else if (this.node.states) {
-      return this.node.states
+    } else if (this.node['states']) {
+      return this.node['states']
     } else {
       return null
     }

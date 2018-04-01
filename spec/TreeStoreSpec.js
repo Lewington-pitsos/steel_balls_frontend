@@ -12,4 +12,20 @@ describe('TreeStore builds a tree and tracks visible nodes', function() {
     expect(treeStore.children).toEqual(treeObejct['selections'])
   })
 
+  it('always gets the correct children for teh current node', function() {
+    treeStore.node = treeObejct['selections'][0]
+    treeStore.children = treeStore.getChildren()
+    expect(treeStore.children).toEqual(treeObejct['selections'][0]['states'])
+
+    treeStore.node = treeObejct['selections'][0]['states'][0]
+    treeStore.children = treeStore.getChildren()
+    expect(treeStore.children).toEqual(treeObejct['selections'][0]['states'][0]['selections'])
+
+    treeStore.node = treeObejct['selections'][0]['states'][0]['selections'][0]['states'][0]
+    treeStore.children = treeStore.getChildren()
+    expect(treeStore.children).toBeNull()
+
+    treeStore.setDeafultNodes()
+  })
+
 })
