@@ -68,6 +68,7 @@ class TreeStore extends EventEmitter {
   setNavigation(callback, argument) {
     callback.call(this, argument)
     this.children = this.getChildren()
+    this.emit('change')
   }
 
 }
