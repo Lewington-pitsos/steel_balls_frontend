@@ -26609,7 +26609,7 @@ class CarouselManager extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Comp
               transitionEnterTimeout: 1000,
               transitionLeaveTimeout: 1000 },
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__CarouselManager_Carousel__["a" /* default */], { nodes: this.state.node, stateNode: this.state.atState, first: true, key: this.state.key + 1 }),
-            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__CarouselManager_Carousel__["a" /* default */], { nodes: this.state.children, stateNode: !this.state.atState, first: false, key: this.state.key + 2 })
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__CarouselManager_Carousel__["a" /* default */], { nodes: this.state.children, stateNode: !this.state.atState, first: false, key: this.state.key + 2, lastSelection: this.state.lastSelection })
           )
         )
       )
@@ -26798,7 +26798,9 @@ class Carousel extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
   }
 
   selectableNode() {
-    return !this.props.first;
+    console.log(this.props.first);
+    console.log(this.props.lastSelection);
+    return !(this.props.first || this.props.lastSelection);
   }
 
   allNodes() {

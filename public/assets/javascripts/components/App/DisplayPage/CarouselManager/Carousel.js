@@ -15,7 +15,9 @@ export default class Carousel extends React.Component {
   }
 
   selectableNode() {
-    return !this.props.first
+    console.log(this.props.first);
+    console.log(this.props.lastSelection);
+    return !(this.props.first || this.props.lastSelection)
   }
 
   allNodes() {
