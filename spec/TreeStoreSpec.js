@@ -24,8 +24,6 @@ describe('TreeStore builds a tree and tracks visible nodes:', function() {
     treeStore.node = treeObejct['selections'][0]['states'][0]['selections'][0]['states'][0]
     treeStore.children = treeStore.getChildren()
     expect(treeStore.children).toBeNull()
-
-    treeStore.setNavigation(treeStore.resetNavigation)
   })
 
   it('updates components with expected values', function() {
@@ -36,7 +34,6 @@ describe('TreeStore builds a tree and tracks visible nodes:', function() {
     expect(treeStore.getCurrentChildren().children).toEqual(treeObejct['selections'])
     treeStore.children = treeObejct['selections'][0]['states']
     expect(treeStore.getCurrentChildren().children).toEqual(treeObejct['selections'][0]['states'])
-    treeStore.setNavigation(treeStore.resetNavigation)
   })
 
   it('can navigate downwards and reset', function() {
@@ -48,4 +45,26 @@ describe('TreeStore builds a tree and tracks visible nodes:', function() {
     expect(treeStore.node).toEqual(treeObejct)
   })
 
+  it('maintans breadcrumbs and can navigate upwards', function() {
+    expect(treeStore.breadcrumbs.length).toEqual(0)
+    treeStore.setNavigation(treeStore.goToNode, 0)
+    expect(treeStore.breadcrumbs.length).toEqual(1)
+    expect(treeStore.breadcrumbs[0]).toEqual(treeObejct)
+    treeStore.setNavigation(treeStore.goToNode, 0)
+    expect(treeStore.breadcrumbs.length).toEqual(2)
+    expect(treeStore.breadcrumbs[1]).toEqual(treeObejct['selections'][0])
+
+    treeStore.setNavigation(treeStore.backOneNode)
+    expect(treeStore.breadcrumbs.length).toEqual(1)
+    expect(treeStore.breadcrumbs[0]).toEqual(treeObejct)
+    expect(treeStore.node).toEqual(treeObejct['selections'][0])
+
+    treeStore.setNavigation(treeStore.backOneNode)
+    expect(treeStore.breadcrumbs.length).toEqual(0)
+    expect(treeStore.node).toEqual(treeObejct)
+  })
+
+  afterEach(function() {
+    treeStore.setNavigation(treeStore.resetNavigation)
+  })
 })

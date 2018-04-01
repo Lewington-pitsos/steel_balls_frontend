@@ -61,7 +61,7 @@ class TreeStore extends EventEmitter {
     this.node = this.children[index]
   }
 
-  backToNode() {
+  backOneNode() {
     this.node = this.breadcrumbs.pop()
   }
 
