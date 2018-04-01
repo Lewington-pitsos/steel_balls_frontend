@@ -1,0 +1,25 @@
+.example-enter
+  #top-half
+    margin-top: -55vh
+    transition: margin-top 1000ms ease-in
+  #bottom-half
+    margin-top: 110vh
+    transition: margin-top 1000ms ease-in
+  &.example-enter-active
+    #top-half
+      margin-top: 0
+      transition: margin-top 1000ms ease-in
+    #bottom-half
+      margin-top: 0
+      transition: margin-top 1000ms ease-in
+
+
+
+.example-leave
+  &.example-leave-active
+    #top-half
+      margin-top: -55vh
+      transition: margin-top 1000ms ease-in
+    #bottom-half
+      margin-top: 110vh
+      transition: margin-top 1000ms ease-in

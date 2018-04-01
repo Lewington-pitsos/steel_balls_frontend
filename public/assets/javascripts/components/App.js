@@ -28,12 +28,10 @@ export default class App extends React.Component {
        <div className="position-relative" id='app'>
          <CSSTransitionGroup
            transitionName="example"
-           transitionAppear={true}
-           transitionAppearTimeout={500}
            transitionEnterTimeout={1000}
-           transitionLeaveTimeout={500}>
+           transitionLeaveTimeout={1000}>
           {this.state.titlePage ? titlePage : null}
-          {this.state.titlePage ? null : displayPage}
+          <DisplayPage />
         </CSSTransitionGroup>
       </div>
     );

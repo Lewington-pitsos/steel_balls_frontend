@@ -11,11 +11,13 @@ export default class TitlePage extends React.Component {
    render() {
       return (
          <div className='row justify-content-center page' id='title-page'>
-            <div className='col-10 display-flex flex-column justify-content-center'>
+            <div className='col-12 display-flex flex-column justify-content-center' id='top-half'>
               <div className='main-title'>
                 <h1>Welcome to Steel Ball Problem Solver&reg;</h1>
                 <h1>...</h1>
               </div>
+            </div>
+            <div className='col-12 display-flex flex-column justify-content-center' id='bottom-half'>
               <TitleForm />
             </div>
          </div>
