@@ -17,7 +17,8 @@
   z-index: 1
 
 
-$l-grey: #ddd
+$l-grey: #eee
+$m-grey: #ccc
 $darkest: #000
 
 // ====================== Carousel ======================
@@ -32,15 +33,18 @@ $darkest: #000
   width: 50px
   height: 50px
   border-radius: 50%
-  background: #ddd
+  background: $m-grey
 
 
 .node
   padding: 3rem 0.5rem
   margin: 2rem 0
-  border-top: 1px solid $l-grey
-  border-bottom: 1px solid $l-grey
-
+  border-top: 1px solid $m-grey
+  border-bottom: 1px solid $m-grey
+  &.selectable
+    &:hover
+      background: $l-grey
+      cursor: pointer
 
 .bucket
   border-bottom: 2px solid $darkest

@@ -76,7 +76,7 @@ class TreeStore extends EventEmitter {
   goToNode(index) {
     this.breadcrumbs.push(this.node)
     this.node = this.children[index]
-    console.log('forward' + index)
+    console.log('forward' + index + this.children)
   }
 
   backOneNode() {

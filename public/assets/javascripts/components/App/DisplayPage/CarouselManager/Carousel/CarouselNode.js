@@ -15,7 +15,7 @@ export default class CarouselNode extends React.Component {
 
   render() {
 
-    const classes = 'node ' + this.props.selectable ? 'selectable' : null
+    const classes = 'node ' + (this.props.selectable ? 'selectable' : null)
 
     return (
        <div className={classes} onClick={this.possibleCallback()}>

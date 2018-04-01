@@ -14,6 +14,7 @@ export default class CarouselManager extends React.Component {
 
   componentWillMount() {
     treeStore.on('change', () => {
+      console.log('updating CarouselManager');
       this.setState( treeStore.getInfo() )
     })
   }
