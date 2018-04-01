@@ -26428,6 +26428,8 @@ class DisplayPage extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Componen
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Navigators_NavButton__ = __webpack_require__(67);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__actions_pageActions__ = __webpack_require__(23);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__actions_treeActions__ = __webpack_require__(78);
+
 
 
 
@@ -26440,6 +26442,14 @@ class Navigators extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component
 
   toTitlePage() {
     __WEBPACK_IMPORTED_MODULE_2__actions_pageActions__["a" /* default */].toTitlePage();
+  }
+
+  back() {
+    __WEBPACK_IMPORTED_MODULE_3__actions_treeActions__["a" /* default */].back();
+  }
+
+  resetNavigation() {
+    __WEBPACK_IMPORTED_MODULE_3__actions_treeActions__["a" /* default */].resetNavigation();
   }
 
   render() {
@@ -26457,7 +26467,16 @@ class Navigators extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component
             null,
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
               __WEBPACK_IMPORTED_MODULE_1__Navigators_NavButton__["a" /* default */],
-              { buttonId: 'back-nav' },
+              { action: this.toTitlePage.bind(this), buttonId: 'titlepage-nav' },
+              'Calculate Again'
+            )
+          ),
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'li',
+            null,
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              __WEBPACK_IMPORTED_MODULE_1__Navigators_NavButton__["a" /* default */],
+              { action: this.back.bind(this), buttonId: 'back-nav' },
               'Back'
             )
           ),
@@ -26466,17 +26485,8 @@ class Navigators extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component
             null,
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
               __WEBPACK_IMPORTED_MODULE_1__Navigators_NavButton__["a" /* default */],
-              { buttonId: 'start-nav' },
+              { action: this.resetNavigation.bind(this), buttonId: 'start-nav' },
               'Return to Start'
-            )
-          ),
-          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-            'li',
-            null,
-            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-              __WEBPACK_IMPORTED_MODULE_1__Navigators_NavButton__["a" /* default */],
-              { action: this.toTitlePage.bind(this), buttonId: 'titlepage-nav' },
-              'Calculate Again'
             )
           )
         )
@@ -26663,22 +26673,40 @@ class TreeStore extends __WEBPACK_IMPORTED_MODULE_0_events__["EventEmitter"] {
 
   // ======= Dispatcher interaction =========
 
-  handleActions(action) {}
-
+  handleActions(action) {
+    switch (action.type) {
+      case "BACK":
+        {
+          this.setNavigation(this.backOneNode);
+          break;
+        }case "RESET":
+        {
+          this.setNavigation(this.resetNavigation);
+          break;
+        }case "GO_TO":
+        {
+          this.setNavigation(this.goToNode, action.nodeIndex);
+          break;
+        }
+    }
+  }
   // ======= Tree Navigating =========
 
   resetNavigation() {
     this.node = this.tree;
     this.breadcrumbs = [];
+    console.log('reset');
   }
 
   goToNode(index) {
     this.breadcrumbs.push(this.node);
     this.node = this.children[index];
+    console.log('forward' + index);
   }
 
   backOneNode() {
     this.node = this.breadcrumbs.pop();
+    console.log('back');
   }
 
   setNavigation(callback, argument) {
@@ -26936,6 +26964,35 @@ const pageStore = new PageStore();
 
 __WEBPACK_IMPORTED_MODULE_1__dispatcher__["a" /* default */].register(pageStore.handleActions.bind(pageStore));
 /* harmony default export */ __webpack_exports__["a"] = (pageStore);
+
+/***/ }),
+/* 78 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__dispatcher__ = __webpack_require__(12);
+
+
+/* harmony default export */ __webpack_exports__["a"] = ({
+  back() {
+    __WEBPACK_IMPORTED_MODULE_0__dispatcher__["a" /* default */].dispatch({
+      type: 'BACK'
+    });
+  },
+
+  resetNavigation() {
+    __WEBPACK_IMPORTED_MODULE_0__dispatcher__["a" /* default */].dispatch({
+      type: 'RESET'
+    });
+  },
+
+  goTo(index) {
+    __WEBPACK_IMPORTED_MODULE_0__dispatcher__["a" /* default */].dispatch({
+      type: 'GO_TO',
+      nodeIndex: index
+    });
+  }
+});
 
 /***/ })
 /******/ ]);

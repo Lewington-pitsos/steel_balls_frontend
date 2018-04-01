@@ -51,23 +51,36 @@ class TreeStore extends EventEmitter {
   // ======= Dispatcher interaction =========
 
   handleActions(action) {
-
+    switch(action.type) {
+      case "BACK": {
+        this.setNavigation(this.backOneNode)
+        break
+      } case "RESET": {
+        this.setNavigation(this.resetNavigation)
+        break
+      } case "GO_TO": {
+        this.setNavigation(this.goToNode, action.nodeIndex)
+        break
+      }
+    }
   }
-
   // ======= Tree Navigating =========
 
   resetNavigation() {
     this.node = this.tree
     this.breadcrumbs = []
+    console.log('reset')
   }
 
   goToNode(index) {
     this.breadcrumbs.push(this.node)
     this.node = this.children[index]
+    console.log('forward' + index)
   }
 
   backOneNode() {
     this.node = this.breadcrumbs.pop()
+    console.log('back')
   }
 
   setNavigation(callback, argument) {

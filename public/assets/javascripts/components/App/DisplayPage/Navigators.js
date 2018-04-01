@@ -2,6 +2,7 @@ import React from 'react'
 
 import NavButton from './Navigators/NavButton'
 import pageActions from '../../../actions/pageActions'
+import treeActions from '../../../actions/treeActions'
 
 export default class Navigators extends React.Component {
   constructor() {
@@ -12,6 +13,14 @@ export default class Navigators extends React.Component {
     pageActions.toTitlePage()
   }
 
+  back() {
+    treeActions.back()
+  }
+
+  resetNavigation() {
+    treeActions.resetNavigation()
+  }
+
 
   render() {
     return (
@@ -19,18 +28,18 @@ export default class Navigators extends React.Component {
         <div className='col-12'>
           <ul>
             <li>
-              <NavButton buttonId='back-nav'>
+              <NavButton action={this.toTitlePage.bind(this)} buttonId='titlepage-nav'>
+                Calculate Again
+              </NavButton>
+            </li>
+            <li>
+              <NavButton action={this.back.bind(this)} buttonId='back-nav'>
                 Back
               </NavButton>
             </li>
             <li>
-              <NavButton buttonId='start-nav'>
+              <NavButton action={this.resetNavigation.bind(this)} buttonId='start-nav'>
                 Return to Start
-              </NavButton>
-            </li>
-            <li>
-              <NavButton action={this.toTitlePage.bind(this)} buttonId='titlepage-nav'>
-                Calculate Again
               </NavButton>
             </li>
            </ul>
