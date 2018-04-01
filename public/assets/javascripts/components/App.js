@@ -25,7 +25,7 @@ export default class App extends React.Component {
    const showPage = this.state.titlePage ? titlePage : displayPage
 
     return (
-       <div className="animated bounce" id='app'>
+       <div className="position-relative" id='app'>
          <CSSTransitionGroup
            transitionName="example"
            transitionAppear={true}
