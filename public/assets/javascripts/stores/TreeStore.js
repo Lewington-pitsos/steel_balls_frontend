@@ -40,7 +40,8 @@ class TreeStore extends EventEmitter {
       node: [this.node],
       children: this.children,
       atStart: !this.breadcrumbs.length > 0,
-      atState: this.atState()
+      atState: this.atState(),
+      key: this.breadcrumbs.length
     }
   }
 

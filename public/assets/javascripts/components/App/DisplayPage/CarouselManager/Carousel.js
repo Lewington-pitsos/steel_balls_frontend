@@ -14,7 +14,6 @@ export default class Carousel extends React.Component {
   }
 
   generateNodes() {
-    console.log(this.props)
     return this.props.nodes.map((node_info) => this.singleNode(node_info, 3) )
   }
 

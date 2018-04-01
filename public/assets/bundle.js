@@ -26571,6 +26571,9 @@ class Legend extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__stores_TreeStore__ = __webpack_require__(70);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__CarouselManager_Carousel__ = __webpack_require__(73);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_react_transition_group__ = __webpack_require__(48);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_react_transition_group___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_react_transition_group__);
+
 
 
 
@@ -26599,12 +26602,15 @@ class CarouselManager extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Comp
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
           'div',
           { className: 'col-12' },
-          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__CarouselManager_Carousel__["a" /* default */], { nodes: this.state.node, stateNode: true })
-        ),
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-          'div',
-          { className: 'col-12' },
-          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__CarouselManager_Carousel__["a" /* default */], { nodes: this.state.node, stateNode: false })
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            __WEBPACK_IMPORTED_MODULE_3_react_transition_group__["CSSTransitionGroup"],
+            {
+              transitionName: 'carousel',
+              transitionEnterTimeout: 1000,
+              transitionLeaveTimeout: 1000 },
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__CarouselManager_Carousel__["a" /* default */], { nodes: this.state.node, stateNode: this.state.atState, first: true, key: this.state.key + 1 }),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__CarouselManager_Carousel__["a" /* default */], { nodes: this.state.children, stateNode: !this.state.atState, first: false, key: this.state.key + 2 })
+          )
         )
       )
     );
@@ -26663,7 +26669,8 @@ class TreeStore extends __WEBPACK_IMPORTED_MODULE_0_events__["EventEmitter"] {
       node: [this.node],
       children: this.children,
       atStart: !this.breadcrumbs.length > 0,
-      atState: this.atState()
+      atState: this.atState(),
+      key: this.breadcrumbs.length
     };
   }
 
@@ -26783,7 +26790,6 @@ class Carousel extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
   }
 
   generateNodes() {
-    console.log(this.props);
     return this.props.nodes.map(node_info => this.singleNode(node_info, 3));
   }
 

@@ -40,7 +40,9 @@ describe('TreeStore builds a tree and tracks visible nodes:', function() {
 
     expect(treeStore.getInfo().atStart).toBe(true)
     expect(treeStore.getInfo().atState).toBe(true)
+    expect(treeStore.getInfo().key).toEqual(0)
     treeStore.setNavigation(treeStore.goToNode, 0)
+    expect(treeStore.getInfo().key).toEqual(1)
     expect(treeStore.getInfo().atState).toBe(false)
     expect(treeStore.getInfo().atStart).toBe(false)
   })
