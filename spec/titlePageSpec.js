@@ -19,4 +19,30 @@ describe('TitlePage displays correctly', function() {
     expect(wrapper.find('.main-title').exists()).toBe(true)
   })
 
+  afterEach(function() {
+    wrapper.unmount()
+  })
+
+})
+
+import TitleForm from '../public/assets/javascripts/components/App/TitlePage/TitleForm'
+
+describe('TitleForm displays correctly', function() {
+
+  let wrapper;
+
+  beforeEach(function() {
+    wrapper = shallow(<TitleForm />)
+  })
+
+  it('has a select input and a label', function() {
+    expect(wrapper.find('select').exists()).toBe(true)
+    expect(wrapper.find('label').exists()).toBe(true)
+  })
+
+  it('has a default ball number of 3', function() {
+    expect(wrapper.instance().state.ballNumber).toEqual('3')
+    expect(wrapper.find('select').get(0).props.defaultValue).toEqual('3')
+  })
+
 })
