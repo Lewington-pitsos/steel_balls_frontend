@@ -17,7 +17,7 @@ export default class Category extends React.Component {
 
   render() {
     return (
-       <div className='category display-flex'>
+       <div className='category d-flex flex-row flex-nowrap'>
         {this.balls()}
        </div>
     );

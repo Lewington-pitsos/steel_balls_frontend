@@ -9,9 +9,12 @@ export default class State extends React.Component {
 
 
    render() {
+
+     console.log(Number(this.props.info.unknown))
+
       return (
          <div className='State'>
-           <Category category='normal' balls={8} />
+           <Category category='unknown' balls={Number(this.props.info.unknown)} />
          </div>
       );
    }

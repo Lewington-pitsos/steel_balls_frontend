@@ -26869,10 +26869,13 @@ class State extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
   }
 
   render() {
+
+    console.log(Number(this.props.info.unknown));
+
     return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
       'div',
       { className: 'State' },
-      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__Node_Category__["a" /* default */], { category: 'normal', balls: 8 })
+      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__Node_Category__["a" /* default */], { category: 'unknown', balls: Number(this.props.info.unknown) })
     );
   }
 }
@@ -27027,7 +27030,7 @@ class Category extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
   render() {
     return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
       'div',
-      { className: 'category display-flex' },
+      { className: 'category d-flex flex-row flex-nowrap' },
       this.balls()
     );
   }
