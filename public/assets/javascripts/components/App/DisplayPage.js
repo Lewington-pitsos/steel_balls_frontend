@@ -8,18 +8,25 @@ export default class DisplayPage extends React.Component {
     super()
   }
 
+  componentDidMount() {
+    console.log('mounted display page');
+  }
 
-   render() {
-      return (
-          <div className='row' id='display-page'>
-            <div className='col-3'>
-              <Navigators />
-              <Legend />
-            </div>
-            <div className='col-9'>
-              DisplayPage
-            </div>
+  componentWillUnmount()  {
+    console.log('unmounted dispklay opage');
+  }
+
+  render() {
+    return (
+        <div className='row' id='display-page'>
+          <div className='col-3'>
+            <Navigators />
+            <Legend />
           </div>
-      );
-   }
+          <div className='col-9'>
+            DisplayPage
+          </div>
+        </div>
+    );
+  }
 }

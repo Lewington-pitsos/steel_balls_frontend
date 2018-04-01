@@ -1,4 +1,5 @@
 import React from 'react'
+import { CSSTransitionGroup } from 'react-transition-group'
 
 import TitlePage from './App/TitlePage'
 import DisplayPage from './App/DisplayPage'
@@ -18,12 +19,23 @@ export default class App extends React.Component {
 
   render() {
 
-   const page = this.state.titlePage ? <TitlePage /> : <DisplayPage />
+   const titlePage = <TitlePage />
+   const displayPage =  <DisplayPage />
+
+   const showPage = this.state.titlePage ? titlePage : displayPage
 
     return (
        <div className="animated bounce" id='app'>
-          {page}
-       </div>
+         <CSSTransitionGroup
+           transitionName="example"
+           transitionAppear={true}
+           transitionAppearTimeout={500}
+           transitionEnterTimeout={1000}
+           transitionLeaveTimeout={500}>
+          {this.state.titlePage ? titlePage : null}
+          {this.state.titlePage ? null : displayPage}
+        </CSSTransitionGroup>
+      </div>
     );
   }
 }
