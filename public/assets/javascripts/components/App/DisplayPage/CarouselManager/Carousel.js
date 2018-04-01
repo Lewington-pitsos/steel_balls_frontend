@@ -22,8 +22,8 @@ export default class Carousel extends React.Component {
     return this.props.nodes.map((node_info, index) => this.singleNode(node_info, index) )
   }
 
-  possibleArrow() {
-    return this.props.nodes.length > 1 ? <Arrow /> : null
+  possibleArrow(right) {
+    return this.props.nodes.length > 1 ? <Arrow right={right}/> : null
   }
 
   title() {
@@ -37,11 +37,11 @@ export default class Carousel extends React.Component {
       <div className='carousel'>
         <h2>{this.title()}</h2>
         <div className='row justify-content-center'>
-          {this.possibleArrow()}
+          {this.possibleArrow(false)}
           <div className={ 'col-' + width }>
             {this.allNodes()}
           </div>
-          {this.possibleArrow()}
+          {this.possibleArrow(true)}
         </div>
       </div>
     );

@@ -6,11 +6,14 @@ export default class Arrow extends React.Component {
   }
 
 
-   render() {
-      return (
-         <div className='arrow'>
-           Arrow
-         </div>
-      );
-   }
+  render() {
+
+   const direction = this.props.right ? 'arrow arrow-right' : 'arrow arrow-left'
+
+    return (
+       <div className='arrow-holder d-flex align-items-center'>
+         <span className={direction}></span>
+       </div>
+    );
+  }
 }
