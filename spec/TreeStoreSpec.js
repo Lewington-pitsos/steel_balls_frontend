@@ -1,7 +1,7 @@
 import treeStore from '../public/assets/javascripts/stores/TreeStore'
 
 
-describe('TreeStore builds a tree and tracks visible nodes', function() {
+describe('TreeStore builds a tree and tracks visible nodes:', function() {
 
   let treeObejct = {"unknown": "3", "possibly_lighter": "0", "possibly_heavier": "0", "normal": "0", "score": "2", "selections": [{"right": {"unknown": "1", "possibly_lighter": "0", "possibly_heavier": "0", "normal": "0"}, "left": {"unknown": "1", "possibly_lighter": "0", "possibly_heavier": "0", "normal": "0"}, "states": [{"unknown": "1", "possibly_lighter": "0", "possibly_heavier": "0", "normal": "2", "score": "1", "selections": [{"right": {"unknown": "1", "possibly_lighter": "0", "possibly_heavier": "0", "normal": "0"}, "left": {"unknown": "0", "possibly_lighter": "0", "possibly_heavier": "0", "normal": "1"}, "states": [{"unknown": "0", "possibly_lighter": "0", "possibly_heavier": "1", "normal": "2", "score": "0"}, {"unknown": "0", "possibly_lighter": "1", "possibly_heavier": "0", "normal": "2", "score": "0"}]}]}, {"unknown": "0", "possibly_lighter": "1", "possibly_heavier": "1", "normal": "1", "score": "1", "selections": [{"right": {"unknown": "0", "possibly_lighter": "0", "possibly_heavier": "0", "normal": "1"}, "left": {"unknown": "0", "possibly_lighter": "1", "possibly_heavier": "0", "normal": "0"}, "states": [{"unknown": "0", "possibly_lighter": "1", "possibly_heavier": "0", "normal": "2", "score": "0"}, {"unknown": "0", "possibly_lighter": "0", "possibly_heavier": "1", "normal": "2", "score": "0"}]}]}]}]}
 
@@ -25,7 +25,7 @@ describe('TreeStore builds a tree and tracks visible nodes', function() {
     treeStore.children = treeStore.getChildren()
     expect(treeStore.children).toBeNull()
 
-    treeStore.setDeafultNodes()
+    treeStore.setNavigation(treeStore.resetNavigation)
   })
 
   it('updates components with expected values', function() {
@@ -36,7 +36,16 @@ describe('TreeStore builds a tree and tracks visible nodes', function() {
     expect(treeStore.getCurrentChildren().children).toEqual(treeObejct['selections'])
     treeStore.children = treeObejct['selections'][0]['states']
     expect(treeStore.getCurrentChildren().children).toEqual(treeObejct['selections'][0]['states'])
-    treeStore.setDeafultNodes()
+    treeStore.setNavigation(treeStore.resetNavigation)
+  })
+
+  it('can navigate downwards and reset', function() {
+    treeStore.setNavigation(treeStore.goToNode, 0)
+    expect(treeStore.node).toEqual(treeObejct['selections'][0])
+    treeStore.setNavigation(treeStore.goToNode, 1)
+    expect(treeStore.node).toEqual(treeObejct['selections'][0]['states'][1])
+    treeStore.setNavigation(treeStore.resetNavigation)
+    expect(treeStore.node).toEqual(treeObejct)
   })
 
 })

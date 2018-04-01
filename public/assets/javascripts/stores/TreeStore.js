@@ -10,20 +10,16 @@ class TreeStore extends EventEmitter {
     this.tree = null
     this.node = null
     this.children = null
+    this.breadcrumbs = []
 
     this.builder = new TreeBuilder
     this.buildTree()
-    this.setDeafultNodes()
+    this.setNavigation(this.resetNavigation)
   }
 
   buildTree() {
     this.builder.buildTree()
     this.tree = this.builder.tree
-  }
-
-  setDeafultNodes() {
-    this.node = this.tree
-    this.children = this.getChildren()
   }
 
   getChildren() {
@@ -50,25 +46,28 @@ class TreeStore extends EventEmitter {
   // ======= Dispatcher interaction =========
 
   handleActions(action) {
-    switch(action.type) {
-      case "TO_TITLE_PAGE": {
-        this.toTitlePage()
-        break
-      } case "TO_DISPLAY_PAGE": {
-        this.toDisplayPage(action.ball_number)
-        break
-      }
-    }
+
   }
 
-  toTitlePage() {
-    this.titlePage = true
-    this.emit('pageChange')
+  // ======= Tree Navigating =========
+
+  resetNavigation() {
+    this.node = this.tree
+    this.breadcrumbs = []
   }
 
-  toDisplayPage(ball_number) {
-    this.titlePage = false
-    this.emit('pageChange')
+  goToNode(index) {
+    this.breadcrumbs.push(this.node)
+    this.node = this.children[index]
+  }
+
+  backToNode() {
+    this.node = this.breadcrumbs.pop()
+  }
+
+  setNavigation(callback, argument) {
+    callback.call(this, argument)
+    this.children = this.getChildren()
   }
 
 }
