@@ -39,8 +39,12 @@ class TreeStore extends EventEmitter {
 
   // ======= Component updating =========
 
-  getPage() {
-    return {titlePage: this.titlePage}
+  getCurrentNode() {
+    return {node: this.node}
+  }
+
+  getCurrentChildren() {
+    return {children: this.children}
   }
 
   // ======= Dispatcher interaction =========
