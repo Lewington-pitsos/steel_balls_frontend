@@ -14,7 +14,7 @@ export default class Carousel extends React.Component {
     return this.props.stateNode ? <State info={info} key={key} /> : <Selection info={info} key={key} />
   }
 
-  generateNodes() {
+  allNodes() {
     return this.props.nodes.map((node_info) => this.singleNode(node_info, 3) )
   }
 
@@ -22,14 +22,21 @@ export default class Carousel extends React.Component {
     return this.props.nodes.length > 1 ? <Arrow /> : null
   }
 
+  title() {
+    return this.props.stateNode ? 'Current Balls' : 'Current Weigh'
+  }
+
   render() {
+
+    const width = this.props.first ? '11' : '8'
     return (
       <div className='carousel'>
-        <div className='row'>
+        <h2>{this.title()}</h2>
+        <div className='row justify-content-center'>
           {this.possibleArrow()}
-          <div className='col-8'>
+          <div className={ 'col-' + width }>
             <Node>
-              {this.generateNodes()}
+              {this.allNodes()}
             </Node>
           </div>
           {this.possibleArrow()}

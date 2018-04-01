@@ -5,14 +5,19 @@ export default class Selection extends React.Component {
     super()
   }
 
+  category(property, status) {
+    return <Category category={status} balls={Number(this.props.info[property][status])} />
+  }
 
-   render() {
-      return (
-         <div className='row'>
-           <div className='col-12'>
-             <h3>Selection</h3>
-            </div>
-         </div>
-      );
-   }
+
+  render() {
+    return (
+      <div className='selection'>
+        {this.category('unknown')}
+        {this.category('possibly_lighter')}
+        {this.category('possibly_heavier')}
+        {this.category('normal')}
+      </div>
+    );
+  }
 }

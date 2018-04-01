@@ -1,6 +1,6 @@
 import React from 'react'
 
-import Ball from './Category/Ball'
+import Ball from './Ball'
 
 export default class Category extends React.Component {
   constructor() {
