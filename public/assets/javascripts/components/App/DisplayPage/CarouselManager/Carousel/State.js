@@ -1,5 +1,7 @@
 import React from 'react'
 
+import Category from './Node/Category'
+
 export default class State extends React.Component {
   constructor() {
     super()
@@ -8,10 +10,8 @@ export default class State extends React.Component {
 
    render() {
       return (
-         <div className='row'>
-           <div className='col-12'>
-             <h3>State</h3>
-            </div>
+         <div className='State'>
+           <Category category='normal' balls={8} />
          </div>
       );
    }
