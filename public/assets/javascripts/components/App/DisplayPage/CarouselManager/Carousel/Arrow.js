@@ -8,10 +8,8 @@ export default class Arrow extends React.Component {
 
    render() {
       return (
-         <div className='row' id='legend'>
-           <div className='col-12'>
-             <h3>Legend</h3>
-            </div>
+         <div className='arrow'>
+           Arrow
          </div>
       );
    }

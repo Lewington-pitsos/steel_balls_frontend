@@ -26783,10 +26783,6 @@ module.exports = {"unknown":"3","possibly_lighter":"0","possibly_heavier":"0","n
 
 
 class Carousel extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
-  constructor() {
-    super();
-  }
-
   singleNode(info, key) {
     return this.props.stateNode ? __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__Carousel_State__["a" /* default */], { info: info, key: key }) : __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__Carousel_Selection__["a" /* default */], { info: info, key: key });
   }
@@ -26845,25 +26841,17 @@ class Carousel extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
 
 
 class Arrow extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
-   constructor() {
-      super();
-   }
+  constructor() {
+    super();
+  }
 
-   render() {
-      return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-         'div',
-         { className: 'row', id: 'legend' },
-         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-            'div',
-            { className: 'col-12' },
-            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-               'h3',
-               null,
-               'Legend'
-            )
-         )
-      );
-   }
+  render() {
+    return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+      'div',
+      { className: 'arrow' },
+      'Arrow'
+    );
+  }
 }
 /* harmony export (immutable) */ __webpack_exports__["a"] = Arrow;
 

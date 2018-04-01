@@ -6,10 +6,6 @@ import Selection from './Carousel/Selection'
 import Node from './Carousel/Node'
 
 export default class Carousel extends React.Component {
-  constructor() {
-    super()
-  }
-
   singleNode(info, key) {
     return this.props.stateNode ? <State info={info} key={key} /> : <Selection info={info} key={key} />
   }
