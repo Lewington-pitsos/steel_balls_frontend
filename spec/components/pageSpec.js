@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import App from '../public/assets/javascripts/components/App.js'
 import { shallow, mount } from 'enzyme'
+import App from '../../public/assets/javascripts/components/App.js'
 
 describe('App Component provides basic functionality:', function() {
 
@@ -50,26 +50,8 @@ describe('App Component provides basic functionality:', function() {
   })
 })
 
-import DisplayPage from '../public/assets/javascripts/components/App/DisplayPage'
 
-describe('DisplayPage displays correctly:', function() {
-  it('Renders without crashing', function(done) {
-    const div = document.createElement('div')
-    ReactDOM.render(<DisplayPage />, div)
-    done()
-  })
-
-  it('Contains navigator and Legend Components', function(done) {
-    const wrapper = mount(<DisplayPage />)
-    expect(wrapper.find('#display-page').exists()).toBe(true)
-    expect(wrapper.find('#legend').exists()).toBe(true)
-    expect(wrapper.find('#navigators').exists()).toBe(true)
-    done()
-  })
-})
-
-
-import Navigators from '../public/assets/javascripts/components/App/DisplayPage/Navigators'
+import Navigators from '../../public/assets/javascripts/components/App/DisplayPage/Navigators'
 
 describe('Navigators renders and acts correctly:', function() {
   let wrapper

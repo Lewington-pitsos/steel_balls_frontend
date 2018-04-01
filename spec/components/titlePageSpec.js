@@ -3,8 +3,8 @@ import ReactDOM from 'react-dom'
 import { shallow, mount } from 'enzyme'
 
 
-import App from '../public/assets/javascripts/components/App'
-import TitlePage from '../public/assets/javascripts/components/App/TitlePage'
+import App from '../../public/assets/javascripts/components/App'
+import TitlePage from '../../public/assets/javascripts/components/App/TitlePage'
 
 describe('TitlePage displays correctly', function() {
 
@@ -28,7 +28,7 @@ describe('TitlePage displays correctly', function() {
 
 })
 
-import TitleForm from '../public/assets/javascripts/components/App/TitlePage/TitleForm'
+import TitleForm from '../../public/assets/javascripts/components/App/TitlePage/TitleForm'
 
 describe('TitleForm displays correctly', function() {
 
