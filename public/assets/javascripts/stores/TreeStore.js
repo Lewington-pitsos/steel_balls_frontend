@@ -8,13 +8,32 @@ class TreeStore extends EventEmitter {
     // recede tracks whether the flash is coming or going
     super()
     this.tree = null
+    this.node = null
+    this.children = null
+
     this.builder = new TreeBuilder
     this.buildTree()
+    this.setDeafultNodes()
   }
 
   buildTree() {
     this.builder.buildTree()
     this.tree = this.builder.tree
+  }
+
+  setDeafultNodes() {
+    this.node = this.tree
+    this.children = this.getChildren()
+  }
+
+  getChildren() {
+    if (this.node['selections']) {
+      return this.node['selections']
+    } else if (this.node.states) {
+      return this.node.states
+    } else {
+      return null
+    }
   }
 
 
