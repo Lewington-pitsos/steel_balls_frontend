@@ -42,7 +42,7 @@ describe('TitleForm displays correctly', function() {
 
   it('has a default ball number of 3', function() {
     expect(wrapper.instance().state.ballNumber).toEqual('3')
-    expect(wrapper.find('select').get(0).props.defaultValue).toEqual('3')
+    expect(wrapper.find('select').getElement().props.defaultValue).toEqual('3')
   })
 
 })
