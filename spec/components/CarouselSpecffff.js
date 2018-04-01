@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { shallow, mount } from 'enzyme'
 
-import DisplayPage from '../../public/assets/javascripts/components/App/DisplayPage'
+import DisplayPage from '../../public/assets/javascripts/components/App/DisplayPage/CarouselManager'
 
 describe('DisplayPage displays correctly:', function() {
 
@@ -24,6 +24,12 @@ describe('DisplayPage displays correctly:', function() {
     expect(wrapper.find('#legend').exists()).toBe(true)
     expect(wrapper.find('#navigators').exists()).toBe(true)
     done()
+  })
+
+  it('initially renders two carousels', function() {
+
+    expect(wrapper.find('#carousel-manager').length).toEqual(1)
+    expect(wrapper.find('#carousel-manager').find('.carousel').length).toEqual(2)
   })
 
   afterEach(function() {
