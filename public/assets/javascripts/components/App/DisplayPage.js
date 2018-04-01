@@ -2,6 +2,7 @@ import React from 'react'
 
 import Navigators from './DisplayPage/Navigators'
 import Legend from './DisplayPage/Legend'
+import CarouselManager from './DisplayPage/CarouselManager'
 
 export default class DisplayPage extends React.Component {
   constructor() {
@@ -17,7 +18,7 @@ export default class DisplayPage extends React.Component {
               <Legend />
             </div>
             <div className='col-9'>
-              DisplayPage
+              <CarouselManager />
             </div>
           </div>
         </div>
