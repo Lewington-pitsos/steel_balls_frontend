@@ -26880,16 +26880,18 @@ class Carousel extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
   }
 
   updateState() {
-    this.newCarousel();
-    this.setState(__WEBPACK_IMPORTED_MODULE_5__stores_CarouselStore__["a" /* default */].getState());
+    if (!this.props.first) {
+      this.setState(__WEBPACK_IMPORTED_MODULE_5__stores_CarouselStore__["a" /* default */].getState());
+    }
   }
 
   componentWillMount() {
+    this.newCarousel();
     __WEBPACK_IMPORTED_MODULE_5__stores_CarouselStore__["a" /* default */].addListener('changeState', this.updateState);
   }
 
   componentWillUnmount() {
-    __WEBPACK_IMPORTED_MODULE_5__stores_CarouselStore__["a" /* default */].removeAllListeners('changeState');
+    __WEBPACK_IMPORTED_MODULE_5__stores_CarouselStore__["a" /* default */].removeListener('changeState', this.updateState);
   }
 
   singleNode(info, key) {

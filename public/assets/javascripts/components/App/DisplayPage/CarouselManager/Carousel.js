@@ -30,16 +30,18 @@ export default class Carousel extends React.Component {
   }
 
   updateState() {
-    this.newCarousel()
-    this.setState( carouselStore.getState() )
+    if (!this.props.first) {
+      this.setState( carouselStore.getState() )
+    }
   }
 
   componentWillMount() {
-    carouselStore.addListener( 'changeState', this.updateState )
+    this.newCarousel()
+    carouselStore.addListener('changeState', this.updateState )
   }
 
   componentWillUnmount() {
-    carouselStore.removeAllListeners( 'changeState' )
+    carouselStore.removeListener( 'changeState', this.updateState )
   }
 
   singleNode(info, key) {
