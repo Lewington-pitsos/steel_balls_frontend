@@ -15,8 +15,9 @@ describe('CarouselManager:', function() {
   it('starts with the correct state', function() {
     var shallowWrapper = shallow(<CarouselManager />)
     var state = shallowWrapper.instance().state
-    expect(state.node[0].unknown).toEqual('3')
-    expect(state.node[0].selections.length).toEqual(1)
+    expect(state.nodes[0].unknown).toEqual('3')
+    expect(state.nodes[0].selections.length).toEqual(1)
+    expect(state.index).toEqual(0)
     expect(state.children.length).toEqual(1)
     expect(state.atStart).toBe(true)
     expect(state.atState).toBe(true)
