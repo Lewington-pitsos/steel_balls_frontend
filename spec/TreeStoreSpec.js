@@ -38,6 +38,7 @@ describe('TreeStore builds a tree and tracks visible nodes:', function() {
 
     expect(treeStore.getInfo().atStart).toBe(true)
     expect(treeStore.getInfo().nodes).toEqual(treeObject)
+    expect(treeStore.getInfo().index).toEqual(0)
     treeStore.nodes = treeObject[0]['selections']
     expect(treeStore.getInfo().nodes).toEqual(treeObject[0]['selections'])
 
@@ -45,7 +46,11 @@ describe('TreeStore builds a tree and tracks visible nodes:', function() {
     treeStore.children = treeObject[0]['selections'][0]['states']
     expect(treeStore.getInfo().children).toEqual(treeObject[0]['selections'][0]['states'])
 
+    treeStore.index = 1
+    expect(treeStore.getInfo().index).toEqual(1)
+
     treeStore.setNavigation(treeStore.resetNavigation)
+    expect(treeStore.getInfo().index).toEqual(0)
     expect(treeStore.getInfo().atStart).toBe(true)
     expect(treeStore.getInfo().atState).toBe(true)
     expect(treeStore.getInfo().key).toEqual(0)
@@ -60,10 +65,13 @@ describe('TreeStore builds a tree and tracks visible nodes:', function() {
 
     treeStore.setNavigation(treeStore.goToNode, 0)
     expect(treeStore.nodes).toEqual(treeObject[0]['selections'])
+    expect(treeStore.index).toEqual(0)
     treeStore.setNavigation(treeStore.goToNode, 1)
     expect(treeStore.nodes).toEqual(treeObject[0]['selections'][0]['states'])
+    expect(treeStore.index).toEqual(1)
     treeStore.setNavigation(treeStore.resetNavigation)
     expect(treeStore.nodes).toEqual(treeObject)
+    expect(treeStore.index).toEqual(0)
   })
 
   it('maintans breadcrumbs and can navigate upwards', function() {
@@ -72,13 +80,16 @@ describe('TreeStore builds a tree and tracks visible nodes:', function() {
     treeStore.setNavigation(treeStore.goToNode, 0)
     expect(treeStore.breadcrumbs.length).toEqual(1)
     expect(treeStore.breadcrumbs[0].nodes).toEqual(treeObject)
+    expect(treeStore.breadcrumbs[0].index).toEqual(0)
     treeStore.setNavigation(treeStore.goToNode, 0)
     expect(treeStore.breadcrumbs.length).toEqual(2)
     expect(treeStore.breadcrumbs[1].nodes).toEqual(treeObject[0]['selections'])
+    expect(treeStore.breadcrumbs[0].index).toEqual(0)
 
     treeStore.setNavigation(treeStore.backOneNode)
     expect(treeStore.breadcrumbs.length).toEqual(1)
     expect(treeStore.breadcrumbs[0].nodes).toEqual(treeObject)
+    expect(treeStore.breadcrumbs[0].index).toEqual(0)
     expect(treeStore.nodes).toEqual(treeObject[0]['selections'])
 
     treeStore.setNavigation(treeStore.backOneNode)
@@ -95,7 +106,7 @@ describe('TreeStore builds a tree and tracks visible nodes:', function() {
     expect(treeStore.finalSelection()).toBe(true)
   })
 
-  it('correctly wiorks our if its at a state', function() {
+  it('correctly wiorks out if its at a state', function() {
     expect(treeStore.atState()).toBe(true)
     treeStore.setNavigation(treeStore.goToNode, 0)
     expect(treeStore.atState()).toBe(false)
