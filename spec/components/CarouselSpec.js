@@ -18,13 +18,11 @@ describe('Carousel displays according to props:', function() {
 
   it('renders differently depending on props', function() {
     expect(wrapper.find('.state').length).toEqual(1)
-    expect(wrapper.find('.col-11').length).toEqual(1)
     expect(wrapper.find('.selection').length).toEqual(0)
     expect(wrapper.find('.arrow').length).toEqual(0)
 
     const selectionWrapper = mount(<Carousel nodes={treeObejct['selections'][0]['states'][0]['selections']} stateNode={false} first={false}/>)
     expect(selectionWrapper.find('.state').length).toEqual(0)
-    expect(selectionWrapper.find('.col-11').length).toEqual(0)
     expect(selectionWrapper.find('.selection').length).toEqual(1)
     expect(selectionWrapper.find('.arrow').length).toEqual(0)
 
