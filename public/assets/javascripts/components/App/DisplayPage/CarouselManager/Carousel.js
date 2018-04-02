@@ -10,7 +10,7 @@ export default class Carousel extends React.Component {
   constructor() {
     super()
 
-    this.state = { index: 0, classes: 'carousel' }
+    this.state = { index: 0, reverse: false }
   }
 
   singleNode(info, key) {
@@ -37,17 +37,25 @@ export default class Carousel extends React.Component {
     return this.props.stateNode ? 'Current Balls' : 'Current Weigh'
   }
 
+  className(reverse) {
+    return (
+      'carousel ' +
+      reverse ? 'reverse-order ' : null +
+      this.props.first ? 'first' : null
+    )
+  }
+
   nextNode() {
     this.setState({
       index: this.state.index + 1,
-      classes: 'carousel'
+      reverse: false
     })
   }
 
   prevNode() {
     this.setState({
       index: this.state.index - 1,
-      classes: 'carousel reverse-order'
+      reverse: true
     })
   }
 
@@ -63,19 +71,21 @@ export default class Carousel extends React.Component {
     }
   }
 
+  classes() {
+    return 'carousel ' + (this.state.reverse ? 'reverse-order ' : '') + (this.props.first ? 'first ' : 'last')
+  }
+
   render() {
 
     const nodes = this.allNodes()[this.state.index || 0]
-
-    const width = this.props.first ? '11' : '8'
     return (
-      <div className={this.state.classes}>
+      <div className={this.classes()}>
         <h2>{this.title()}</h2>
         <div className='row justify-content-center'>
           <div className='col-2'>
             {this.leftArrow()}
           </div>
-          <div className={ 'node-holder col-' + width }>
+          <div className='node-holder col-8'>
             <CSSTransitionGroup
               transitionName={'node'}
               transitionEnterTimeout={1000}
