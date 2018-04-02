@@ -26,7 +26,7 @@ export default class CarouselManager extends React.Component {
   }
 
   classes() {
-    return this.state.back ? 'backwards' : ''
+    return this.state.navigationClass
   }
 
   render() {

@@ -5,9 +5,13 @@ describe('TreeStore builds a tree and tracks visible nodes:', function() {
 
   let treeObject = [{"unknown": "3", "possibly_lighter": "0", "possibly_heavier": "0", "normal": "0", "score": "2", "selections": [{"right": {"unknown": "1", "possibly_lighter": "0", "possibly_heavier": "0", "normal": "0"}, "left": {"unknown": "1", "possibly_lighter": "0", "possibly_heavier": "0", "normal": "0"}, "states": [{"unknown": "1", "possibly_lighter": "0", "possibly_heavier": "0", "normal": "2", "score": "1", "selections": [{"right": {"unknown": "1", "possibly_lighter": "0", "possibly_heavier": "0", "normal": "0"}, "left": {"unknown": "0", "possibly_lighter": "0", "possibly_heavier": "0", "normal": "1"}, "states": [{"unknown": "0", "possibly_lighter": "0", "possibly_heavier": "1", "normal": "2", "score": "0"}, {"unknown": "0", "possibly_lighter": "1", "possibly_heavier": "0", "normal": "2", "score": "0"}]}]}, {"unknown": "0", "possibly_lighter": "1", "possibly_heavier": "1", "normal": "1", "score": "1", "selections": [{"right": {"unknown": "0", "possibly_lighter": "0", "possibly_heavier": "0", "normal": "1"}, "left": {"unknown": "0", "possibly_lighter": "1", "possibly_heavier": "0", "normal": "0"}, "states": [{"unknown": "0", "possibly_lighter": "1", "possibly_heavier": "0", "normal": "2", "score": "0"}, {"unknown": "0", "possibly_lighter": "0", "possibly_heavier": "1", "normal": "2", "score": "0"}]}]}]}]}]
 
+  let backwardClass = 'backwards'
+  let forwardClass = 'forwards'
+  let resetClass = 'reset'
+
   beforeEach(function() {
     treeStore.setNavigation(treeStore.resetNavigation)
-    treeStore.back = false
+    treeStore.class = forwardClass
   })
 
   it('builds and tracks a tree on initialization', function() {
@@ -38,7 +42,7 @@ describe('TreeStore builds a tree and tracks visible nodes:', function() {
   it('updates components with expected values', function() {
 
     expect(treeStore.getInfo().atStart).toBe(true)
-    expect(treeStore.getInfo().back).toBe(false)
+    expect(treeStore.getInfo().navigationClass).toEqual(forwardClass)
     expect(treeStore.getInfo().nodes).toEqual(treeObject)
     expect(treeStore.getInfo().index).toEqual(0)
     treeStore.nodes = treeObject[0]['selections']
@@ -52,11 +56,13 @@ describe('TreeStore builds a tree and tracks visible nodes:', function() {
     expect(treeStore.getInfo().index).toEqual(1)
 
     treeStore.setNavigation(treeStore.resetNavigation)
+    expect(treeStore.getInfo().navigationClass).toEqual(resetClass)
     expect(treeStore.getInfo().index).toEqual(0)
     expect(treeStore.getInfo().atStart).toBe(true)
     expect(treeStore.getInfo().atState).toBe(true)
     expect(treeStore.getInfo().key).toEqual(0)
     treeStore.setNavigation(treeStore.goToNode, 0)
+    expect(treeStore.getInfo().navigationClass).toEqual(forwardClass)
     expect(treeStore.getInfo().key).toEqual(1)
     expect(treeStore.getInfo().atState).toBe(false)
     expect(treeStore.getInfo().atStart).toBe(false)
@@ -123,25 +129,28 @@ describe('TreeStore builds a tree and tracks visible nodes:', function() {
   })
 
   it('knows whether the carousel is navigation backwards', function() {
-    expect(treeStore.back).toBe(false)
+    expect(treeStore.class).toEqual(forwardClass)
 
     treeStore.setNavigation(treeStore.goToNode, 0)
-    expect(treeStore.back).toBe(false)
+    expect(treeStore.class).toEqual(forwardClass)
 
     treeStore.setNavigation(treeStore.backOneNode)
-    expect(treeStore.back).toBe(true)
+    expect(treeStore.class).toEqual(backwardClass)
 
     treeStore.setNavigation(treeStore.goToNode, 0)
-    expect(treeStore.back).toBe(false)
+    expect(treeStore.class).toEqual(forwardClass)
 
     treeStore.setNavigation(treeStore.goToNode, 0)
-    expect(treeStore.back).toBe(false)
+    expect(treeStore.class).toEqual(forwardClass)
 
     treeStore.setNavigation(treeStore.backOneNode)
-    expect(treeStore.back).toBe(true)
+    expect(treeStore.class).toEqual(backwardClass)
 
     treeStore.setNavigation(treeStore.backOneNode)
-    expect(treeStore.back).toBe(true)
+    expect(treeStore.class).toEqual(backwardClass)
+
+    treeStore.setNavigation(treeStore.resetNavigation)
+    expect(treeStore.class).toEqual(resetClass)
   })
 
   afterEach(function() {

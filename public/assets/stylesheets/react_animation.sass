@@ -73,14 +73,27 @@ $carousel-distance: 500px
     transition: margin-top 1000ms ease-in-out
 
 #carousel-manager.backwards
-  .carousel-leave
-    margin-top: $carousel-distance
-    &.carousel-leave-active
+  .carousel-enter
+    margin-top: -$carousel-distance
+    &.carousel-enter-active
       margin-top: 0
       transition: margin-top 1500ms ease-in-out
 #carousel-manager.backwards
-  .carousel-enter
+  .carousel-leave
     margin-top: 0
-    &.carousel-enter-active
-      margin-top: -$carousel-distance
+    &.carousel-leave-active
+      margin-top: $carousel-distance
       transition: margin-top 1000ms ease-in-out
+
+#carousel-manager.reset
+  .carousel-enter
+    opacity: 0.01
+    &.carousel-enter-active
+      opacity: 1
+      transition: opacity 1500ms ease-in-out
+#carousel-manager.reset
+  .carousel-leave
+    opacity: 1
+    &.carousel-leave-active
+      opacity: 0.01
+      transition: opacity 1500ms ease-in-out
