@@ -26634,7 +26634,6 @@ class Legend extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__stores_TreeStore__ = __webpack_require__(72);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__stores_TreeStore___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__stores_TreeStore__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__CarouselManager_Carousel__ = __webpack_require__(75);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_react_transition_group__ = __webpack_require__(13);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_react_transition_group___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_react_transition_group__);
@@ -26648,12 +26647,12 @@ class CarouselManager extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Comp
   constructor() {
     super();
 
-    this.state = __WEBPACK_IMPORTED_MODULE_1__stores_TreeStore__["default"].getInfo();
+    this.state = __WEBPACK_IMPORTED_MODULE_1__stores_TreeStore__["a" /* default */].getInfo();
   }
 
   componentWillMount() {
-    __WEBPACK_IMPORTED_MODULE_1__stores_TreeStore__["default"].on('change', () => {
-      this.setState(__WEBPACK_IMPORTED_MODULE_1__stores_TreeStore__["default"].getInfo());
+    __WEBPACK_IMPORTED_MODULE_1__stores_TreeStore__["a" /* default */].on('change', () => {
+      this.setState(__WEBPACK_IMPORTED_MODULE_1__stores_TreeStore__["a" /* default */].getInfo());
     });
   }
 
@@ -26686,14 +26685,166 @@ class CarouselManager extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Comp
 
 /***/ }),
 /* 72 */
-/***/ (function(module, __webpack_exports__) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-throw new Error("Module build failed: SyntaxError: Unexpected token, expected ; (92:30)\n\n\u001b[0m \u001b[90m 90 | \u001b[39m\n \u001b[90m 91 | \u001b[39m  newBreadcrumb() {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 92 | \u001b[39m    { nodes\u001b[33m:\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mnodes\u001b[33m,\u001b[39m index\u001b[33m:\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mindex }\n \u001b[90m    | \u001b[39m                              \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 93 | \u001b[39m  }\n \u001b[90m 94 | \u001b[39m\n \u001b[90m 95 | \u001b[39m  backOneNode() {\u001b[0m\n");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_events__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_events___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_events__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__dispatcher__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__TreeStore_TreeBuilder__ = __webpack_require__(73);
+
+
+
+
+
+class TreeStore extends __WEBPACK_IMPORTED_MODULE_0_events__["EventEmitter"] {
+  constructor() {
+    // recede tracks whether the flash is coming or going
+    super();
+    this.index = 0;
+    this.tree = null;
+    this.nodes = null;
+    this.children = null;
+    this.breadcrumbs = [];
+
+    this.builder = new __WEBPACK_IMPORTED_MODULE_2__TreeStore_TreeBuilder__["a" /* default */]();
+    this.buildTree();
+    this.setNavigation(this.resetNavigation);
+  }
+
+  buildTree() {
+    this.builder.buildTree();
+    this.tree = this.builder.tree;
+  }
+
+  getChildren() {
+    if (this.nodes[this.index]['selections']) {
+      return this.nodes[this.index]['selections'];
+    } else if (this.nodes[this.index]['states']) {
+      return this.nodes[this.index]['states'];
+    } else {
+      return null;
+    }
+  }
+
+  // ======= Component updating =========
+
+  getInfo() {
+    return {
+      nodes: this.nodes,
+      index: this.index,
+      children: this.children,
+      atStart: !this.breadcrumbs.length > 0,
+      atState: this.atState(),
+      key: this.breadcrumbs.length,
+      lastSelection: this.finalSelection()
+    };
+  }
+
+  atState() {
+    return this.breadcrumbs.length % 2 == 0;
+  }
+
+  finalSelection() {
+    return !this.atState() && this.children.every(this.noGrandchildren);
+  }
+
+  noGrandchildren(child) {
+    return child.selections == undefined;
+  }
+
+  // ======= Dispatcher interaction =========
+
+  handleActions(action) {
+    switch (action.type) {
+      case "BACK":
+        {
+          this.setNavigation(this.backOneNode);
+          break;
+        }case "RESET":
+        {
+          this.setNavigation(this.resetNavigation);
+          break;
+        }case "GO_TO":
+        {
+          this.setNavigation(this.goToNode, action.nodeIndex);
+          break;
+        }
+    }
+  }
+  // ======= Tree Navigating =========
+
+  resetNavigation() {
+    this.index = 0;
+    this.nodes = this.tree;
+    this.breadcrumbs = [];
+  }
+
+  goToNode(index) {
+    this.index = index;
+    this.breadcrumbs.push(this.newBreadcrumb());
+    this.nodes = this.children;
+  }
+
+  newBreadcrumb() {
+    return { nodes: this.nodes, index: this.index };
+  }
+
+  backOneNode() {
+    const nodeState = this.breadcrumbs.pop();
+    this.nodes = nodeState.nodes;
+    this.index = nodeState.index;
+  }
+
+  setNavigation(callback, argument) {
+    callback.call(this, argument);
+    this.children = this.getChildren();
+    this.emit('change');
+  }
+
+}
+
+const treeStore = new TreeStore();
+
+__WEBPACK_IMPORTED_MODULE_1__dispatcher__["a" /* default */].register(treeStore.handleActions.bind(treeStore));
+/* harmony default export */ __webpack_exports__["a"] = (treeStore);
 
 /***/ }),
-/* 73 */,
-/* 74 */,
+/* 73 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__tree_json__ = __webpack_require__(74);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__tree_json___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__tree_json__);
+//const { Client } = require('pg')
+
+
+class TreeBuilder {
+  constructor() {
+    /*
+    const client = new Client({
+      user: 'postgres',
+      database: 'frontend_steel_balls'
+    })
+    await client.connect()
+    */
+    this.tree = null;
+  }
+
+  buildTree() {
+    this.tree = __WEBPACK_IMPORTED_MODULE_0__tree_json___default.a;
+  }
+}
+/* harmony export (immutable) */ __webpack_exports__["a"] = TreeBuilder;
+
+
+/***/ }),
+/* 74 */
+/***/ (function(module, exports) {
+
+module.exports = [{"unknown":"3","possibly_lighter":"0","possibly_heavier":"0","normal":"0","score":"2","selections":[{"right":{"unknown":"1","possibly_lighter":"0","possibly_heavier":"0","normal":"0"},"left":{"unknown":"1","possibly_lighter":"0","possibly_heavier":"0","normal":"0"},"states":[{"unknown":"1","possibly_lighter":"0","possibly_heavier":"0","normal":"2","score":"1","selections":[{"right":{"unknown":"1","possibly_lighter":"0","possibly_heavier":"0","normal":"0"},"left":{"unknown":"0","possibly_lighter":"0","possibly_heavier":"0","normal":"1"},"states":[{"unknown":"0","possibly_lighter":"0","possibly_heavier":"1","normal":"2","score":"0"},{"unknown":"0","possibly_lighter":"1","possibly_heavier":"0","normal":"2","score":"0"}]}]},{"unknown":"0","possibly_lighter":"1","possibly_heavier":"1","normal":"1","score":"1","selections":[{"right":{"unknown":"0","possibly_lighter":"0","possibly_heavier":"0","normal":"1"},"left":{"unknown":"0","possibly_lighter":"1","possibly_heavier":"0","normal":"0"},"states":[{"unknown":"0","possibly_lighter":"1","possibly_heavier":"0","normal":"2","score":"0"},{"unknown":"0","possibly_lighter":"0","possibly_heavier":"1","normal":"2","score":"0"}]}]}]}]}]
+
+/***/ }),
 /* 75 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
