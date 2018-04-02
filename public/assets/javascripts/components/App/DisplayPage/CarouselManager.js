@@ -33,7 +33,7 @@ export default class CarouselManager extends React.Component {
             <CSSTransitionGroup
               transitionName={'carousel'}
               transitionEnterTimeout={1000}
-              transitionLeaveTimeout={1000}>
+              transitionLeaveTimeout={1500}>
               {this.carousels()}
             </CSSTransitionGroup>
           </div>

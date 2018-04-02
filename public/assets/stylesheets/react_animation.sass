@@ -58,14 +58,16 @@
       transition: left 1000ms ease-in, right 1000ms ease-in
 
 
+$carousel-distance: 500px
+
 .carousel-enter
-  margin-top: 450px
+  margin-top: $carousel-distance
   &.carousel-enter-active
     margin-top: 0
-    transition: margin-top 1000ms ease-in-out
+    transition: margin-top 1500ms ease-in-out
 
 .carousel-leave
   margin-top: 0
   &.carousel-leave-active
-    margin-top: -450px
+    margin-top: -$carousel-distance
     transition: margin-top 1000ms ease-in-out

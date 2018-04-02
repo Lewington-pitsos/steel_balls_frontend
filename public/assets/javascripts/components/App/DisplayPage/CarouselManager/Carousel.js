@@ -60,7 +60,7 @@ export default class Carousel extends React.Component {
   }
 
   possibleArrow(right, callback) {
-    return this.props.nodes.length > 1 ? <Arrow right={right} callback={callback}/> : null
+    return (!this.props.first && this.props.nodes.length > 1) ? <Arrow right={right} callback={callback}/> : null
   }
 
   title() {
