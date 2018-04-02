@@ -84,12 +84,17 @@ class TreeStore extends EventEmitter {
 
   goToNode(index) {
     this.index = index
-    this.breadcrumbs.push(this.nodes)
+    this.breadcrumbs.push(this.newBreadcrumb())
     this.nodes = this.children
   }
 
+  newBreadcrumb() {
+    { nodes: this.nodes, index: this.index }
+  }
+
   backOneNode() {
-    this.node = this.breadcrumbs.pop()
+    this.nodes = this.breadcrumbs.pop().nodes
+    this.index = this.breadcrumbs.pop().index
   }
 
   setNavigation(callback, argument) {
