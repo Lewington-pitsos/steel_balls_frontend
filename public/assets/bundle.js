@@ -26670,9 +26670,9 @@ class CarouselManager extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Comp
             __WEBPACK_IMPORTED_MODULE_3_react_transition_group__["CSSTransitionGroup"],
             {
               transitionName: 'carousel',
-              transitionEnterTimeout: 1,
+              trangti: true, stashsitionEnterTimeout: 1,
               transitionLeaveTimeout: 1 },
-            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__CarouselManager_Carousel__["a" /* default */], { nodes: this.state.node, stateNode: this.state.atState, first: true, key: this.state.key + 1 }),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__CarouselManager_Carousel__["a" /* default */], { nodes: this.state.node, stateNode: this.state.atState, first: true, key: this.state.key + 1, index: this.state.index }),
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__CarouselManager_Carousel__["a" /* default */], { nodes: this.state.children, stateNode: !this.state.atState, first: false, key: this.state.key + 2, lastSelection: this.state.lastSelection })
           )
         )
@@ -26702,7 +26702,7 @@ class TreeStore extends __WEBPACK_IMPORTED_MODULE_0_events__["EventEmitter"] {
     // recede tracks whether the flash is coming or going
     super();
     this.tree = null;
-    this.node = null;
+    this.nodes = null;
     this.children = null;
     this.breadcrumbs = [];
 
@@ -26717,10 +26717,10 @@ class TreeStore extends __WEBPACK_IMPORTED_MODULE_0_events__["EventEmitter"] {
   }
 
   getChildren() {
-    if (this.node['selections']) {
-      return this.node['selections'];
-    } else if (this.node['states']) {
-      return this.node['states'];
+    if (this.nodes[this.index]['selections']) {
+      return this.nodes[this.index]['selections'];
+    } else if (this.nodes[this.index]['states']) {
+      return this.nodes[this.index]['states'];
     } else {
       return null;
     }
@@ -26730,7 +26730,8 @@ class TreeStore extends __WEBPACK_IMPORTED_MODULE_0_events__["EventEmitter"] {
 
   getInfo() {
     return {
-      node: [this.node],
+      nodes: this.nodes,
+      index: this.index,
       children: this.children,
       atStart: !this.breadcrumbs.length > 0,
       atState: this.atState(),
@@ -26773,13 +26774,14 @@ class TreeStore extends __WEBPACK_IMPORTED_MODULE_0_events__["EventEmitter"] {
   // ======= Tree Navigating =========
 
   resetNavigation() {
-    this.node = this.tree;
+    this.nodes = this.tree;
     this.breadcrumbs = [];
   }
 
   goToNode(index) {
-    this.breadcrumbs.push(this.node);
-    this.node = this.children[index];
+    this.index = index;
+    this.breadcrumbs.push(this.nodes);
+    this.nodes = this.children;
   }
 
   backOneNode() {
@@ -26832,7 +26834,7 @@ class TreeBuilder {
 /* 74 */
 /***/ (function(module, exports) {
 
-module.exports = {"unknown":"3","possibly_lighter":"0","possibly_heavier":"0","normal":"0","score":"2","selections":[{"right":{"unknown":"1","possibly_lighter":"0","possibly_heavier":"0","normal":"0"},"left":{"unknown":"1","possibly_lighter":"0","possibly_heavier":"0","normal":"0"},"states":[{"unknown":"1","possibly_lighter":"0","possibly_heavier":"0","normal":"2","score":"1","selections":[{"right":{"unknown":"1","possibly_lighter":"0","possibly_heavier":"0","normal":"0"},"left":{"unknown":"0","possibly_lighter":"0","possibly_heavier":"0","normal":"1"},"states":[{"unknown":"0","possibly_lighter":"0","possibly_heavier":"1","normal":"2","score":"0"},{"unknown":"0","possibly_lighter":"1","possibly_heavier":"0","normal":"2","score":"0"}]}]},{"unknown":"0","possibly_lighter":"1","possibly_heavier":"1","normal":"1","score":"1","selections":[{"right":{"unknown":"0","possibly_lighter":"0","possibly_heavier":"0","normal":"1"},"left":{"unknown":"0","possibly_lighter":"1","possibly_heavier":"0","normal":"0"},"states":[{"unknown":"0","possibly_lighter":"1","possibly_heavier":"0","normal":"2","score":"0"},{"unknown":"0","possibly_lighter":"0","possibly_heavier":"1","normal":"2","score":"0"}]}]}]}]}
+module.exports = [{"unknown":"3","possibly_lighter":"0","possibly_heavier":"0","normal":"0","score":"2","selections":[{"right":{"unknown":"1","possibly_lighter":"0","possibly_heavier":"0","normal":"0"},"left":{"unknown":"1","possibly_lighter":"0","possibly_heavier":"0","normal":"0"},"states":[{"unknown":"1","possibly_lighter":"0","possibly_heavier":"0","normal":"2","score":"1","selections":[{"right":{"unknown":"1","possibly_lighter":"0","possibly_heavier":"0","normal":"0"},"left":{"unknown":"0","possibly_lighter":"0","possibly_heavier":"0","normal":"1"},"states":[{"unknown":"0","possibly_lighter":"0","possibly_heavier":"1","normal":"2","score":"0"},{"unknown":"0","possibly_lighter":"1","possibly_heavier":"0","normal":"2","score":"0"}]}]},{"unknown":"0","possibly_lighter":"1","possibly_heavier":"1","normal":"1","score":"1","selections":[{"right":{"unknown":"0","possibly_lighter":"0","possibly_heavier":"0","normal":"1"},"left":{"unknown":"0","possibly_lighter":"1","possibly_heavier":"0","normal":"0"},"states":[{"unknown":"0","possibly_lighter":"1","possibly_heavier":"0","normal":"2","score":"0"},{"unknown":"0","possibly_lighter":"0","possibly_heavier":"1","normal":"2","score":"0"}]}]}]}]}]
 
 /***/ }),
 /* 75 */
@@ -26876,7 +26878,7 @@ class Carousel extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
   }
 
   newCarousel() {
-    __WEBPACK_IMPORTED_MODULE_6__actions_carouselActions__["a" /* default */].newCarousel(this.props.nodes.length);
+    __WEBPACK_IMPORTED_MODULE_6__actions_carouselActions__["a" /* default */].newCarousel();
   }
 
   updateState() {
@@ -26886,7 +26888,6 @@ class Carousel extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
   }
 
   componentWillMount() {
-    this.newCarousel();
     __WEBPACK_IMPORTED_MODULE_5__stores_CarouselStore__["a" /* default */].addListener('changeState', this.updateState);
   }
 
@@ -26940,7 +26941,7 @@ class Carousel extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
 
   render() {
 
-    const nodes = this.allNodes()[this.state.index || 0];
+    const nodes = this.allNodes()[this.props.first ? this.props.index : this.state.index];
     return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
       'div',
       { className: this.classes() },
@@ -27257,8 +27258,7 @@ __WEBPACK_IMPORTED_MODULE_1__dispatcher__["a" /* default */].register(carouselSt
 
   newCarousel(number) {
     __WEBPACK_IMPORTED_MODULE_0__dispatcher__["a" /* default */].dispatch({
-      type: 'NEW_CAROUSEL',
-      number: number
+      type: 'NEW_CAROUSEL'
     });
   }
 });

@@ -26,7 +26,7 @@ export default class Carousel extends React.Component {
   }
 
   newCarousel() {
-    carouselActions.newCarousel(this.props.nodes.length)
+    carouselActions.newCarousel()
   }
 
   updateState() {
@@ -36,7 +36,6 @@ export default class Carousel extends React.Component {
   }
 
   componentWillMount() {
-    this.newCarousel()
     carouselStore.addListener('changeState', this.updateState )
   }
 
@@ -94,7 +93,7 @@ export default class Carousel extends React.Component {
 
   render() {
 
-    const nodes = this.allNodes()[this.state.index || 0]
+    const nodes = this.allNodes()[this.props.first ? this.props.index : this.state.index]
     return (
       <div className={this.classes()}>
         <h2>{this.title()}</h2>

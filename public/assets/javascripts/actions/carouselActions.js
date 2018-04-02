@@ -15,8 +15,7 @@ export default {
 
   newCarousel(number) {
     dispatcher.dispatch({
-      type: 'NEW_CAROUSEL',
-      number: number
+      type: 'NEW_CAROUSEL'
     })
   }
 }
