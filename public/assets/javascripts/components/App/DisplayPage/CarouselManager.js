@@ -25,9 +25,14 @@ export default class CarouselManager extends React.Component {
     })
   }
 
+  classes() {
+    return this.state.back ? 'backwards' : ''
+  }
+
   render() {
+
     return (
-      <div id='carousel-manager'>
+      <div id='carousel-manager' className={this.classes()}>
         <div className='row'>
           <div className='col-12'>
             <CSSTransitionGroup

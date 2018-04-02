@@ -71,3 +71,16 @@ $carousel-distance: 500px
   &.carousel-leave-active
     margin-top: -$carousel-distance
     transition: margin-top 1000ms ease-in-out
+
+#carousel-manager.backwards
+  .carousel-leave
+    margin-top: $carousel-distance
+    &.carousel-leave-active
+      margin-top: 0
+      transition: margin-top 1500ms ease-in-out
+#carousel-manager.backwards
+  .carousel-enter
+    margin-top: 0
+    &.carousel-enter-active
+      margin-top: -$carousel-distance
+      transition: margin-top 1000ms ease-in-out

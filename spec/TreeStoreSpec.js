@@ -7,6 +7,7 @@ describe('TreeStore builds a tree and tracks visible nodes:', function() {
 
   beforeEach(function() {
     treeStore.setNavigation(treeStore.resetNavigation)
+    treeStore.back = false
   })
 
   it('builds and tracks a tree on initialization', function() {
@@ -37,6 +38,7 @@ describe('TreeStore builds a tree and tracks visible nodes:', function() {
   it('updates components with expected values', function() {
 
     expect(treeStore.getInfo().atStart).toBe(true)
+    expect(treeStore.getInfo().back).toBe(false)
     expect(treeStore.getInfo().nodes).toEqual(treeObject)
     expect(treeStore.getInfo().index).toEqual(0)
     treeStore.nodes = treeObject[0]['selections']
@@ -118,6 +120,28 @@ describe('TreeStore builds a tree and tracks visible nodes:', function() {
     expect(treeStore.atState()).toBe(false)
     treeStore.setNavigation(treeStore.goToNode, 0)
     expect(treeStore.atState()).toBe(true)
+  })
+
+  it('knows whether the carousel is navigation backwards', function() {
+    expect(treeStore.back).toBe(false)
+
+    treeStore.setNavigation(treeStore.goToNode, 0)
+    expect(treeStore.back).toBe(false)
+
+    treeStore.setNavigation(treeStore.backOneNode)
+    expect(treeStore.back).toBe(true)
+
+    treeStore.setNavigation(treeStore.goToNode, 0)
+    expect(treeStore.back).toBe(false)
+
+    treeStore.setNavigation(treeStore.goToNode, 0)
+    expect(treeStore.back).toBe(false)
+
+    treeStore.setNavigation(treeStore.backOneNode)
+    expect(treeStore.back).toBe(true)
+
+    treeStore.setNavigation(treeStore.backOneNode)
+    expect(treeStore.back).toBe(true)
   })
 
   afterEach(function() {

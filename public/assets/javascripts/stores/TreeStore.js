@@ -7,6 +7,7 @@ class TreeStore extends EventEmitter {
   constructor() {
     // recede tracks whether the flash is coming or going
     super()
+    this.back = false
     this.index = 0
     this.tree = null
     this.nodes = null
@@ -44,7 +45,8 @@ class TreeStore extends EventEmitter {
       atStart: !this.breadcrumbs.length > 0,
       atState: this.atState(),
       key: this.breadcrumbs.length,
-      lastSelection: this.finalSelection()
+      lastSelection: this.finalSelection(),
+      back: this.back
     }
   }
 
@@ -86,6 +88,7 @@ class TreeStore extends EventEmitter {
 
   goToNode(index) {
     this.breadcrumbs.push(this.newBreadcrumb())
+    this.back = false
     this.index = index
     this.nodes = this.children
   }
@@ -96,6 +99,7 @@ class TreeStore extends EventEmitter {
 
   backOneNode() {
     const nodeState = this.breadcrumbs.pop()
+    this.back = true
     this.nodes = nodeState.nodes
     this.index = nodeState.index
   }
