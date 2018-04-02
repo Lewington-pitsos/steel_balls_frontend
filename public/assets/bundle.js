@@ -27203,15 +27203,10 @@ class CarouselStore extends __WEBPACK_IMPORTED_MODULE_0_events__["EventEmitter"]
           break;
         }case "NEW_CAROUSEL":
         {
-          this.saveNodeuNumber(action.number);
+          this.resetState();
           break;
         }
     }
-  }
-
-  saveNodeuNumber(number) {
-    this.number = number;
-    this.resetState();
   }
 
   toNextNode() {

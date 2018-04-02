@@ -26,15 +26,10 @@ class CarouselStore extends EventEmitter {
         this.toPreviousNode()
         break
       } case "NEW_CAROUSEL": {
-        this.saveNodeuNumber(action.number)
+        this.resetState()
         break
       }
     }
-  }
-
-  saveNodeuNumber(number) {
-    this.number = number
-    this.resetState()
   }
 
   toNextNode() {
