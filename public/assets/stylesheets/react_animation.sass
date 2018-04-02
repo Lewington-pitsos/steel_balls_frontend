@@ -1,20 +1,20 @@
-.example-enter
+.page-enter
   #top-half
     margin-top: -55vh
-    transition: margin-top 1000ms ease-in
+    transition: margin-top 1000ms ease-in-out
   #bottom-half
     margin-top: 110vh
-    transition: margin-top 1000ms ease-in
-  &.example-enter-active
+    transition: margin-top 1000ms ease-in-out
+  &.page-enter-active
     #top-half
       margin-top: 0
-      transition: margin-top 1000ms ease-in
+      transition: margin-top 1000ms ease-in-out
     #bottom-half
       margin-top: 0
-      transition: margin-top 1000ms ease-in
+      transition: margin-top 1000ms ease-in-out
 
-.example-leave
-  &.example-leave-active
+.page-leave
+  &.page-leave-active
     #top-half
       margin-top: -55vh
       transition: margin-top 1000ms ease-in
