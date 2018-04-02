@@ -56,3 +56,16 @@
       right: 0%
       left: 68%
       transition: left 1000ms ease-in, right 1000ms ease-in
+
+
+.carousel-enter
+  margin-top: 450px
+  &.carousel-enter-active
+    margin-top: 0
+    transition: margin-top 1000ms ease-in-out
+
+.carousel-leave
+  margin-top: 0
+  &.carousel-leave-active
+    margin-top: -450px
+    transition: margin-top 1000ms ease-in-out
