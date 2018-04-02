@@ -26672,7 +26672,7 @@ class CarouselManager extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Comp
               transitionName: 'carousel',
               trangti: true, stashsitionEnterTimeout: 1,
               transitionLeaveTimeout: 1 },
-            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__CarouselManager_Carousel__["a" /* default */], { nodes: this.state.node, stateNode: this.state.atState, first: true, key: this.state.key + 1, index: this.state.index }),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__CarouselManager_Carousel__["a" /* default */], { nodes: this.state.nodes, stateNode: this.state.atState, first: true, key: this.state.key + 1, index: this.state.index }),
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__CarouselManager_Carousel__["a" /* default */], { nodes: this.state.children, stateNode: !this.state.atState, first: false, key: this.state.key + 2, lastSelection: this.state.lastSelection })
           )
         )
