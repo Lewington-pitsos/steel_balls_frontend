@@ -26670,7 +26670,7 @@ class CarouselManager extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Comp
             __WEBPACK_IMPORTED_MODULE_3_react_transition_group__["CSSTransitionGroup"],
             {
               transitionName: 'carousel',
-              trangti: true, stashsitionEnterTimeout: 1,
+              transitionEnterTimeout: 1,
               transitionLeaveTimeout: 1 },
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__CarouselManager_Carousel__["a" /* default */], { nodes: this.state.nodes, stateNode: this.state.atState, first: true, key: this.state.key + 1, index: this.state.index }),
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__CarouselManager_Carousel__["a" /* default */], { nodes: this.state.children, stateNode: !this.state.atState, first: false, key: this.state.key + 2, lastSelection: this.state.lastSelection })
@@ -26781,8 +26781,8 @@ class TreeStore extends __WEBPACK_IMPORTED_MODULE_0_events__["EventEmitter"] {
   }
 
   goToNode(index) {
-    this.index = index;
     this.breadcrumbs.push(this.newBreadcrumb());
+    this.index = index;
     this.nodes = this.children;
   }
 
@@ -27212,7 +27212,15 @@ class CarouselStore extends __WEBPACK_IMPORTED_MODULE_0_events__["EventEmitter"]
         {
           this.toPreviousNode();
           break;
-        }case "NEW_CAROUSEL":
+        }case "GO_TO":
+        {
+          this.resetState();
+          break;
+        }case "RESET":
+        {
+          this.resetState();
+          break;
+        }case "BACK":
         {
           this.resetState();
           break;
@@ -27235,6 +27243,7 @@ class CarouselStore extends __WEBPACK_IMPORTED_MODULE_0_events__["EventEmitter"]
   resetState() {
     this.reverse = false;
     this.index = 0;
+    this.emit('changeState');
   }
 }
 

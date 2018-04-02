@@ -85,8 +85,8 @@ class TreeStore extends EventEmitter {
   }
 
   goToNode(index) {
-    this.index = index
     this.breadcrumbs.push(this.newBreadcrumb())
+    this.index = index
     this.nodes = this.children
   }
 

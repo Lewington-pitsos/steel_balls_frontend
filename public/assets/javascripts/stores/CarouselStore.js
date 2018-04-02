@@ -25,7 +25,13 @@ class CarouselStore extends EventEmitter {
       } case "PREVIOUS_NODE": {
         this.toPreviousNode()
         break
-      } case "NEW_CAROUSEL": {
+      } case "GO_TO": {
+        this.resetState()
+        break
+      } case "RESET": {
+        this.resetState()
+        break
+      } case "BACK": {
         this.resetState()
         break
       }
@@ -47,6 +53,7 @@ class CarouselStore extends EventEmitter {
   resetState() {
     this.reverse = false
     this.index = 0
+    this.emit('changeState')
   }
 }
 
