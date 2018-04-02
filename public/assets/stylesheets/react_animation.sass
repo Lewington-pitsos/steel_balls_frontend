@@ -65,7 +65,6 @@ $carousel-distance: 500px
   &.carousel-enter-active
     margin-top: 0
     transition: margin-top 1500ms ease-in-out
-
 .carousel-leave
   margin-top: 0
   &.carousel-leave-active
@@ -87,13 +86,17 @@ $carousel-distance: 500px
 
 #carousel-manager.reset
   .carousel-enter
-    opacity: 0.01
+    margin-top: -$carousel-distance
+    opacity: 0
     &.carousel-enter-active
+      margin-top: 0
       opacity: 1
-      transition: opacity 1500ms ease-in-out
+      transition: opacity 1500ms ease-in-out, margin-top 1500ms ease-in-out
 #carousel-manager.reset
   .carousel-leave
     opacity: 1
+    margin-top: 0
     &.carousel-leave-active
-      opacity: 0.01
-      transition: opacity 1500ms ease-in-out
+      opacity: 0
+      margin-top: $carousel-distance
+      transition: opacity 1000ms ease-in-out, margin-top 1000ms ease-in-out
