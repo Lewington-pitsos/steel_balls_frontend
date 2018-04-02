@@ -42,8 +42,6 @@ export default class Carousel extends React.Component {
     carouselStore.removeAllListeners( 'changeState' )
   }
 
-
-
   singleNode(info, key) {
     return (
       <CarouselNode selectable={this.selectableNode()} key={key} index={key}>
