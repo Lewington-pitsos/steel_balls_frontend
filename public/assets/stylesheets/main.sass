@@ -16,12 +16,38 @@
 #display-page
   z-index: 1
 
+$l-text: #fff
+
 $l-blue: #ccf2ff
 $l-green: #9fdf9f
 $l-grey: #ddd
 $m-grey: #aaa
 $d-grey: #555
+$dd-grey: #333
 $darkest: #000
+
+// ====================== Sidebar ======================
+
+#display-page
+  padding-top: 2rem
+
+ul
+  list-style: none
+  padding: 0
+
+.button
+  font-size: 0.8rem
+  width: 100%
+  background: $dd-grey
+  color: $l-text
+  border-radius: 0
+  border: none
+  margin: 0.5rem 0
+  padding: 1rem
+  &:hover
+    background: $darkest
+    cursor: pointer
+    text-decoration: underline
 
 // ====================== Carousel ======================
 
