@@ -9,37 +9,50 @@ class CarouselStore extends EventEmitter {
     this.resetState()
   }
 
-  handleActions(action) {
-    switch(action.type) {
-  
-    }
-  }
-
   // ======= Component updating =========
-  /*
-  getPage() {
-    return {titlePage: this.titlePage}
+
+  getState() {
+    return { index: this.index, reverse: this.reverse }
   }
 
   // ======= Dispatcher interaction =========
 
-
-
-  toTitlePage() {
-    this.titlePage = true
-    this.emit('pageChange')
+  handleActions(action) {
+    switch(action.type) {
+      case "NEXT_NODE": {
+        this.toNextNode()
+        break
+      } case "PREVIOUS_NODE": {
+        this.toPreviousNode()
+        break
+      } case "NEW_CAROUSEL": {
+        this.saveNodeuNumber(action.number)
+        break
+      }
+    }
   }
 
-  toDisplayPage(ball_number) {
-    this.titlePage = false
-    this.emit('pageChange')
+  saveNodeuNumber(number) {
+    this.number = number
+    this.resetState()
   }
-  */
+
+  toNextNode() {
+    this.reverse = false
+    this.index += 1
+    this.emit('changeState')
+  }
+
+  toPreviousNode() {
+    this.reverse = true
+    this.index -= 1
+    this.emit('changeState')
+  }
+
   resetState() {
     this.reverse = false
     this.index = 0
   }
-
 }
 
 const carouselStore = new CarouselStore;

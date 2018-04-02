@@ -4,14 +4,45 @@ import Arrow from './Carousel/Arrow'
 import State from './Carousel/State'
 import Selection from './Carousel/Selection'
 import CarouselNode from './Carousel/CarouselNode'
+import carouselStore from '../../../../stores/CarouselStore'
+import carouselActions from '../../../../actions/carouselActions'
 import { CSSTransitionGroup } from 'react-transition-group'
+
 
 export default class Carousel extends React.Component {
   constructor() {
     super()
 
-    this.state = { index: 0, reverse: false }
+    this.state = carouselStore.getState()
+    this.updateState = this.updateState.bind(this)
   }
+
+  nextNode() {
+    carouselActions.nextNode()
+  }
+
+  prevNode() {
+    carouselActions.previousNode()
+  }
+
+  newCarousel() {
+    carouselActions.newCarousel(this.props.nodes.length)
+  }
+
+  updateState() {
+    this.newCarousel()
+    this.setState( carouselStore.getState() )
+  }
+
+  componentWillMount() {
+    carouselStore.addListener( 'changeState', this.updateState )
+  }
+
+  componentWillUnmount() {
+    carouselStore.removeAllListeners( 'changeState' )
+  }
+
+
 
   singleNode(info, key) {
     return (
@@ -43,20 +74,6 @@ export default class Carousel extends React.Component {
       reverse ? 'reverse-order ' : null +
       this.props.first ? 'first' : null
     )
-  }
-
-  nextNode() {
-    this.setState({
-      index: this.state.index + 1,
-      reverse: false
-    })
-  }
-
-  prevNode() {
-    this.setState({
-      index: this.state.index - 1,
-      reverse: true
-    })
   }
 
   leftArrow() {
