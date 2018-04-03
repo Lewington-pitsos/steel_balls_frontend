@@ -30,7 +30,7 @@
         margin-top: $start-distance
         transition: opacity 1000ms ease-in-out, margin-top 1000ms ease-in-out
 
-$carousel-distance: 502px
+$carousel-distance: 565px
 
 @include enter-carousel($carousel-distance, 0)
 @include leave-carousel(0, -$carousel-distance)
@@ -40,10 +40,9 @@ $carousel-distance: 502px
 #carousel-manager.backwards
   @include leave-carousel(0, $carousel-distance)
 
-
 @include reset-carousel($carousel-distance, 0)
 
-$small-distance: 415px
+$small-distance: 434px
 
 @media screen and (max-width: 992px)
   @include enter-carousel($small-distance, 0)
@@ -53,6 +52,5 @@ $small-distance: 415px
     @include enter-carousel(-$small-distance, 0)
   #carousel-manager.backwards
     @include leave-carousel(0, $small-distance)
-
 
   @include reset-carousel($small-distance, 0)
