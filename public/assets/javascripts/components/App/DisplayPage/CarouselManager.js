@@ -29,22 +29,33 @@ export default class CarouselManager extends React.Component {
     return this.state.navigationClass
   }
 
+  overlayClasses() {
+    return 'loading-overlay' + (this.state.loaded ? ' animated fadeOut' : '')
+  }
+
   render() {
 
     return (
       <div id='carousel-manager' className={this.classes()}>
         <div className='row'>
-          <div className='col-12'>
+          <div className='col-12 position-relative'>
             <CSSTransitionGroup
               transitionName={'carousel'}
               transitionEnterTimeout={1000}
               transitionLeaveTimeout={1500}>
               {this.carousels()}
             </CSSTransitionGroup>
+            <div className={this.overlayClasses()}>
+              <h3>We're Just Calculating Tree, could you give us a moment?</h3>
+              <div class="spinner">
+                <div class="rect1"></div>
+                <div class="rect2"></div>
+                <div class="rect3"></div>
+                <div class="rect4"></div>
+                <div class="rect5"></div>
+              </div>
+            </div>
           </div>
-        </div>
-        <div className='overlay'>
-          lolool
         </div>
       </div>
     );

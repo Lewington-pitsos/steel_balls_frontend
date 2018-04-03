@@ -1,3 +1,5 @@
+$bg: #fff
+
 $l-text: #fff
 $muted-text: #acacac
 
@@ -11,14 +13,26 @@ $d-grey: #555
 $dd-grey: #333
 $darkest: #000
 
-// ====================== Pages ======================
+// ====================== General ======================
 
 .whisper
   color: $muted-text
   font-size: 0.8rem
 
 
-// ====================== Pages ======================
+// ====================== Pages Switching ======================
+
+.loading-overlay
+  position: absolute
+  top: 0
+  bottom: 0
+  left: 0
+  right: 0
+  background: $bg
+  padding-top: 30%
+  h3
+    max-width: 50%
+    margin: auto
 
 #app
   height: 100vh
@@ -26,7 +40,6 @@ $darkest: #000
 .page
   height: 100vh
   position: absolute
-
 
 #display-page
   width: 100vw

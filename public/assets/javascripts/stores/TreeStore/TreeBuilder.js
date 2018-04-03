@@ -16,11 +16,9 @@ export default class TreeBuilder {
     var self = this
     return new Promise(function(resolve, reject) {
       setTimeout(function() {
-        console.log('startiung buiolt');
         self.tree = self.trees[num]
 
         if (self.tree) {
-          console.log('yay tree');
           resolve('tree built successfully')
         } else {
           reject('something went wrong and no tree was built')

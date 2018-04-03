@@ -7,7 +7,6 @@ describe('TreeBuilder gathers and returns the correct tree:', function() {
   let treeBuilder;
 
   beforeEach(function() {
-    console.info(global.TEST_ENV)
     treeBuilder = new TreeBuilder
   })
 
