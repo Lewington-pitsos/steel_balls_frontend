@@ -118,6 +118,8 @@ export default class Carousel extends React.Component {
       return 'These are all winning states (we know where the oddball is and how much it weighs)'
     } else if (this.props.atStart) {
       return 'This is the innitial group of balls. Any of them could be the oddball.'
+    } else {
+      return '...'
     }
   }
 
@@ -135,8 +137,8 @@ export default class Carousel extends React.Component {
           <div className='node-holder col-8'>
             <CSSTransitionGroup
               transitionName={'node'}
-              transitionEnterTimeout={1000}
-              transitionLeaveTimeout={1000}>
+              transitionEnterTimeout={600}
+              transitionLeaveTimeout={600}>
             {nodes}
             </CSSTransitionGroup>
           </div>

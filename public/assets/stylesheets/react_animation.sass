@@ -36,14 +36,14 @@
       &.node-enter-active
         left: 34%
         right: 34%
-        transition: left 1000ms ease-in, right 1000ms ease-in
+        transition: left 600ms ease-in, right 600ms ease-in
     &.node-leave
       left: 34%
       right: 34%
       &.node-leave-active
         right: 68%
         left: 0%
-        transition: left 1000ms ease-in, right 1000ms ease-in
+        transition: left 600ms ease-in, right 600ms ease-in
 
 
 .node
@@ -53,17 +53,17 @@
     &.node-enter-active
       left: 34%
       right: 34%
-      transition: left 1000ms ease-in, right 1000ms ease-in
+      transition: left 600ms ease-in-out, right 600ms ease-in-out
   &.node-leave
     left: 34%
     right: 34%
     &.node-leave-active
       right: 0%
       left: 68%
-      transition: left 1000ms ease-in, right 1000ms ease-in
+      transition: left 600ms ease-in-out, right 600ms ease-in-out
 
 
-$carousel-distance: 500px
+$carousel-distance: 534px
 
 .carousel-enter
   margin-top: $carousel-distance
