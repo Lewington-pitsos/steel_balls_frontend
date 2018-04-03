@@ -13,26 +13,25 @@ $darkest: #000
 // ====================== Pages ======================
 
 #app
-  min-height: 100vh
-
-.page
-  box-sizing: border-box
   height: 100vh
   width: 100vw
+.page
+  height: 100vh
   position: absolute
 
 
 #display-page
+  width: 100vw
+  overflow-x: hidden
   z-index: 1
   padding-top: 2rem
-
+  .main-content
+    width: 100%
 ul
   list-style: none
-  padding: 0
 
 .button
   font-size: 0.8rem
-  min-width: 300px
   background: $dd-grey
   color: $l-text
   border-radius: 0
@@ -42,18 +41,21 @@ ul
   &:hover
     background: $darkest
     cursor: pointer
-  &.nav
+  &.nav-button
     width: 100%
     &:hover
       text-decoration: underline
 
 #title-page
-  .half
-    background: $ll-grey
   z-index: 2
+  width: 101vw
+  .half
+    box-sizing: border-box
+    margin-left: 1rem
+    background: $ll-grey
   #top-half
-    height: 40%
     box-shadow: 0px 5px 70px 5px $m-grey
+    height: 40%
   #bottom-half
     height: 60%
   .main-title
@@ -66,6 +68,8 @@ ul
     margin-bottom: 2rem
   label
     margin-bottom: 2rem
+  .button
+    width: 300px
 
 
 

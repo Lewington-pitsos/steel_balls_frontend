@@ -25,7 +25,7 @@ export default class Navigators extends React.Component {
   render() {
     return (
       <div className='row' id='navigators'>
-        <div className='col-12'>
+        <div className='col-12 text-center'>
           <ul>
             <li>
               <NavButton action={this.toTitlePage.bind(this)} buttonId='titlepage-nav'>

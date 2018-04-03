@@ -12,12 +12,12 @@ export default class DisplayPage extends React.Component {
   render() {
     return (
         <div className='page' id='display-page'>
-          <div className='row'>
+          <div className='row p-0 main-content'>
             <div className='col-3'>
               <Navigators />
               <Legend />
             </div>
-            <div className='col-9'>
+            <div className='col-8'>
               <CarouselManager />
             </div>
           </div>
