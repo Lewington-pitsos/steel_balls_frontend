@@ -62,13 +62,17 @@ class TreeStore extends EventEmitter {
       nodes: this.nodes,
       index: this.index,
       children: this.children,
-      atStart: !this.breadcrumbs.length > 0,
+      atStart: this.atStart(),
       atState: this.atState(),
       key: this.breadcrumbs.length,
       lastSelection: this.finalSelection(),
       navigationClass: this.class,
       loaded: this.loaded
     }
+  }
+
+  atStart() {
+    return !this.breadcrumbs.length > 0
   }
 
   atState() {
@@ -81,6 +85,10 @@ class TreeStore extends EventEmitter {
 
   noGrandchildren(child) {
     return child.selections == undefined
+  }
+
+  navigatorInfo() {
+    return { atStart: this.atStart() }
   }
 
   // ======= Dispatcher interaction =========

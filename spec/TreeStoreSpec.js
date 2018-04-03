@@ -153,6 +153,16 @@ describe('TreeStore builds a tree and tracks visible nodes:', function() {
     expect(treeStore.class).toEqual(resetClass)
   })
 
+  it('returns correct navigator info', function() {
+    expect(treeStore.navigatorInfo().atStart).toBe(true)
+    treeStore.setNavigation(treeStore.goToNode, 0)
+    expect(treeStore.navigatorInfo().atStart).toBe(false)
+    treeStore.setNavigation(treeStore.goToNode, 0)
+    expect(treeStore.navigatorInfo().atStart).toBe(false)
+    treeStore.setNavigation(treeStore.resetNavigation)
+    expect(treeStore.navigatorInfo().atStart).toBe(true)
+  })
+
   afterEach(function() {
     treeStore.setNavigation(treeStore.resetNavigation)
   })

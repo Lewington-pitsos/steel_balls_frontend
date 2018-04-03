@@ -19,6 +19,25 @@ $darkest: #000
   color: $muted-text
   font-size: 0.8rem
 
+.button
+  font-size: 0.8rem
+  background: $dd-grey
+  color: $l-text
+  border-radius: 0
+  border: none
+  margin: 0.5rem 0
+  padding: 1rem
+  &:hover
+    background: $darkest
+    cursor: pointer
+  &.nav-button
+    width: 100%
+    &.disabled
+      background: $m-grey
+      &:hover
+        background: $m-grey
+        cursor: default
+
 
 // ====================== Pages Switching ======================
 
@@ -57,22 +76,6 @@ ul
   padding-left: 1rem
   list-style: none
   padding-bottom: 2rem
-
-.button
-  font-size: 0.8rem
-  background: $dd-grey
-  color: $l-text
-  border-radius: 0
-  border: none
-  margin: 0.5rem 0
-  padding: 1rem
-  &:hover
-    background: $darkest
-    cursor: pointer
-  &.nav-button
-    width: 100%
-    &:hover
-      text-decoration: underline
 
 #title-page
   top: 0
