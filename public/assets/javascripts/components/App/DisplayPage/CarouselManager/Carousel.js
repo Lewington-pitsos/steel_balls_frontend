@@ -127,7 +127,7 @@ export default class Carousel extends React.Component {
     return (
       <div className={this.classes()}>
         <h2>{this.message()}</h2>
-        <p>{this.whisper()}</p>
+        <p className='whisper'>{this.whisper()}</p>
         <div className='row justify-content-center'>
           <div className='col-2'>
             {this.leftArrow()}

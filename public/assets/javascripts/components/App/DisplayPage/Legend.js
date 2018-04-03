@@ -19,28 +19,28 @@ export default class Legend extends React.Component {
                     <td><Ball category='unknown' size=' small'/></td>
                     <td>
                       <h6>Unknown</h6>
-                      <p>We have no information at all about this ball. it could be any weight.</p>
+                      <p className='whisper'>We have no information at all about this ball. it could be any weight.</p>
                     </td>
                   </tr>
                   <tr valign='middle'>
                     <td><Ball category='possibly_lighter' size=' small'/></td>
                     <td>
                       <h6>Possibly Lighter</h6>
-                      <p>This ball is definitly isn't heavier than the normal weight, but it could still be lighter...</p>
+                      <p className='whisper'>This ball is definitly isn't heavier than the normal weight, but it could still be lighter...</p>
                     </td>
                   </tr>
                   <tr valign='middle'>
                     <td><Ball category='possibly_heavier' size=' small'/></td>
                     <td>
                       <h6>Possibly Heavier</h6>
-                      <p>This ball is definitly isn't lighter than the normal weight, but it could still be heavier...</p>
+                      <p className='whisper'>This ball is definitly isn't lighter than the normal weight, but it could still be heavier...</p>
                     </td>
                   </tr>
                   <tr valign='middle'>
                     <td><Ball category='normal' size=' small'/></td>
                     <td>
                       <h6>Normal</h6>
-                      <p>We can be sure that this ball is not the oddball.</p>
+                      <p className='whisper'>We can be sure that this ball is not the oddball.</p>
                     </td>
                   </tr>
                 </tbody>
