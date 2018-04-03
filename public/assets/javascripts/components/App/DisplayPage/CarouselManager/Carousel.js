@@ -118,8 +118,10 @@ export default class Carousel extends React.Component {
       return 'These are all winning states (we know where the oddball is and how much it weighs)'
     } else if (this.props.atStart) {
       return 'This is the innitial group of balls. Any of them could be the oddball.'
+    } else if (this.props.nodes.length == 1) {
+      return "(there's only one)"
     } else {
-      return '...'
+      return 'take your pick...'
     }
   }
 
