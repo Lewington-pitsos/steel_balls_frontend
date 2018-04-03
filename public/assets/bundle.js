@@ -26758,7 +26758,7 @@ class CarouselManager extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Comp
   }
 
   carousels() {
-    return [__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__CarouselManager_Carousel__["a" /* default */], { nodes: this.state.nodes, stateNode: this.state.atState, first: true, key: this.state.key + 1, index: this.state.index }), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__CarouselManager_Carousel__["a" /* default */], { nodes: this.state.children, stateNode: !this.state.atState, first: false, key: this.state.key + 2, lastSelection: this.state.lastSelection })];
+    return [__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__CarouselManager_Carousel__["a" /* default */], { nodes: this.state.nodes, stateNode: this.state.atState, first: true, key: this.state.key + 1, index: this.state.index, atStart: this.state.atStart }), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__CarouselManager_Carousel__["a" /* default */], { nodes: this.state.children, stateNode: !this.state.atState, first: false, key: this.state.key + 2, lastSelection: this.state.lastSelection })];
   }
 
   componentWillMount() {
@@ -27097,6 +27097,14 @@ class Carousel extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
     }
   }
 
+  whisper() {
+    if (this.props.lastSelection) {
+      return 'These are all winning states (we know where the oddball is and how much it weighs)';
+    } else if (this.props.atStart) {
+      return 'This is the innitial group of balls. Any of them could be the oddball.';
+    }
+  }
+
   render() {
 
     const nodes = this.allNodes()[this.props.first ? this.props.index : this.state.index];
@@ -27107,6 +27115,11 @@ class Carousel extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
         'h2',
         null,
         this.message()
+      ),
+      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        'p',
+        null,
+        this.whisper()
       ),
       __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
         'div',

@@ -113,12 +113,21 @@ export default class Carousel extends React.Component {
     }
   }
 
+  whisper() {
+    if (this.props.lastSelection) {
+      return 'These are all winning states (we know where the oddball is and how much it weighs)'
+    } else if (this.props.atStart) {
+      return 'This is the innitial group of balls. Any of them could be the oddball.'
+    }
+  }
+
   render() {
 
     const nodes = this.allNodes()[this.props.first ? this.props.index : this.state.index]
     return (
       <div className={this.classes()}>
         <h2>{this.message()}</h2>
+        <p>{this.whisper()}</p>
         <div className='row justify-content-center'>
           <div className='col-2'>
             {this.leftArrow()}

@@ -14,7 +14,7 @@ export default class CarouselManager extends React.Component {
 
   carousels() {
     return [
-      <Carousel nodes={this.state.nodes} stateNode={this.state.atState} first={true} key={this.state.key + 1} index={this.state.index}/>,
+      <Carousel nodes={this.state.nodes} stateNode={this.state.atState} first={true} key={this.state.key + 1} index={this.state.index} atStart={this.state.atStart}/>,
       <Carousel nodes={this.state.children} stateNode={!this.state.atState} first={false} key={this.state.key + 2} lastSelection={this.state.lastSelection}/>
     ]
   }

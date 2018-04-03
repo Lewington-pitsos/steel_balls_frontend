@@ -11,6 +11,8 @@ describe('Carousel displays according to props:', function() {
   let shallowWrapper;
   let wrapper;
   let wrapper2;
+  let startWhisper = 'This is the innitial group of balls. Any of them could be the oddball.'
+  let endWhisper = 'These are all winning states (we know where the oddball is and how much it weighs)'
 
   let messageMappings = {
         selection: {
@@ -26,7 +28,7 @@ describe('Carousel displays according to props:', function() {
   beforeEach(function() {
     wrapper = mount(<Carousel nodes={treeObejct} stateNode={true} index={0} first={true}/>)
     wrapper2 = mount(<Carousel nodes={treeObejct[0]['selections'][0]['states']} stateNode={true} first={false}/>)
-    shallowWrapper = shallow(<Carousel nodes={treeObejct} stateNode={true} first={true} index={0}/>).instance()
+    shallowWrapper = shallow(<Carousel nodes={treeObejct} stateNode={true} first={true} index={0} atStart={true}/>).instance()
   })
 
   it('renders differently depending on props', function() {
@@ -82,6 +84,17 @@ describe('Carousel displays according to props:', function() {
 
     const sw4 = shallow(<Carousel nodes={treeObejct} stateNode={false} first={false} index={0}/>).instance()
     expect(sw4.message()).toEqual(messageMappings.selection.upcoming)
+  })
+
+  it('returns the correct whisper', function() {
+    expect(shallowWrapper.whisper()).toEqual(startWhisper)
+
+    const sw2 = shallow(<Carousel nodes={treeObejct} stateNode={false} first={true} index={0}/>).instance()
+    expect(sw2.message()).toEqual(messageMappings.selection.current)
+    expect(sw2.whisper()).toBeUndefined()
+
+    const sw3 = shallow(<Carousel nodes={treeObejct} stateNode={true} first={false} index={0} lastSelection={true}/>).instance()
+    expect(sw3.whisper()).toEqual(endWhisper)
   })
 
   afterEach(function() {
