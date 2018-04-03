@@ -3,6 +3,7 @@ import React from 'react'
 import treeStore from '../../../stores/TreeStore'
 import Carousel from './CarouselManager/Carousel'
 import { CSSTransitionGroup } from 'react-transition-group'
+import LoadingOverlay from './CarouselManager/LoadingOverlay'
 
 
 export default class CarouselManager extends React.Component {
@@ -29,8 +30,8 @@ export default class CarouselManager extends React.Component {
     return this.state.navigationClass
   }
 
-  overlayClasses() {
-    return 'loading-overlay' + (this.state.loaded ? ' animated fadeOut' : '')
+  possibleOverlay() {
+    return this.state.loaded ? '' : <LoadingOverlay />
   }
 
   render() {
@@ -45,16 +46,12 @@ export default class CarouselManager extends React.Component {
               transitionLeaveTimeout={1500}>
               {this.carousels()}
             </CSSTransitionGroup>
-            <div className={this.overlayClasses()}>
-              <h3>We're Just Calculating Tree, could you give us a moment?</h3>
-              <div class="spinner">
-                <div class="rect1"></div>
-                <div class="rect2"></div>
-                <div class="rect3"></div>
-                <div class="rect4"></div>
-                <div class="rect5"></div>
-              </div>
-            </div>
+            <CSSTransitionGroup
+              transitionName={'overlay'}
+              transitionEnterTimeout={1100}
+              transitionLeaveTimeout={1000}>
+              {this.possibleOverlay()}
+            </CSSTransitionGroup>
           </div>
         </div>
       </div>
