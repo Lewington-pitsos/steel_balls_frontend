@@ -94,6 +94,8 @@ ul
   #bottom-half
     height: 60%
   .main-title
+    max-width: 60%
+    margin: auto
     padding-top: 8rem
   form
     padding-top: 2rem
@@ -116,9 +118,10 @@ ul
 
 #carousel-holder
   overflow: hidden
+  min-height: 800px
 
 .carousel
-  margin-bottom: 2rem
+  margin: 30px 0 60px 0
   h2
     margin: 2rem 0
 
@@ -147,7 +150,7 @@ ul
 .node-holder
   overflow: hidden
   span
-    height: 400px
+    height: 340px
     display: block
     width: 300%
     margin-left: -100%
@@ -159,8 +162,7 @@ ul
   right: 34%
   top: 0
   bottom: 0
-  padding: 3rem 0.5rem
-  margin: 2rem 0
+  padding: 2rem 0.5rem
   border-top: 1px solid $m-grey
   border-bottom: 1px solid $m-grey
   &.selectable
@@ -181,16 +183,27 @@ ul
 .arrow
   border-top: 2px solid $darkest
   border-right: 2px solid $darkest
+  display: inline-block
+  width: 60px
+  height: 60px
+
+.arrow-right
+  margin-left: 20%
+  transform: rotate(45deg)
+
+.arrow-left
+  margin-left: 30%
+  transform: rotate(-135deg)
+
 
 // ====================== Breakpoints ======================
 
 @media screen and (max-width: 992px)
   .node-holder
     span
-      height: 300px
+      height: 245px
   .node
     padding: 1rem 0
-    margin: 0.5rem 0 3rem 0
   .carousel
     h2
       font-size: 1.8rem
@@ -199,3 +212,8 @@ ul
     margin: 0.2rem
     width: 40px
     height: 40px
+
+@media screen and (max-width: 768px)
+  .arrow
+    width: 15px
+    height: 15px

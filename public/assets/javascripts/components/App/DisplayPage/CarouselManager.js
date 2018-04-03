@@ -42,7 +42,7 @@ export default class CarouselManager extends React.Component {
           <div className='col-12 position-relative'>
             <CSSTransitionGroup
               transitionName={'carousel'}
-              transitionEnterTimeout={1000}
+              transitionEnterTimeout={1500}
               transitionLeaveTimeout={1500}>
               {this.carousels()}
             </CSSTransitionGroup>
