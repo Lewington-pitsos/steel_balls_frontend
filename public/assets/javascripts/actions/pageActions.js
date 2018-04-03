@@ -8,7 +8,6 @@ export default {
   },
 
   toDisplayPage(ballNumber) {
-    console.log(ballNumber);
     dispatcher.dispatch({
       type: 'TO_DISPLAY_PAGE',
       ballNumber: ballNumber

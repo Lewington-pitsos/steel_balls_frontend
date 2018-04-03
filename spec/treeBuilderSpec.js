@@ -1,14 +1,24 @@
 import TreeBuilder from '../public/assets/javascripts/stores/TreeStore/TreeBuilder'
 
+import longTree from '../public/assets/javascripts/stores/TreeStore/long_tree.json'
+import treeObject from '../public/assets/javascripts/stores/TreeStore/tree.json'
+describe('TreeBuilder gathers and returns the correct tree:', function() {
+  let treeBuilder;
 
-describe('TreeBuilder gathers and returns the correct tree', function() {
+  beforeEach(function() {
+    treeBuilder = new TreeBuilder
+  })
 
-  let treeObejct = [{"unknown": "3", "possibly_lighter": "0", "possibly_heavier": "0", "normal": "0", "score": "2", "selections": [{"right": {"unknown": "1", "possibly_lighter": "0", "possibly_heavier": "0", "normal": "0"}, "left": {"unknown": "1", "possibly_lighter": "0", "possibly_heavier": "0", "normal": "0"}, "states": [{"unknown": "1", "possibly_lighter": "0", "possibly_heavier": "0", "normal": "2", "score": "1", "selections": [{"right": {"unknown": "1", "possibly_lighter": "0", "possibly_heavier": "0", "normal": "0"}, "left": {"unknown": "0", "possibly_lighter": "0", "possibly_heavier": "0", "normal": "1"}, "states": [{"unknown": "0", "possibly_lighter": "0", "possibly_heavier": "1", "normal": "2", "score": "0"}, {"unknown": "0", "possibly_lighter": "1", "possibly_heavier": "0", "normal": "2", "score": "0"}]}]}, {"unknown": "0", "possibly_lighter": "1", "possibly_heavier": "1", "normal": "1", "score": "1", "selections": [{"right": {"unknown": "0", "possibly_lighter": "0", "possibly_heavier": "0", "normal": "1"}, "left": {"unknown": "0", "possibly_lighter": "1", "possibly_heavier": "0", "normal": "0"}, "states": [{"unknown": "0", "possibly_lighter": "1", "possibly_heavier": "0", "normal": "2", "score": "0"}, {"unknown": "0", "possibly_lighter": "0", "possibly_heavier": "1", "normal": "2", "score": "0"}]}]}]}]}]
-
-  it('connects without crashing', function() {
-    const treeBuilder = new TreeBuilder
+  it('can return single tree', function() {
     treeBuilder.buildTree()
-    expect(treeBuilder.tree).toEqual(treeObejct)
+    expect(treeBuilder.tree).toEqual(treeObject)
+  })
+
+  it('returns different trees depending on passed in key', function() {
+    treeBuilder.buildTree(3)
+    expect(treeBuilder.tree).toEqual(treeObject)
+    treeBuilder.buildTree(4)
+    expect(treeBuilder.tree).toEqual(longTree)
   })
 
 })

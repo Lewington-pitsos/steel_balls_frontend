@@ -13,8 +13,5 @@ export default class TreeBuilder {
 
   buildTree(num=3) {
     this.tree = this.trees[num]
-    console.log(num);
-    console.log(this.trees[num]);
-    console.log(this.tree);
   }
 }

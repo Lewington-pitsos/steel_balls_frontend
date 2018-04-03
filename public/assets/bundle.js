@@ -2205,7 +2205,6 @@ var nameShape = exports.nameShape = _propTypes2.default.oneOfType([_propTypes2.d
   },
 
   toDisplayPage(ballNumber) {
-    console.log(ballNumber);
     __WEBPACK_IMPORTED_MODULE_0__dispatcher__["a" /* default */].dispatch({
       type: 'TO_DISPLAY_PAGE',
       ballNumber: ballNumber
@@ -26985,9 +26984,6 @@ class TreeBuilder {
 
   buildTree(num = 3) {
     this.tree = this.trees[num];
-    console.log(num);
-    console.log(this.trees[num]);
-    console.log(this.tree);
   }
 }
 /* harmony export (immutable) */ __webpack_exports__["a"] = TreeBuilder;
