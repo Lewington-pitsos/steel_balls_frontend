@@ -1,8 +1,14 @@
+@import "main"
+
+@mixin title-shadow
+  box-shadow: 0px -5px 70px 5px $m-grey
+
 .page-enter
   #top-half
     margin-top: -55vh
     transition: margin-top 1000ms ease-in-out
   #bottom-half
+    @include title-shadow
     margin-top: 110vh
     transition: margin-top 1000ms ease-in-out
   &.page-enter-active
@@ -19,6 +25,7 @@
       margin-top: -55vh
       transition: margin-top 1000ms ease-in
     #bottom-half
+      @include title-shadow
       margin-top: 110vh
       transition: margin-top 1000ms ease-in
 

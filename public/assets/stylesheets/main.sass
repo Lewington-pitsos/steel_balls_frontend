@@ -1,34 +1,29 @@
-#app
-  min-height: 100vh
-
-.page
-  min-height: 100vh
-  width: 100vw
-  position: absolute
-
-#title-page
-  z-index: 2
-  #top-half
-    background: #eee
-  #bottom-half
-    background: #eee
-
-#display-page
-  z-index: 1
-
 $l-text: #fff
 
 $l-blue: #ccf2ff
 $l-green: #9fdf9f
+
+$ll-grey: #eee
 $l-grey: #ddd
 $m-grey: #aaa
 $d-grey: #555
 $dd-grey: #333
 $darkest: #000
 
-// ====================== Sidebar ======================
+// ====================== Pages ======================
+
+#app
+  min-height: 100vh
+
+.page
+  box-sizing: border-box
+  height: 100vh
+  width: 100vw
+  position: absolute
+
 
 #display-page
+  z-index: 1
   padding-top: 2rem
 
 ul
@@ -37,7 +32,7 @@ ul
 
 .button
   font-size: 0.8rem
-  width: 100%
+  min-width: 300px
   background: $dd-grey
   color: $l-text
   border-radius: 0
@@ -47,7 +42,32 @@ ul
   &:hover
     background: $darkest
     cursor: pointer
-    text-decoration: underline
+  &.nav
+    width: 100%
+    &:hover
+      text-decoration: underline
+
+#title-page
+  .half
+    background: $ll-grey
+  z-index: 2
+  #top-half
+    height: 40%
+    box-shadow: 0px 5px 70px 5px $m-grey
+  #bottom-half
+    height: 60%
+  .main-title
+    padding-top: 8rem
+  form
+    padding-top: 2rem
+  small
+    margin-top: 2rem
+  select
+    margin-bottom: 2rem
+  label
+    margin-bottom: 2rem
+
+
 
 // ====================== Carousel ======================
 

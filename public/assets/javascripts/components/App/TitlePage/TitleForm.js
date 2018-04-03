@@ -34,7 +34,7 @@ export default class TitleForm extends React.Component {
             <option value="10">10</option>
           </select>
         </div>
-        <button type="submit" className="btn btn-primary">Submit</button>
+        <button type="submit" className="button">Submit</button>
         <small className="form-text text-muted">Now... why on earth did I disable 1 and 2?</small>
       </form>
     );
