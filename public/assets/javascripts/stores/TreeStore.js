@@ -15,18 +15,24 @@ class TreeStore extends EventEmitter {
     this.breadcrumbs = []
 
     this.builder = new TreeBuilder
-    this.newTree(3)
+    this.builder.buildBasicTree()
+    this.tree = this.builder.tree
+    this.setNavigation(this.resetNavigation)
   }
 
   newTree(num) {
     this.buildTree(num)
-    this.setNavigation(this.resetNavigation)
-    this.emit('change')
   }
 
   buildTree(num) {
-    this.builder.buildTree(num)
-    this.tree = this.builder.tree
+    var self = this
+    this.builder.buildTree(num).then(function(result) {
+      console.log('built');
+      self.tree = self.builder.tree
+      console.log('nearly there');
+      self.setNavigation(self.resetNavigation)
+    })
+
   }
 
   getChildren() {

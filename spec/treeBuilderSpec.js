@@ -10,15 +10,19 @@ describe('TreeBuilder gathers and returns the correct tree:', function() {
   })
 
   it('can return single tree', function() {
-    treeBuilder.buildTree()
-    expect(treeBuilder.tree).toEqual(treeObject)
+    treeBuilder.buildTree().then(function() {
+      expect(treeBuilder.tree).toEqual(treeObject)
+    })
   })
 
   it('returns different trees depending on passed in key', function() {
-    treeBuilder.buildTree(3)
-    expect(treeBuilder.tree).toEqual(treeObject)
-    treeBuilder.buildTree(4)
-    expect(treeBuilder.tree).toEqual(longTree)
+    treeBuilder.buildTree(3).then(function() {
+      expect(treeBuilder.tree).toEqual(treeObject)
+    })
+
+    treeBuilder.buildTree(4).then(function() {
+      expect(treeBuilder.tree).toEqual(longTree)
+    })
   })
 
 })

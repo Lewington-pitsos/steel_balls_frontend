@@ -26846,18 +26846,23 @@ class TreeStore extends __WEBPACK_IMPORTED_MODULE_0_events__["EventEmitter"] {
     this.breadcrumbs = [];
 
     this.builder = new __WEBPACK_IMPORTED_MODULE_2__TreeStore_TreeBuilder__["a" /* default */]();
-    this.newTree(3);
+    this.builder.buildBasicTree();
+    this.tree = this.builder.tree;
+    this.setNavigation(this.resetNavigation);
   }
 
   newTree(num) {
     this.buildTree(num);
-    this.setNavigation(this.resetNavigation);
-    this.emit('change');
   }
 
   buildTree(num) {
-    this.builder.buildTree(num);
-    this.tree = this.builder.tree;
+    var self = this;
+    this.builder.buildTree(num).then(function (result) {
+      console.log('built');
+      self.tree = self.builder.tree;
+      console.log('nearly there');
+      self.setNavigation(self.resetNavigation);
+    });
   }
 
   getChildren() {
@@ -26982,8 +26987,26 @@ class TreeBuilder {
     this.tree = null;
   }
 
+  buildBasicTree() {
+    this.tree = this.trees[3];
+  }
+
   buildTree(num = 3) {
-    this.tree = this.trees[num];
+    this.tree = null;
+    var self = this;
+    return new Promise(function (resolve, reject) {
+      setTimeout(function () {
+        console.log('startiung buiolt');
+        self.tree = self.trees[num];
+
+        if (self.tree) {
+          console.log('yay tree');
+          resolve('tree built successfully');
+        } else {
+          reject('something went wrong and no tree was built');
+        }
+      }, 2000);
+    });
   }
 }
 /* harmony export (immutable) */ __webpack_exports__["a"] = TreeBuilder;
