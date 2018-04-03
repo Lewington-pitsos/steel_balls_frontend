@@ -31,7 +31,6 @@ class TreeStore extends EventEmitter {
   }
 
   newTree(num) {
-    this.removeTree()
     this.buildTree(num)
   }
 
@@ -99,6 +98,9 @@ class TreeStore extends EventEmitter {
         break
       } case "TO_DISPLAY_PAGE": {
         this.newTree(action.ballNumber)
+        break
+      } case "TO_TITLE_PAGE": {
+        this.removeTree()
         break
       }
     }
