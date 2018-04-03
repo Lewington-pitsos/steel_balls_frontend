@@ -2,12 +2,14 @@ import {EventEmitter} from 'events';
 
 import dispatcher from '../dispatcher'
 import TreeBuilder from './TreeStore/TreeBuilder'
+import treeObject from './TreeStore/tree.json'
 
 class TreeStore extends EventEmitter {
   constructor() {
     // recede tracks whether the flash is coming or going
     super()
     this.class = 'forwards'
+    this.loaded = false
     this.index = 0
     this.tree = null
     this.nodes = null
@@ -15,9 +17,17 @@ class TreeStore extends EventEmitter {
     this.breadcrumbs = []
 
     this.builder = new TreeBuilder
-    this.builder.buildBasicTree()
-    this.tree = this.builder.tree
-    this.setNavigation(this.resetNavigation)
+
+    // temporary fix
+
+    if (global.TEST_ENV) {
+      this.setupForTesting()
+    }
+  }
+
+  removeTree() {
+    this.loaded = false
+    this.emit('change')
   }
 
   newTree(num) {
@@ -27,9 +37,8 @@ class TreeStore extends EventEmitter {
   buildTree(num) {
     var self = this
     this.builder.buildTree(num).then(function(result) {
-      console.log('built');
       self.tree = self.builder.tree
-      console.log('nearly there');
+      self.loaded = true
       self.setNavigation(self.resetNavigation)
     })
 
@@ -57,7 +66,8 @@ class TreeStore extends EventEmitter {
       atState: this.atState(),
       key: this.breadcrumbs.length,
       lastSelection: this.finalSelection(),
-      navigationClass: this.class
+      navigationClass: this.class,
+      loaded: this.loaded
     }
   }
 
@@ -88,6 +98,9 @@ class TreeStore extends EventEmitter {
         break
       } case "TO_DISPLAY_PAGE": {
         this.newTree(action.ballNumber)
+        break
+      } case "TO_TITLE_PAGE": {
+        this.removeTree()
         break
       }
     }
@@ -123,6 +136,15 @@ class TreeStore extends EventEmitter {
     callback.call(this, argument)
     this.children = this.getChildren()
     this.emit('change')
+  }
+
+
+  // ======= Temporary and Bad =========
+
+  setupForTesting() {
+    this.tree = treeObject
+    this.loaded = true
+    this.setNavigation(this.resetNavigation)
   }
 
 }

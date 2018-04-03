@@ -2,10 +2,12 @@ import TreeBuilder from '../public/assets/javascripts/stores/TreeStore/TreeBuild
 
 import longTree from '../public/assets/javascripts/stores/TreeStore/long_tree.json'
 import treeObject from '../public/assets/javascripts/stores/TreeStore/tree.json'
+
 describe('TreeBuilder gathers and returns the correct tree:', function() {
   let treeBuilder;
 
   beforeEach(function() {
+    console.info(global.TEST_ENV)
     treeBuilder = new TreeBuilder
   })
 

@@ -3,8 +3,6 @@ import ReactDOM from 'react-dom';
 
 import App from './components/App.js';
 
-const DATABASE_NAME = './tree.json'
-
 const main = document.getElementById('main')
 
 ReactDOM.render(

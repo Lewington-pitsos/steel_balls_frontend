@@ -11,10 +11,6 @@ export default class TreeBuilder {
     this.tree = null
   }
 
-  buildBasicTree() {
-    this.tree = this.trees[3]
-  }
-
   buildTree(num=3) {
     this.tree = null
     var self = this

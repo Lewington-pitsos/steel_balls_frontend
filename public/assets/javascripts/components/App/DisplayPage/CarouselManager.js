@@ -13,10 +13,10 @@ export default class CarouselManager extends React.Component {
   }
 
   carousels() {
-    return [
+    return this.state.loaded ? [
       <Carousel nodes={this.state.nodes} stateNode={this.state.atState} first={true} key={this.state.key + 1} index={this.state.index} atStart={this.state.atStart}/>,
       <Carousel nodes={this.state.children} stateNode={!this.state.atState} first={false} key={this.state.key + 2} lastSelection={this.state.lastSelection}/>
-    ]
+    ] : ''
   }
 
   componentWillMount() {
@@ -42,6 +42,9 @@ export default class CarouselManager extends React.Component {
               {this.carousels()}
             </CSSTransitionGroup>
           </div>
+        </div>
+        <div className='overlay'>
+          lolool
         </div>
       </div>
     );

@@ -18011,8 +18011,6 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/*! tether 1.4
 
 
 
-const DATABASE_NAME = './tree.json';
-
 const main = document.getElementById('main');
 
 __WEBPACK_IMPORTED_MODULE_1_react_dom___default.a.render(__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
@@ -26780,7 +26778,7 @@ class CarouselManager extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Comp
   }
 
   carousels() {
-    return [__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__CarouselManager_Carousel__["a" /* default */], { nodes: this.state.nodes, stateNode: this.state.atState, first: true, key: this.state.key + 1, index: this.state.index, atStart: this.state.atStart }), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__CarouselManager_Carousel__["a" /* default */], { nodes: this.state.children, stateNode: !this.state.atState, first: false, key: this.state.key + 2, lastSelection: this.state.lastSelection })];
+    return this.state.loaded ? [__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__CarouselManager_Carousel__["a" /* default */], { nodes: this.state.nodes, stateNode: this.state.atState, first: true, key: this.state.key + 1, index: this.state.index, atStart: this.state.atStart }), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__CarouselManager_Carousel__["a" /* default */], { nodes: this.state.children, stateNode: !this.state.atState, first: false, key: this.state.key + 2, lastSelection: this.state.lastSelection })] : '';
   }
 
   componentWillMount() {
@@ -26813,6 +26811,11 @@ class CarouselManager extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Comp
             this.carousels()
           )
         )
+      ),
+      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        'div',
+        { className: 'overlay' },
+        'lolool'
       )
     );
   }
@@ -26825,10 +26828,13 @@ class CarouselManager extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Comp
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_events__ = __webpack_require__(14);
+/* WEBPACK VAR INJECTION */(function(global) {/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_events__ = __webpack_require__(14);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_events___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_events__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__dispatcher__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__TreeStore_TreeBuilder__ = __webpack_require__(74);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__TreeStore_tree_json__ = __webpack_require__(75);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__TreeStore_tree_json___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__TreeStore_tree_json__);
+
 
 
 
@@ -26839,6 +26845,7 @@ class TreeStore extends __WEBPACK_IMPORTED_MODULE_0_events__["EventEmitter"] {
     // recede tracks whether the flash is coming or going
     super();
     this.class = 'forwards';
+    this.loaded = false;
     this.index = 0;
     this.tree = null;
     this.nodes = null;
@@ -26846,9 +26853,17 @@ class TreeStore extends __WEBPACK_IMPORTED_MODULE_0_events__["EventEmitter"] {
     this.breadcrumbs = [];
 
     this.builder = new __WEBPACK_IMPORTED_MODULE_2__TreeStore_TreeBuilder__["a" /* default */]();
-    this.builder.buildBasicTree();
-    this.tree = this.builder.tree;
-    this.setNavigation(this.resetNavigation);
+
+    // temporary fix
+
+    if (global.TEST_ENV) {
+      this.setupForTesting();
+    }
+  }
+
+  removeTree() {
+    this.loaded = false;
+    this.emit('change');
   }
 
   newTree(num) {
@@ -26858,9 +26873,8 @@ class TreeStore extends __WEBPACK_IMPORTED_MODULE_0_events__["EventEmitter"] {
   buildTree(num) {
     var self = this;
     this.builder.buildTree(num).then(function (result) {
-      console.log('built');
       self.tree = self.builder.tree;
-      console.log('nearly there');
+      self.loaded = true;
       self.setNavigation(self.resetNavigation);
     });
   }
@@ -26886,7 +26900,8 @@ class TreeStore extends __WEBPACK_IMPORTED_MODULE_0_events__["EventEmitter"] {
       atState: this.atState(),
       key: this.breadcrumbs.length,
       lastSelection: this.finalSelection(),
-      navigationClass: this.class
+      navigationClass: this.class,
+      loaded: this.loaded
     };
   }
 
@@ -26921,6 +26936,10 @@ class TreeStore extends __WEBPACK_IMPORTED_MODULE_0_events__["EventEmitter"] {
         }case "TO_DISPLAY_PAGE":
         {
           this.newTree(action.ballNumber);
+          break;
+        }case "TO_TITLE_PAGE":
+        {
+          this.removeTree();
           break;
         }
     }
@@ -26958,12 +26977,21 @@ class TreeStore extends __WEBPACK_IMPORTED_MODULE_0_events__["EventEmitter"] {
     this.emit('change');
   }
 
+  // ======= Temporary and Bad =========
+
+  setupForTesting() {
+    this.tree = __WEBPACK_IMPORTED_MODULE_3__TreeStore_tree_json___default.a;
+    this.loaded = true;
+    this.setNavigation(this.resetNavigation);
+  }
+
 }
 
 const treeStore = new TreeStore();
 
 __WEBPACK_IMPORTED_MODULE_1__dispatcher__["a" /* default */].register(treeStore.handleActions.bind(treeStore));
 /* harmony default export */ __webpack_exports__["a"] = (treeStore);
+/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(85)))
 
 /***/ }),
 /* 74 */
@@ -26985,10 +27013,6 @@ class TreeBuilder {
       4: __WEBPACK_IMPORTED_MODULE_1__long_tree_json___default.a
     };
     this.tree = null;
-  }
-
-  buildBasicTree() {
-    this.tree = this.trees[3];
   }
 
   buildTree(num = 3) {
@@ -27528,7 +27552,31 @@ __WEBPACK_IMPORTED_MODULE_1__dispatcher__["a" /* default */].register(pageStore.
 /* harmony default export */ __webpack_exports__["a"] = (pageStore);
 
 /***/ }),
-/* 85 */,
+/* 85 */
+/***/ (function(module, exports) {
+
+var g;
+
+// This works in non-strict mode
+g = function () {
+	return this;
+}();
+
+try {
+	// This works if eval is allowed (see CSP)
+	g = g || Function("return this")() || (1, eval)("this");
+} catch (e) {
+	// This works if the window reference is available
+	if (typeof window === "object") g = window;
+}
+
+// g can still be undefined, but nothing to do about it...
+// We return undefined, instead of nothing here, so it's
+// easier to handle this case. if(!global) { ...}
+
+module.exports = g;
+
+/***/ }),
 /* 86 */,
 /* 87 */,
 /* 88 */,
