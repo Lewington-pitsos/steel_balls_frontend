@@ -12,10 +12,21 @@ describe('Carousel displays according to props:', function() {
   let wrapper;
   let wrapper2;
 
+  let messageMappings = {
+        selection: {
+          current: 'Previous Weigh',
+          upcoming: 'Possible Selections'
+        },
+        state: {
+          current: 'Current Ball State',
+          upcoming: 'Possible Outcomes'
+        }
+      }
+
   beforeEach(function() {
     wrapper = mount(<Carousel nodes={treeObejct} stateNode={true} index={0} first={true}/>)
     wrapper2 = mount(<Carousel nodes={treeObejct[0]['selections'][0]['states']} stateNode={true} first={false}/>)
-    shallowWrapper = shallow(<Carousel nodes={[treeObejct]} stateNode={true} first={true} index={0}/>).instance()
+    shallowWrapper = shallow(<Carousel nodes={treeObejct} stateNode={true} first={true} index={0}/>).instance()
   })
 
   it('renders differently depending on props', function() {
@@ -31,9 +42,8 @@ describe('Carousel displays according to props:', function() {
     selectionWrapper.unmount()
   })
 
-  it('s methods act as expected', function() {
+  it('has methods that act as expected', function() {
     expect(shallowWrapper.possibleArrow()).toBeNull()
-    expect(shallowWrapper.title()).toEqual('Current Balls')
     expect(shallowWrapper.allNodes().length).toEqual(1)
   })
 
@@ -59,6 +69,19 @@ describe('Carousel displays according to props:', function() {
     expect(wrapper.instance().state.index).toEqual(0)
     expect(wrapper2.instance().state.reverse).toEqual(false)
     expect(wrapper.instance().state.reverse).toEqual(false)
+  })
+
+  it('retruns the right messages', function() {
+    expect(shallowWrapper.message()).toEqual(messageMappings.state.current)
+
+    const sw2 = shallow(<Carousel nodes={treeObejct} stateNode={false} first={true} index={0}/>).instance()
+    expect(sw2.message()).toEqual(messageMappings.selection.current)
+
+    const sw3 = shallow(<Carousel nodes={treeObejct} stateNode={true} first={false} index={0}/>).instance()
+    expect(sw3.message()).toEqual(messageMappings.state.upcoming)
+
+    const sw4 = shallow(<Carousel nodes={treeObejct} stateNode={false} first={false} index={0}/>).instance()
+    expect(sw4.message()).toEqual(messageMappings.selection.upcoming)
   })
 
   afterEach(function() {

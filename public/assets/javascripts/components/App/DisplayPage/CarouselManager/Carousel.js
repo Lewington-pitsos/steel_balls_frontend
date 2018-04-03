@@ -15,6 +15,16 @@ export default class Carousel extends React.Component {
 
     this.state = carouselStore.getState()
     this.updateState = this.updateState.bind(this)
+    this.messageMappings = {
+      selection: {
+        current: 'Previous Weigh',
+        upcoming: 'Possible Selections'
+      },
+      state: {
+        current: 'Current Ball State',
+        upcoming: 'Possible Outcomes'
+      }
+    }
   }
 
   nextNode() {
@@ -63,10 +73,6 @@ export default class Carousel extends React.Component {
     return (!this.props.first && this.props.nodes.length > 1) ? <Arrow right={right} callback={callback}/> : null
   }
 
-  title() {
-    return this.props.stateNode ? 'Current Balls' : 'Current Weigh'
-  }
-
   className(reverse) {
     return (
       'carousel ' +
@@ -91,12 +97,28 @@ export default class Carousel extends React.Component {
     return 'carousel ' + (this.state.reverse ? 'reverse-order ' : '') + (this.props.first ? 'first ' : 'last')
   }
 
+  message() {
+    if (this.props.stateNode) {
+      return this.title(this.messageMappings.state)
+    } else {
+      return this.title(this.messageMappings.selection)
+    }
+  }
+
+  title(mapping) {
+    if (this.props.first) {
+      return mapping.current
+    } else {
+      return mapping.upcoming
+    }
+  }
+
   render() {
 
     const nodes = this.allNodes()[this.props.first ? this.props.index : this.state.index]
     return (
       <div className={this.classes()}>
-        <h2>{this.title()}</h2>
+        <h2>{this.message()}</h2>
         <div className='row justify-content-center'>
           <div className='col-2'>
             {this.leftArrow()}

@@ -27003,6 +27003,16 @@ class Carousel extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
 
     this.state = __WEBPACK_IMPORTED_MODULE_5__stores_CarouselStore__["a" /* default */].getState();
     this.updateState = this.updateState.bind(this);
+    this.messageMappings = {
+      selection: {
+        current: 'Previous Weigh',
+        upcoming: 'Possible Selections'
+      },
+      state: {
+        current: 'Current Ball State',
+        upcoming: 'Possible Outcomes'
+      }
+    };
   }
 
   nextNode() {
@@ -27051,10 +27061,6 @@ class Carousel extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
     return !this.props.first && this.props.nodes.length > 1 ? __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__Carousel_Arrow__["a" /* default */], { right: right, callback: callback }) : null;
   }
 
-  title() {
-    return this.props.stateNode ? 'Current Balls' : 'Current Weigh';
-  }
-
   className(reverse) {
     return  true ? 'reverse-order ' : null + this.props.first ? 'first' : null;
   }
@@ -27075,6 +27081,22 @@ class Carousel extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
     return 'carousel ' + (this.state.reverse ? 'reverse-order ' : '') + (this.props.first ? 'first ' : 'last');
   }
 
+  message() {
+    if (this.props.stateNode) {
+      return this.title(this.messageMappings.state);
+    } else {
+      return this.title(this.messageMappings.selection);
+    }
+  }
+
+  title(mapping) {
+    if (this.props.first) {
+      return mapping.current;
+    } else {
+      return mapping.upcoming;
+    }
+  }
+
   render() {
 
     const nodes = this.allNodes()[this.props.first ? this.props.index : this.state.index];
@@ -27084,7 +27106,7 @@ class Carousel extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
       __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
         'h2',
         null,
-        this.title()
+        this.message()
       ),
       __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
         'div',
