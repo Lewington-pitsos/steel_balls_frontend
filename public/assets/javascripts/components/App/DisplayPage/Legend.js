@@ -13,7 +13,7 @@ export default class Legend extends React.Component {
          <div className='row' id='legend'>
            <div className='col-12'>
              <h3>Legend</h3>
-               <table class="table text-left">
+               <table className="table text-left">
                 <tbody>
                   <tr valign='middle'>
                     <td><Ball category='unknown' size=' small'/></td>

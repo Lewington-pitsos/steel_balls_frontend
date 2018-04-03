@@ -26628,7 +26628,7 @@ class Legend extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
         ),
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
           'table',
-          { 'class': 'table text-left' },
+          { className: 'table text-left' },
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             'tbody',
             null,
@@ -26824,6 +26824,10 @@ class TreeStore extends __WEBPACK_IMPORTED_MODULE_0_events__["EventEmitter"] {
     this.breadcrumbs = [];
 
     this.builder = new __WEBPACK_IMPORTED_MODULE_2__TreeStore_TreeBuilder__["a" /* default */]();
+    this.newTree();
+  }
+
+  newTree() {
     this.buildTree();
     this.setNavigation(this.resetNavigation);
   }
@@ -26885,6 +26889,10 @@ class TreeStore extends __WEBPACK_IMPORTED_MODULE_0_events__["EventEmitter"] {
         }case "GO_TO":
         {
           this.setNavigation(this.goToNode, action.nodeIndex);
+          break;
+        }case "TO_TITLE_PAGE":
+        {
+          this.newTree();
           break;
         }
     }
