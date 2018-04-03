@@ -38,7 +38,8 @@
     "react-transition-group": "^1.2.1",
     "ssri": "^5.2.2",
     "tether": "^1.4.3",
-    "webpack": "^3.10.0"
+    "webpack": "^3.10.0",
+    "xmlhttprequest": "^1.8.0"
   },
   "devDependencies": {
     "babel": "^6.23.0",

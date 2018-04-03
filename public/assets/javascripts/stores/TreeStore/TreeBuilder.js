@@ -1,19 +1,19 @@
 //const { Client } = require('pg')
 import tree from './tree.json'
+import longTree from './long_tree.json'
+
+var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest
 
 export default class TreeBuilder {
   constructor() {
-    /*
-    const client = new Client({
-      user: 'postgres',
-      database: 'frontend_steel_balls'
-    })
-    await client.connect()
-    */
+    this.trees = {
+      3: tree,
+      4: longTree
+    }
     this.tree = null
   }
 
-  buildTree() {
-    this.tree = tree
+  buildTree(num=3) {
+    this.tree = this.trees[num]
   }
 }
