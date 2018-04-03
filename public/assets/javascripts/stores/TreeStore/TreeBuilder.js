@@ -2,8 +2,6 @@
 import tree from './tree.json'
 import longTree from './long_tree.json'
 
-var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest
-
 export default class TreeBuilder {
   constructor() {
     this.trees = {
@@ -15,5 +13,8 @@ export default class TreeBuilder {
 
   buildTree(num=3) {
     this.tree = this.trees[num]
+    console.log(num);
+    console.log(this.trees[num]);
+    console.log(this.tree);
   }
 }

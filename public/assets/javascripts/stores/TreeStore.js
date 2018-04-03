@@ -15,16 +15,17 @@ class TreeStore extends EventEmitter {
     this.breadcrumbs = []
 
     this.builder = new TreeBuilder
-    this.newTree()
+    this.newTree(3)
   }
 
-  newTree() {
-    this.buildTree()
+  newTree(num) {
+    this.buildTree(num)
     this.setNavigation(this.resetNavigation)
+    this.emit('change')
   }
 
-  buildTree() {
-    this.builder.buildTree()
+  buildTree(num) {
+    this.builder.buildTree(num)
     this.tree = this.builder.tree
   }
 
@@ -79,8 +80,8 @@ class TreeStore extends EventEmitter {
       } case "GO_TO": {
         this.setNavigation(this.goToNode, action.nodeIndex)
         break
-      } case "TO_TITLE_PAGE": {
-        this.newTree()
+      } case "TO_DISPLAY_PAGE": {
+        this.newTree(action.ballNumber)
         break
       }
     }

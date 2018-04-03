@@ -7,10 +7,11 @@ export default {
     })
   },
 
-  toDisplayPage(ball_number) {
+  toDisplayPage(ballNumber) {
+    console.log(ballNumber);
     dispatcher.dispatch({
       type: 'TO_DISPLAY_PAGE',
-      ball_number: ball_number
+      ballNumber: ballNumber
     })
   }
 }

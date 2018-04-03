@@ -18,7 +18,7 @@ export default class TitlePage extends React.Component {
                   <h1>...</h1>
                 </div>
               </div>
-              <div class='half' id='bottom-half'>
+              <div className='half' id='bottom-half'>
                 <TitleForm />
               </div>
             </div>
