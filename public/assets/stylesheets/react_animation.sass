@@ -63,48 +63,50 @@
       transition: left 600ms ease-in-out, right 600ms ease-in-out
 
 
-$carousel-distance: 534px
-
-.carousel-enter
-  margin-top: $carousel-distance
-  &.carousel-enter-active
-    margin-top: 0
-    transition: margin-top 1500ms ease-in-out
-.carousel-leave
-  margin-top: 0
-  &.carousel-leave-active
-    margin-top: -$carousel-distance
-    transition: margin-top 1000ms ease-in-out
-
-#carousel-manager.backwards
+@mixin enter-carousel($start-distance, $end-distance)
   .carousel-enter
-    margin-top: -$carousel-distance
+    margin-top: $start-distance
     &.carousel-enter-active
-      margin-top: 0
+      margin-top: $end-distance
       transition: margin-top 1500ms ease-in-out
-#carousel-manager.backwards
+
+@mixin leave-carousel($start-distance, $end-distance)
   .carousel-leave
-    margin-top: 0
+    margin-top: $start-distance
     &.carousel-leave-active
-      margin-top: $carousel-distance
+      margin-top: $end-distance
       transition: margin-top 1000ms ease-in-out
 
-#carousel-manager.reset
-  .carousel-enter
-    margin-top: -$carousel-distance
-    opacity: 0
-    &.carousel-enter-active
-      margin-top: 0
-      opacity: 1
-      transition: opacity 1500ms ease-in-out, margin-top 1500ms ease-in-out
-#carousel-manager.reset
-  .carousel-leave
-    opacity: 1
-    margin-top: 0
-    &.carousel-leave-active
+@mixin reset-carousel($start-distance, $end-distance)
+  #carousel-manager.reset
+    .carousel-enter
+      margin-top: -$start-distance
       opacity: 0
-      margin-top: $carousel-distance
-      transition: opacity 1000ms ease-in-out, margin-top 1000ms ease-in-out
+      &.carousel-enter-active
+        margin-top: $end-distance
+        opacity: 1
+        transition: opacity 1500ms ease-in-out, margin-top 1500ms ease-in-out
+  #carousel-manager.reset
+    .carousel-leave
+      opacity: 1
+      margin-top: $end-distance
+      &.carousel-leave-active
+        opacity: 0
+        margin-top: $start-distance
+        transition: opacity 1000ms ease-in-out, margin-top 1000ms ease-in-out
+
+$carousel-distance: 534px
+
+@include enter-carousel($carousel-distance, 0)
+@include leave-carousel(0, -$carousel-distance)
+
+#carousel-manager.backwards
+  @include enter-carousel(-$carousel-distance, 0)
+#carousel-manager.backwards
+  @include leave-carousel(0, $carousel-distance)
+
+
+@include reset-carousel($carousel-distance, 0)
 
 
 

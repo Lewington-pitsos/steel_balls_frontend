@@ -131,10 +131,10 @@ export default class Carousel extends React.Component {
         <h2>{this.message()}</h2>
         <p className='whisper'>{this.whisper()}</p>
         <div className='row justify-content-center'>
-          <div className='col-2'>
+          <div className='col-md-2 col-sm-1'>
             {this.leftArrow()}
           </div>
-          <div className='node-holder col-8'>
+          <div className='node-holder col-md-8 col-sm-10'>
             <CSSTransitionGroup
               transitionName={'node'}
               transitionEnterTimeout={600}
@@ -142,7 +142,7 @@ export default class Carousel extends React.Component {
             {nodes}
             </CSSTransitionGroup>
           </div>
-          <div className='col-2'>
+          <div className='col-md-2 col-sm-1'>
             {this.rightArrow()}
           </div>
         </div>

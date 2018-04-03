@@ -17,15 +17,16 @@ export default class App extends React.Component {
     })
   }
 
+  classes() {
+    return 'position-relative' + (this.state.titlePage ? ' at-title' : '')
+  }
+
   render() {
 
    const titlePage = <TitlePage />
-   const displayPage =  <DisplayPage />
-
-   const showPage = this.state.titlePage ? titlePage : displayPage
 
     return (
-       <div className="position-relative" id='app'>
+       <div className={this.classes()} id='app'>
          <CSSTransitionGroup
            transitionName="page"
            transitionEnterTimeout={1000}

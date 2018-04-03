@@ -62,6 +62,8 @@ $darkest: #000
   height: 101vh
   width: 100%
   position: relative
+  &.at-title
+    overflow: hidden
 .page
   min-height: 100vh
   position: absolute
@@ -176,3 +178,17 @@ ul
 .arrow
   border-top: 2px solid $darkest
   border-right: 2px solid $darkest
+
+// ====================== Breakpoints ======================
+
+@media screen and (max-width: 992px)
+  .node-holder
+    span
+      height: 300px
+  .node
+    padding: 1rem 0.2rem
+    margin: 0.5rem 0 1rem 0
+  .carousel
+    h2
+      font-size: 1.8rem
+      margin: 1rem 0
