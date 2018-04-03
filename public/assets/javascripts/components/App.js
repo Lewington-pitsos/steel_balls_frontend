@@ -18,7 +18,7 @@ export default class App extends React.Component {
   }
 
   classes() {
-    return 'position-relative' + (this.state.titlePage ? ' at-title' : '')
+    return 'position-relative container-fluid' + (this.state.titlePage ? ' at-title' : '')
   }
 
   render() {

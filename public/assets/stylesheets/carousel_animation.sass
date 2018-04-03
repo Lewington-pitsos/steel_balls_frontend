@@ -42,3 +42,17 @@ $carousel-distance: 534px
 
 
 @include reset-carousel($carousel-distance, 0)
+
+$small-distance: 415px
+
+@media screen and (max-width: 992px)
+  @include enter-carousel($small-distance, 0)
+  @include leave-carousel(0, -$small-distance)
+
+  #carousel-manager.backwards
+    @include enter-carousel(-$small-distance, 0)
+  #carousel-manager.backwards
+    @include leave-carousel(0, $small-distance)
+
+
+  @include reset-carousel($small-distance, 0)

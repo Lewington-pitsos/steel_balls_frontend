@@ -13,11 +13,11 @@ export default class DisplayPage extends React.Component {
     return (
         <div className='page' id='display-page'>
           <div className='row p-0 main-content'>
-            <div className='col-lg-3 col-md-12'>
+            <div className='col-lg-3 col-md-12 d-flex flex-lg-column flex-column-reverse'>
               <Navigators />
               <Legend />
             </div>
-            <div className='col-lg-9 col-md-12'>
+            <div className='col-lg-9 col-md-12' id='carousel-holder'>
               <CarouselManager />
             </div>
           </div>
