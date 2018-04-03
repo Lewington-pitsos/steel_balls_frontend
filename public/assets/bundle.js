@@ -23829,13 +23829,22 @@ class App extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
   constructor() {
     super();
     this.state = __WEBPACK_IMPORTED_MODULE_4__stores_PageStore__["a" /* default */].getPage();
+
+    this.getInfo = this.getInfo.bind(this);
   }
 
   componentWillMount() {
     // triggered just before a render occurs apparently
-    __WEBPACK_IMPORTED_MODULE_4__stores_PageStore__["a" /* default */].on('pageChange', () => {
-      this.setState(__WEBPACK_IMPORTED_MODULE_4__stores_PageStore__["a" /* default */].getPage());
-    });
+    __WEBPACK_IMPORTED_MODULE_4__stores_PageStore__["a" /* default */].on('pageChange', this.getInfo);
+  }
+
+  componentWillUnmount() {
+    // triggered just before a render occurs apparently
+    __WEBPACK_IMPORTED_MODULE_4__stores_PageStore__["a" /* default */].removeListener('pageChange', this.getInfo);
+  }
+
+  getInfo() {
+    this.setState(__WEBPACK_IMPORTED_MODULE_4__stores_PageStore__["a" /* default */].getPage());
   }
 
   classes() {
@@ -26714,12 +26723,20 @@ class Navigators extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component
   constructor() {
     super();
     this.state = __WEBPACK_IMPORTED_MODULE_4__stores_TreeStore__["a" /* default */].navigatorInfo();
+
+    this.getInfo = this.getInfo.bind(this); // so we're refrenceing the exact same callback and can therefore remove it as a listener
   }
 
   componentWillMount() {
-    __WEBPACK_IMPORTED_MODULE_4__stores_TreeStore__["a" /* default */].on('change', () => {
-      this.setState(__WEBPACK_IMPORTED_MODULE_4__stores_TreeStore__["a" /* default */].navigatorInfo());
-    });
+    __WEBPACK_IMPORTED_MODULE_4__stores_TreeStore__["a" /* default */].on('change', this.getInfo);
+  }
+
+  componentWillUnmount() {
+    __WEBPACK_IMPORTED_MODULE_4__stores_TreeStore__["a" /* default */].removeListener('change', this.getInfo);
+  }
+
+  getInfo() {
+    this.setState(__WEBPACK_IMPORTED_MODULE_4__stores_TreeStore__["a" /* default */].navigatorInfo());
   }
 
   toTitlePage() {
@@ -27044,6 +27061,7 @@ class CarouselManager extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Comp
     super();
 
     this.state = __WEBPACK_IMPORTED_MODULE_1__stores_TreeStore__["a" /* default */].getInfo();
+    this.getInfo = this.getInfo.bind(this);
   }
 
   carousels() {
@@ -27051,9 +27069,15 @@ class CarouselManager extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Comp
   }
 
   componentWillMount() {
-    __WEBPACK_IMPORTED_MODULE_1__stores_TreeStore__["a" /* default */].on('change', () => {
-      this.setState(__WEBPACK_IMPORTED_MODULE_1__stores_TreeStore__["a" /* default */].getInfo());
-    });
+    __WEBPACK_IMPORTED_MODULE_1__stores_TreeStore__["a" /* default */].on('change', this.getInfo);
+  }
+
+  componentWillUnmount() {
+    __WEBPACK_IMPORTED_MODULE_1__stores_TreeStore__["a" /* default */].removeListener('change', this.getInfo);
+  }
+
+  getInfo() {
+    this.setState(__WEBPACK_IMPORTED_MODULE_1__stores_TreeStore__["a" /* default */].getInfo());
   }
 
   classes() {
@@ -27570,7 +27594,7 @@ class LoadingOverlay extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Compo
       { className: 'loading-overlay' },
       __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
         'h3',
-        null,
+        { className: 'default-message' },
         'Just Calculating Tree, could you give us a moment?'
       ),
       __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(

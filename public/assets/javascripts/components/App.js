@@ -9,12 +9,20 @@ export default class App extends React.Component {
   constructor() {
     super()
     this.state = pageStore.getPage()
+
+    this.getInfo = this.getInfo.bind(this)
   }
 
   componentWillMount() { // triggered just before a render occurs apparently
-    pageStore.on('pageChange', () => {
-      this.setState( pageStore.getPage() )
-    })
+    pageStore.on('pageChange', this.getInfo)
+  }
+
+  componentWillUnmount() { // triggered just before a render occurs apparently
+    pageStore.removeListener('pageChange', this.getInfo)
+  }
+
+  getInfo() {
+    this.setState( pageStore.getPage() )
   }
 
   classes() {

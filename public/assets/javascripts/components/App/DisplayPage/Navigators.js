@@ -9,14 +9,21 @@ export default class Navigators extends React.Component {
   constructor() {
     super()
     this.state = treeStore.navigatorInfo()
+
+    this.getInfo = this.getInfo.bind(this) // so we're refrenceing the exact same callback and can therefore remove it as a listener
   }
 
   componentWillMount() {
-    treeStore.on('change', () => {
-      this.setState( treeStore.navigatorInfo() )
-    })
+    treeStore.on('change', this.getInfo )
   }
 
+  componentWillUnmount() {
+    treeStore.removeListener('change', this.getInfo )
+  }
+
+  getInfo() {
+    this.setState( treeStore.navigatorInfo() )
+  }
 
   toTitlePage() {
     pageActions.toTitlePage()
@@ -29,7 +36,6 @@ export default class Navigators extends React.Component {
   resetNavigation() {
     treeActions.resetNavigation()
   }
-
 
   render() {
     return (

@@ -11,6 +11,7 @@ export default class CarouselManager extends React.Component {
     super()
 
     this.state = treeStore.getInfo()
+    this.getInfo = this.getInfo.bind(this)
   }
 
   carousels() {
@@ -21,9 +22,15 @@ export default class CarouselManager extends React.Component {
   }
 
   componentWillMount() {
-    treeStore.on('change', () => {
-      this.setState( treeStore.getInfo() )
-    })
+    treeStore.on('change', this.getInfo )
+  }
+
+  componentWillUnmount() {
+    treeStore.removeListener( 'change', this.getInfo )
+  }
+
+  getInfo() {
+    this.setState( treeStore.getInfo() )
   }
 
   classes() {
