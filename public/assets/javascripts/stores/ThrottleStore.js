@@ -20,10 +20,10 @@ class ThrottleStore extends EventEmitter {
   handleActions(action) {
     switch(action.type) {
       case "TO_TITLE_PAGE": {
-        this.startThrottle(1100)
+        this.startThrottle(1000)
         break
       } case "TO_DISPLAY_PAGE": {
-        this.startThrottle(1100)
+        this.startThrottle(1000)
         break
       }
     }
