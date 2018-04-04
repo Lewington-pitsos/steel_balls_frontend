@@ -20,25 +20,44 @@ class ThrottleStore extends EventEmitter {
   handleActions(action) {
     switch(action.type) {
       case "TO_TITLE_PAGE": {
-        this.startThrottle(1000)
+        this.startThrottle(1200)
         break
       } case "TO_DISPLAY_PAGE": {
-        this.startThrottle(1000)
+        this.startThrottle(1200)
+        break
+      } case "BACK": {
+        this.startThrottle(1500)
+        break
+      } case "RESET": {
+        this.startThrottle(1500)
+        break
+      } case "GO_TO": {
+        this.startThrottle(1500)
+        break
+      } case "NEXT_NODE": {
+        this.startThrottle(600)
+        break
+      } case "PREVIOUS_NODE": {
+        this.startThrottle(600)
         break
       }
     }
   }
 
   startThrottle(duration) {
-    this.throttle = true
-    this.emit('change')
-    var self = this
-    setTimeout(function() {
-      self.throttle = false
-      self.emit('change')
-    }, duration)
+    // unless we're already in the process of throttling, set throttling to true
+    // start a timeoput to set it back to false again when the animation is done
+    // after both changes, emit a change
+    if (!this.throttle) {
+      this.throttle = true
+      this.emit('change')
+      var self = this
+      setTimeout(function() {
+        self.throttle = false
+        self.emit('change')
+      }, duration)
+    }
   }
-
 }
 
 const throttleStore = new ThrottleStore;

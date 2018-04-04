@@ -26,12 +26,6 @@ export default class TitleForm extends React.Component {
           <select className="ball-number" onChange={this.updateBallNumber.bind(this)} defaultValue='3'>
             <option value="3">3</option>
             <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-            <option value="7">7</option>
-            <option value="8">8</option>
-            <option value="9">9</option>
-            <option value="10">10</option>
           </select>
         </div>
         <button type="submit" className="button">Submit</button>
