@@ -38,14 +38,6 @@ $darkest: #000
         background: $m-grey
         cursor: default
 
-
-// ====================== Pages Switching ======================
-
-#main
-  overflow-y: scroll
-  overflow-x: hidden
-  max-height: 100vh
-
 .overlay
   position: absolute
   top: 0
@@ -60,6 +52,19 @@ $darkest: #000
       margin: auto
   &.throtting
     z-index: 10
+
+.hidden
+  display: none
+  background: green
+
+
+// ====================== Pages Switching ======================
+
+#main
+  overflow-y: scroll
+  overflow-x: hidden
+  max-height: 100vh
+
 
 #app
   height: 101vh

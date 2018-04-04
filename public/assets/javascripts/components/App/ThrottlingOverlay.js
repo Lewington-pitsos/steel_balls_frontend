@@ -5,9 +5,13 @@ export default class ThrottlingOverlay extends React.Component {
     super()
   }
 
+  classes () {
+    return 'overlay throttling hidden'
+  }
+
   render() {
     return (
-       <div className='overlay throtting'>
+       <div className={this.classes()}>
        </div>
     );
   }
