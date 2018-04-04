@@ -6,6 +6,7 @@ import pageStore from '../../public/assets/javascripts/stores/PageStore'
 
 describe('App Component provides basic functionality:', function() {
 
+  let wrapper
   let titlePageSl = '#title-page'
   let displayPageSl = '#display-page'
   let titlePageButtonSl = '#titlepage-nav'
@@ -14,18 +15,19 @@ describe('App Component provides basic functionality:', function() {
 
   beforeEach(function() {
     pageStore.toTitlePage()
+    wrapper = mount(<App />)
   })
 
   it('Renders without crashing', function(done) {
     const div = document.createElement('div')
     ReactDOM.render(<App />, div)
-    const wrapper = shallow(<App />)
-    expect(wrapper.find('#app').exists()).toBe(true)
+    const wrapper2 = shallow(<App />)
+    expect(wrapper2.find('#app').exists()).toBe(true)
+    wrapper2.unmount()
     done()
   })
 
   it('Starts on title page', function() {
-    const wrapper = mount(<App />)
     expect(wrapper.find(titlePageSl).exists()).toBe(true)
     expect(wrapper.instance().state.titlePage).toBe(true)
     setTimeout(function() {
@@ -34,7 +36,6 @@ describe('App Component provides basic functionality:', function() {
   })
 
   it('can navigate between pages', function() {
-    const wrapper = mount(<App />)
     expect(wrapper.find(titlePageSl).exists()).toBe(true)
     wrapper.find('form').find('button').simulate('submit')
     expect(wrapper.find(titlePageSl).exists()).toBe(true)
@@ -52,13 +53,21 @@ describe('App Component provides basic functionality:', function() {
     }, pageAnimationWait)
   })
 
+  it('removes listeners on unmount', function() {
+    var listeners = pageStore.listeners('pageChange').length
+    wrapper.unmount()
+    expect(pageStore.listeners('pageChange').length).toEqual(listeners - 1)
+  })
+
   afterEach(function() {
     pageStore.toTitlePage()
+    wrapper.unmount()
   })
 })
 
 
 import Navigators from '../../public/assets/javascripts/components/App/DisplayPage/Navigators'
+import treeStore from '../../public/assets/javascripts/stores/TreeStore'
 
 describe('Navigators renders and acts correctly:', function() {
   let wrapper
@@ -73,6 +82,12 @@ describe('Navigators renders and acts correctly:', function() {
     expect(wrapper.find('#titlepage-nav').exists()).toBe(true)
     expect(wrapper.find('ul').exists()).toBe(true)
     done()
+  })
+
+  it('removes listeners on unmount', function() {
+    var listeners = treeStore.listeners('change').length
+    wrapper.unmount()
+    expect(treeStore.listeners('change').length).toEqual(listeners - 1)
   })
 
   afterEach(function(done) {

@@ -1,6 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { shallow, mount } from 'enzyme'
+import carouselStore from '../../public/assets/javascripts/stores/CarouselStore'
 
 import Carousel from '../../public/assets/javascripts/components/App/DisplayPage/CarouselManager/Carousel'
 
@@ -28,7 +29,7 @@ describe('Carousel displays according to props:', function() {
   beforeEach(function() {
     wrapper = mount(<Carousel nodes={treeObejct} stateNode={true} index={0} first={true}/>)
     wrapper2 = mount(<Carousel nodes={treeObejct[0]['selections'][0]['states']} stateNode={true} first={false}/>)
-    shallowWrapper = shallow(<Carousel nodes={treeObejct} stateNode={true} first={true} index={0} atStart={true}/>).instance()
+    shallowWrapper = shallow(<Carousel nodes={treeObejct} stateNode={true} first={true} index={0} atStart={true}/>)
   })
 
   it('renders differently depending on props', function() {
@@ -45,8 +46,8 @@ describe('Carousel displays according to props:', function() {
   })
 
   it('has methods that act as expected', function() {
-    expect(shallowWrapper.possibleArrow()).toBeNull()
-    expect(shallowWrapper.allNodes().length).toEqual(1)
+    expect(shallowWrapper.instance().possibleArrow()).toBeNull()
+    expect(shallowWrapper.instance().allNodes().length).toEqual(1)
   })
 
   it('only has arrows if it is second', function() {
@@ -74,30 +75,44 @@ describe('Carousel displays according to props:', function() {
   })
 
   it('retruns the right messages', function() {
-    expect(shallowWrapper.message()).toEqual(messageMappings.state.current)
+    expect(shallowWrapper.instance().message()).toEqual(messageMappings.state.current)
 
-    const sw2 = shallow(<Carousel nodes={treeObejct} stateNode={false} first={true} index={0}/>).instance()
-    expect(sw2.message()).toEqual(messageMappings.selection.current)
+    const sw2 = shallow(<Carousel nodes={treeObejct} stateNode={false} first={true} index={0}/>)
+    expect(sw2.instance().message()).toEqual(messageMappings.selection.current)
 
-    const sw3 = shallow(<Carousel nodes={treeObejct} stateNode={true} first={false} index={0}/>).instance()
-    expect(sw3.message()).toEqual(messageMappings.state.upcoming)
+    const sw3 = shallow(<Carousel nodes={treeObejct} stateNode={true} first={false} index={0}/>)
+    expect(sw3.instance().message()).toEqual(messageMappings.state.upcoming)
 
-    const sw4 = shallow(<Carousel nodes={treeObejct} stateNode={false} first={false} index={0}/>).instance()
-    expect(sw4.message()).toEqual(messageMappings.selection.upcoming)
+    const sw4 = shallow(<Carousel nodes={treeObejct} stateNode={false} first={false} index={0}/>)
+    expect(sw4.instance().message()).toEqual(messageMappings.selection.upcoming)
+    sw2.unmount()
+    sw3.unmount()
+    sw4.unmount()
   })
 
   it('returns the correct whisper', function() {
-    expect(shallowWrapper.whisper()).toEqual(startWhisper)
+    expect(shallowWrapper.instance().whisper()).toEqual(startWhisper)
 
-    const sw2 = shallow(<Carousel nodes={treeObejct} stateNode={false} first={true} index={0}/>).instance()
-    expect(sw2.message()).toEqual(messageMappings.selection.current)
+    const sw2 = shallow(<Carousel nodes={treeObejct} stateNode={false} first={true} index={0}/>)
+    expect(sw2.instance().message()).toEqual(messageMappings.selection.current)
 
-    const sw3 = shallow(<Carousel nodes={treeObejct} stateNode={true} first={false} index={0} lastSelection={true}/>).instance()
-    expect(sw3.whisper()).toEqual(endWhisper)
+    const sw3 = shallow(<Carousel nodes={treeObejct} stateNode={true} first={false} index={0} lastSelection={true}/>)
+    expect(sw3.instance().whisper()).toEqual(endWhisper)
+    sw2.unmount()
+    sw3.unmount()
+  })
+
+  it('removes listeners on unmount', function() {
+    var listeners = carouselStore.listeners('changeState').length
+    wrapper.unmount()
+    expect(carouselStore.listeners('changeState').length).toEqual(listeners - 1)
+    wrapper2.unmount()
+    expect(carouselStore.listeners('changeState').length).toEqual(listeners - 2)
   })
 
   afterEach(function() {
     wrapper.unmount()
     wrapper2.unmount()
+    shallowWrapper.unmount()
   })
 })
