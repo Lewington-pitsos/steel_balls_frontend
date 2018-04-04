@@ -46,17 +46,20 @@ $darkest: #000
   overflow-x: hidden
   max-height: 100vh
 
-.loading-overlay
+.overlay
   position: absolute
   top: 0
   bottom: 0
   left: 0
   right: 0
-  background: $bg
-  padding-top: 30%
-  h3
-    max-width: 50%
-    margin: auto
+  &.loading
+    background: $bg
+    padding-top: 30%
+    h3
+      max-width: 50%
+      margin: auto
+  &.throtting
+    z-index: 10
 
 #app
   height: 101vh

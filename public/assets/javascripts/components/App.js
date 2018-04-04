@@ -4,6 +4,7 @@ import { CSSTransitionGroup } from 'react-transition-group'
 import TitlePage from './App/TitlePage'
 import DisplayPage from './App/DisplayPage'
 import pageStore from '../stores/PageStore'
+import ThrottlingOverlay from './App/ThrottlingOverlay'
 
 export default class App extends React.Component {
   constructor() {
@@ -42,6 +43,7 @@ export default class App extends React.Component {
           {this.state.titlePage ? titlePage : null}
           <DisplayPage />
         </CSSTransitionGroup>
+        <ThrottlingOverlay></ThrottlingOverlay>
       </div>
     );
   }
