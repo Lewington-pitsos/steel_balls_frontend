@@ -18,7 +18,7 @@ export default class Carousel extends React.Component {
     this.messageMappings = {
       selection: {
         current: 'Previous Weigh',
-        upcoming: 'Possible Selections'
+        upcoming: 'Possible Weighs'
       },
       state: {
         current: 'Current Ball State',

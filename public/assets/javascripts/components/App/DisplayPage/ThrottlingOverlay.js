@@ -1,6 +1,6 @@
 import React from 'react'
 
-import throttleStore from '../../stores/ThrottleStore'
+import throttleStore from '../../../stores/ThrottleStore'
 
 export default class ThrottlingOverlay extends React.Component {
   constructor() {

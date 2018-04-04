@@ -3,6 +3,7 @@ import React from 'react'
 import Navigators from './DisplayPage/Navigators'
 import Legend from './DisplayPage/Legend'
 import CarouselManager from './DisplayPage/CarouselManager'
+import ThrottlingOverlay from './DisplayPage/ThrottlingOverlay'
 
 export default class DisplayPage extends React.Component {
   constructor() {
@@ -21,6 +22,7 @@ export default class DisplayPage extends React.Component {
               <CarouselManager />
             </div>
           </div>
+          <ThrottlingOverlay />
         </div>
     );
   }

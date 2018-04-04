@@ -17,7 +17,7 @@ describe('Carousel displays according to props:', function() {
   let messageMappings = {
         selection: {
           current: 'Previous Weigh',
-          upcoming: 'Possible Selections'
+          upcoming: 'Possible Weighs'
         },
         state: {
           current: 'Current Ball State',

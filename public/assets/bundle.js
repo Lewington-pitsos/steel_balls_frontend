@@ -24811,8 +24811,6 @@ module.exports = camelize;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__App_TitlePage__ = __webpack_require__(66);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__App_DisplayPage__ = __webpack_require__(70);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__stores_PageStore__ = __webpack_require__(87);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__App_ThrottlingOverlay__ = __webpack_require__(88);
-
 
 
 
@@ -24861,8 +24859,7 @@ class App extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
           transitionLeaveTimeout: 1000 },
         this.state.titlePage ? titlePage : null,
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__App_DisplayPage__["a" /* default */], null)
-      ),
-      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_5__App_ThrottlingOverlay__["a" /* default */], null)
+      )
     );
   }
 }
@@ -26638,6 +26635,8 @@ module.exports = Dispatcher;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__DisplayPage_Navigators__ = __webpack_require__(71);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__DisplayPage_Legend__ = __webpack_require__(76);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__DisplayPage_CarouselManager__ = __webpack_require__(77);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__DisplayPage_ThrottlingOverlay__ = __webpack_require__(90);
+
 
 
 
@@ -26667,7 +26666,8 @@ class DisplayPage extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Componen
           { className: 'col-lg-9 col-md-12', id: 'carousel-holder' },
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__DisplayPage_CarouselManager__["a" /* default */], null)
         )
-      )
+      ),
+      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4__DisplayPage_ThrottlingOverlay__["a" /* default */], null)
     );
   }
 }
@@ -27130,7 +27130,7 @@ class Carousel extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
     this.messageMappings = {
       selection: {
         current: 'Previous Weigh',
-        upcoming: 'Possible Selections'
+        upcoming: 'Possible Weighs'
       },
       state: {
         current: 'Current Ball State',
@@ -27644,52 +27644,7 @@ __WEBPACK_IMPORTED_MODULE_1__dispatcher__["a" /* default */].register(pageStore.
 /* harmony default export */ __webpack_exports__["a"] = (pageStore);
 
 /***/ }),
-/* 88 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__stores_ThrottleStore__ = __webpack_require__(89);
-
-
-
-
-class ThrottlingOverlay extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
-  constructor() {
-    super();
-
-    this.state = __WEBPACK_IMPORTED_MODULE_1__stores_ThrottleStore__["a" /* default */].getInfo();
-
-    this.getInfo = this.getInfo.bind(this);
-  }
-
-  componentWillMount() {
-    // triggered just before a render occurs apparently
-    __WEBPACK_IMPORTED_MODULE_1__stores_ThrottleStore__["a" /* default */].on('change', this.getInfo);
-  }
-
-  componentWillUnmount() {
-    // triggered just before a render occurs apparently
-    __WEBPACK_IMPORTED_MODULE_1__stores_ThrottleStore__["a" /* default */].removeListener('change', this.getInfo);
-  }
-
-  getInfo() {
-    this.setState(__WEBPACK_IMPORTED_MODULE_1__stores_ThrottleStore__["a" /* default */].getInfo());
-  }
-
-  classes() {
-    return 'overlay throttling' + (!this.state.throttle ? ' hidden' : '');
-  }
-
-  render() {
-    return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div', { className: this.classes() });
-  }
-}
-/* harmony export (immutable) */ __webpack_exports__["a"] = ThrottlingOverlay;
-
-
-/***/ }),
+/* 88 */,
 /* 89 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -27770,6 +27725,52 @@ const throttleStore = new ThrottleStore();
 
 __WEBPACK_IMPORTED_MODULE_1__dispatcher__["a" /* default */].register(throttleStore.handleActions.bind(throttleStore));
 /* harmony default export */ __webpack_exports__["a"] = (throttleStore);
+
+/***/ }),
+/* 90 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__stores_ThrottleStore__ = __webpack_require__(89);
+
+
+
+
+class ThrottlingOverlay extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
+  constructor() {
+    super();
+
+    this.state = __WEBPACK_IMPORTED_MODULE_1__stores_ThrottleStore__["a" /* default */].getInfo();
+
+    this.getInfo = this.getInfo.bind(this);
+  }
+
+  componentWillMount() {
+    // triggered just before a render occurs apparently
+    __WEBPACK_IMPORTED_MODULE_1__stores_ThrottleStore__["a" /* default */].on('change', this.getInfo);
+  }
+
+  componentWillUnmount() {
+    // triggered just before a render occurs apparently
+    __WEBPACK_IMPORTED_MODULE_1__stores_ThrottleStore__["a" /* default */].removeListener('change', this.getInfo);
+  }
+
+  getInfo() {
+    this.setState(__WEBPACK_IMPORTED_MODULE_1__stores_ThrottleStore__["a" /* default */].getInfo());
+  }
+
+  classes() {
+    return 'overlay throttling' + (!this.state.throttle ? ' hidden' : '');
+  }
+
+  render() {
+    return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div', { className: this.classes() });
+  }
+}
+/* harmony export (immutable) */ __webpack_exports__["a"] = ThrottlingOverlay;
+
 
 /***/ })
 /******/ ]);
